@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Customize from './assets/onePagesImages/customize.png';
 
@@ -6,6 +7,13 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
 const Page = () => {
+
+    const nav = useNavigate()
+
+    const customForm = () => {
+        nav('/custom/form')
+    }
+
     return (
         <>
             <NavBar />
@@ -21,7 +29,7 @@ const Page = () => {
                             Our artisans will carefully craft your unique piece, ensuring it mirrors your style.
                             With our dedication to quality, we promise more than just satisfaction; we create treasures to be cherished for generations.
                         </p>
-                        <button className='custom_btn'>Get Started!</button>
+                        <button className='custom_btn' onClick={customForm}>Get Started!</button>
                     </div>
                 </div>
 

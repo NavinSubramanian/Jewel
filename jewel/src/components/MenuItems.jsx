@@ -63,7 +63,7 @@ const MenuItems = ({
                 } {
                     " "
                 } {
-                    depthLevel > 0 ? < span > & raquo; </span> : <span className="arrow" / >
+                    depthLevel > 0 ? < span > &raquo; </span> : <span className="arrow" / >
                 } 
                 </button> 
                 <Dropdown depthLevel = {

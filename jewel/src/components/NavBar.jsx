@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { faMagnifyingGlass,faHeart,faBagShopping } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import mainLogo from '../assets/homeImages/mainLogo.png'
+import mainLogo from '../assets/homeImages/mainLogo2.svg'
 import { height } from '@fortawesome/free-solid-svg-icons/fa0'
 
 import {
@@ -15,6 +15,12 @@ import MenuItems from "./MenuItems";
 export default function NavBar (props) {
 
     const isLoad = useState(false);
+
+    const nav = useNavigate()
+
+    const profileView = () => {
+        nav('/profile')
+    }
     
     return(
         <nav className='mainNav'>
@@ -40,11 +46,9 @@ export default function NavBar (props) {
                     }
                     </ul>
                 </div>
-                <Link to='/'><img src={mainLogo} alt="" style={{height:'70px',width:'190px', marginRight:'60px'}} /></Link>
+                <Link to='/'><img src={mainLogo} alt="" style={{height:'80px',width:'100px', marginRight:'100px'}} /></Link>
                 <div className='navIcons'>
-                    <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faBagShopping}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faHeart} style={{cursor:'pointer'}} onClick={profileView}></FontAwesomeIcon>
                 </div>
             </div>
         </nav>

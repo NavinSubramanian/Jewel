@@ -55,7 +55,7 @@ const SeperateItem = () => {
           </div>
           <h4 className="price"><span style={{fontSize:'25px'}}>₹</span>{(details.weight*rate)+parseFloat(details.making_charges)}</h4>
           <p>{details.description}</p>
-          <div className="actions">
+          <div className="actionsItem">
             <button onClick={enquireForm}>Enquire</button>
             <button>Add to Favourites</button>
           </div>

@@ -9,6 +9,7 @@
 body{
   overflow-x: hidden;
   width: 100vw;
+  min-height: 100vh;
   height: auto;
 }
 
@@ -21,6 +22,34 @@ body{
 
 
 /* Components */
+
+
+/* Loader Component */
+
+
+.loaderDiv{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  font-family: var(--subfont);
+  justify-content: center;
+  flex-direction: column;
+  color: var(--maincolor);
+  row-gap: 10px;
+}
+.loaderDiv>h1{
+  font-family: var(--mainfont);
+  font-weight: 100;
+  line-height: 40px;
+  font-size: 35px;
+}
+.loaderDiv>img{
+  position: absolute;
+  height: 140px;
+  margin-top: 30px;
+}
+
 
 /* Nav Bar Component */
 
@@ -127,27 +156,26 @@ body{
 
 .arrow::after {
   content: "";
-  display: inline - block;
-  margin-left: 0.28 em;
-  vertical-align: 0.09 em;
-  border-top: 0.42 em solid;
-  border-right: 0.32 em solid transparent;
-  border-left: 0.32 em solid transparent;
+  display: inline-block;
+  margin-left: 0.28em;
+  vertical-align: 0.09em;
+  border-top: 0.42em solid;
+  border-right: 0.32em solid transparent;
+  border-left: 0.32em solid transparent;
 }
 
 .dropdown {
   position: absolute;
   right: 0;
   left: auto;
-  box-shadow: 0 10 px 15 px - 3 px rgba(46, 41, 51, 0.08),
-  0 4 px 6 px - 2 px rgba(71, 63, 79, 0.16);
-  font-size: 0.875 rem;
+  box-shadow: 0 10px 15px -3px rgba(46, 41, 51, 0.08), 0 4px 6px -2px rgba(71, 63, 79, 0.16);
+  font-size: 0.875rem;
   z-index: 9999;
-  min-width: 10 rem;
-  padding: 0.5 rem 0;
+  min-width: 10rem;
+  padding: 0.5rem 0;
   list-style: none;
   background-color: #fff;
-  border-radius: 0.5 rem;
+  border-radius: 0.5rem;
   display: none;
 }
 
@@ -158,7 +186,7 @@ body{
 .dropdown.dropdown-submenu {
   position: absolute;
   left: 100% ;
-  top: -7 px;
+  top: -7px;
 }
 
 
@@ -319,6 +347,7 @@ footer>hr{
 .product-info>div>h3 {
   margin-bottom: 30px;
   color: var(--maincolor);
+  font-weight: 100;
   font-family: var(--mainfont);
   line-height: 20px;
   font-size: 30px;
@@ -329,18 +358,32 @@ footer>hr{
   margin-bottom: 10px;
 }
 
-.actions button {
-  padding: 10px 20px;
+.actionsItem button:first-child {
+  padding: 7.5px 20px;
   margin-right: 10px;
   border: none;
-  background-color: #000;
+  background-color: var(--maincolor);
   color: #fff;
+  border-radius: 5px;
   cursor: pointer;
+  transition: 0.5s;
 }
-
-.actions button:hover {
+.actionsItem button:first-child:hover {
   background-color: #ddd;
   color: #000;
+}
+.actionsItem button:last-child{
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: var(--maincolor);
+  border: 2px solid var(--maincolor);
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+}
+.actionsItem button:last-child:hover{
+  background-color: var(--maincolor);
+  color: white;
 }
 
 .details {
@@ -365,13 +408,114 @@ footer>hr{
 .enquirePageBody{
   display: flex;
   flex-direction: column;
-  margin: 100px 0;
+  row-gap: 10px;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.enquirePageBody>h1{
+  font-weight: 100;
+  font-family: var(--mainfont);
+  color: var(--maincolor);
 }
 .enquireFormBody{
   display: flex;
+  font-family: var(--subfont);
   flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 100px;
   width: 500px;
+}
+.enquireFormBody>input,.enquireFormBody>textarea{
+  padding: 10px;
+}
+.enquireFormBody>textarea{
+  height: 100px;
+  resize: none;
+  font-family: var(--subfont);
+}
+.enquireFormBody>button{
+  max-width: 100px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.productInquiry{
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
   margin: 0 auto;
+  margin-top: 20px;
+  row-gap: 10px;
+}
+.productInquiry>h1{
+  font-family: var(--mainfont);
+  font-weight: 100;
+  color: var(--maincolor);
+}
+.productInquiry>div{
+  display: flex;
+  width: 100%;
+}
+.productInquiry>div>img{
+  height: 300px;
+  padding: 20px;
+  border-radius: 4px;
+}
+.productInquiry>div>div{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  row-gap: 20px;
+  font-family: var(--subfont);
+}
+.productInquiry>div>div>div{
+  display: flex;
+  column-gap: 50px;
+  font-size: 24px;
+}
+.productInquiry>div>div>button{
+  padding: 7px 12px;
+  max-width: 100px;
+  cursor: pointer;
+  background-color: var(--maincolor);
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+
+/* Also creating the thank you popup when the form is filled */
+
+.thankyouPopup{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thankyouPopup>div{
+  position: relative;
+  padding: 40px;
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  row-gap: 15px;
+  background-color: white;
+}
+.thankyouPopup>div>button{
+  background-color: var(--maincolor);
+  padding: 7px 12px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
 
@@ -1368,13 +1512,9 @@ footer>hr{
   box-shadow: 0 2px 5px var(--subcolor);
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
 }
-.filterWeightPopups>div, .filterPricePopups>div{
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
-}
-.filterWeightPopups>div>div{
+.filterWeightPopups>div{
   display: flex;
   column-gap: 10px;
   font-family: var(--subfont);
@@ -1383,10 +1523,10 @@ footer>hr{
   justify-content: flex-start;
   width: 110px;
 }
-.filterWeightPopups>div>div>label:hover, .filterPricePopups>div>div>label:hover{
+.filterWeightPopups>div>label:hover, .filterPricePopups>div>label:hover{
   color: var(--maincolor);
 }
-.filterPricePopups>div>div{
+.filterPricePopups>div{
   display: flex;
   column-gap: 10px;
   font-family: var(--subfont);
@@ -1655,4 +1795,164 @@ footer>hr{
 .prod-cont{
   margin-top: 50px;
   margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Profile Page */
+
+
+
+.profileMain{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  row-gap: 20px;
+}
+.profileTop{
+  display: flex;
+  height: 30vh;
+  font-family: var(--subfont);
+  align-items: flex-end;
+  padding: 30px;
+  column-gap: 20px;
+  overflow: visible;
+  position: relative;
+}
+.profileTop>h1{
+  color: white;
+}
+.profileTop>p{
+  color: white;
+  font-size: 12px;
+  padding-left: 20px;
+}
+.profileAbsolute{
+  position: absolute;
+  right: 50px;
+  bottom: -180px;
+  width: 200px;
+  padding: 25px;
+  height: 250px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+}
+.profileAbsolute>div>svg{
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.profileAbsolute>div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3px;
+}
+
+.profileMiddle{
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  padding: 30px;
+  padding-left: 50px;
+}
+.profileMiddle>div{
+  display: flex;
+  column-gap: 30px;
+  width: 600px;
+  position: relative;
+  box-shadow: 1px 1px 10px  black;
+  transition: 0.75s;
+  justify-content: space-between;
+  padding: 30px;
+}
+.profileMiddle>div:hover{
+  box-shadow: 1px 1px 25px black;
+}
+.profileMiddle>div>p{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px;
+  cursor: pointer;
+}
+.profileMiddle>h2{
+  font-size: 26px;
+  overflow: visible;
+  position: relative;
+}
+.profileMiddle>h2::before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: gray;
+  width: 120px;
+  left: 34px;
+  bottom: -5px;
+}
+.profileExamDetails{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.profileExamDetails span{
+  font-size: 13px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+.profileExamDetails>h2{
+  font-size: 23px;
+}
+.profileCircle{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #1f4c78;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profileCircle>h1{
+  color: #1f4c78;
+}
+.profileCircle>h6{
+  font-size: 9px;
+}
+
+.profileBottom{
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  padding-left: 50px;
+}
+.profileBottom>h2{
+  font-size: 26px;
+  overflow: visible;
+  position: relative;
+}
+.profileBottom>h2::before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: gray;
+  width: 60px;
+  left: 14px;
+  bottom: -5px;
 }

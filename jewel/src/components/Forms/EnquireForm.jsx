@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+import Thankyou from '../Popups/Thankyou'
+
 const EnquireForm = ({ id }) => {
   const [customerName, setCustomerName] = useState('')
   const [email, setEmail] = useState('')
   const [description, setDescription] = useState('')
+  const [formFilled, setFormFilled] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -31,8 +34,10 @@ const EnquireForm = ({ id }) => {
       <label htmlFor="">Email:</label>
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       <label htmlFor="">Description:</label>
-      <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
+      <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
       <button type="submit">Submit</button>
+
+      <Thankyou trigger={false}/>
     </form>
   )
 }
