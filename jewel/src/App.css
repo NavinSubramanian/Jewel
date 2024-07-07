@@ -401,6 +401,70 @@ footer>hr{
 }
 
 
+/* Customize Form */
+
+
+.instructionsCustomize{
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.instructionsCustomize>h1{
+  font-family: var(--mainfont);
+  font-weight: 100;
+  color: var(--maincolor);
+  position: relative;
+}
+.instructionsCustomize>h1::after{
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100px;
+  background-color: var(--maincolor);
+}
+.instructionsCustomize>ol{
+  font-family: var(--subfont);
+}
+.instructionsCustomize>ol>li{
+  margin: 10px 0;
+}
+.instructionsCustomize>div{
+  display: flex;
+  column-gap: 10px;
+  font-family: var(--subfont);
+  color: rgb(79, 79, 240);
+  font-size: 17px;
+}
+
+.customizeFormBody{
+  width: 100%;
+  margin-bottom: 100px;
+}
+.customizeFormBody>form{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin-left: 30px;
+  row-gap: 20px;
+  font-family: var(--subfont);
+}
+.customizeFormBody>form>input{
+  height: 30px;
+}
+.customizeFormBody>form>textarea{
+  height: 100px;
+  resize: none;
+  overflow-y: scroll;
+  font-family: var(--subfont);
+}
+.customizeFormBody>form>button{
+  width: 100px;
+  padding: 7px 12px;
+}
+
 /* Enquire Page + Form */
 
 

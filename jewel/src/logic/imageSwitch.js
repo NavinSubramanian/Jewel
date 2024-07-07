@@ -8,3 +8,5 @@ let active_image = document.querySelector('.active')
 // image1.addEventListener('onclick', () => {
 
 // })
+
+

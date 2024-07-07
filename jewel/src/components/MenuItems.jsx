@@ -77,7 +77,7 @@ const MenuItems = ({
                 }/> 
                 </>
             ) : ( 
-                <a href = "/#" > {
+                <a href = "#" > {
                     items.title
                 } </a>
             )
