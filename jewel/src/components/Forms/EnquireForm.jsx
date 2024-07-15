@@ -3,11 +3,16 @@ import axios from 'axios'
 
 import Thankyou from '../Popups/Thankyou'
 
-const EnquireForm = ({ id }) => {
+const EnquireForm = ({ id,metal }) => {
   const [customerName, setCustomerName] = useState('')
   const [email, setEmail] = useState('')
   const [description, setDescription] = useState('')
+  
   const [formFilled, setFormFilled] = useState(false)
+  // This is for the user thank you popup
+
+  // Need to have metal passed to the database
+  // VIP
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -19,6 +24,11 @@ const EnquireForm = ({ id }) => {
         description: description
       })
       alert('Enquiry submitted successfully!')
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // This adds a smooth scroll effect
+      });
+      setFormFilled(true);
     } catch (error) {
       console.error('Error submitting enquiry:', error)
       alert('Failed to submit enquiry.')
@@ -37,7 +47,7 @@ const EnquireForm = ({ id }) => {
       <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
       <button type="submit">Submit</button>
 
-      <Thankyou trigger={false}/>
+      <Thankyou trigger={formFilled}/>
     </form>
   )
 }

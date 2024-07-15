@@ -573,7 +573,7 @@ footer>hr{
   row-gap: 15px;
   background-color: white;
 }
-.thankyouPopup>div>button{
+.thankyouPopup>div>a>button{
   background-color: var(--maincolor);
   padding: 7px 12px;
   border: none;

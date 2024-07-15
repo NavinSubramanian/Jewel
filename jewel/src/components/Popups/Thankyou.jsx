@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Thankyou = (props) => {
   return (props.trigger) ? (
@@ -6,7 +7,7 @@ const Thankyou = (props) => {
         <div>
             <h2>Yayy! Thankyou for showing up your interest.</h2>
             <p>Out team will reach you out shortly!!</p>
-            <button>Back Home</button>
+            <Link to='/'><button>Back Home</button></Link>
         </div>
     </div>
   ) : "";

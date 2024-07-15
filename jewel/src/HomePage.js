@@ -31,23 +31,29 @@ export default function HomePage() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-      async function fetchRates() {
-          try {
-              // Get today's date in YYYY-MM-DD format
-              const today = new Date().toISOString().slice(0, 10);
-              
-              // Make the API request with the date parameter
-              const response = await axios.get(`http://localhost:5000/gr/${today}`);
-              const { gold_rate, silver_rate } = response.data;
-              setGoldPrice(gold_rate);
-              setSilverPrice(silver_rate);
-          } catch (error) {
-              console.error("There was an error fetching the rates!", error);
-              setError("Failed to fetch rates. Please try again later.");
-          }
-      }
-      fetchRates();
-  }, []);
+        async function fetchRates() {
+            try {
+                // Get today's date in YYYY-MM-DD format
+                const today = new Date().toISOString().slice(0, 10);
+                
+                // Make the API request with the date parameter
+                const response = await axios.get(`http://localhost:5000/gr/${today}/silver`);
+                const response2 = await axios.get(`http://localhost:5000/gr/${today}/gold`);
+              //   const response3 = await axios.get(`http://localhost:5000/gr/${today}/diamond`);
+              //   const response4 = await axios.get(`http://localhost:5000/gr/${today}/platinum`);
+                const rate1 = response.data.rates;
+                const rate2 = response2.data.rates;
+              //   const rate3 = response3.data.rates;
+              //   const rate4 = response4.data.rates;
+                setGoldPrice(rate1);
+                setSilverPrice(rate2);
+            } catch (error) {
+                console.error("There was an error fetching the rates!", error);
+                setError("Failed to fetch rates. Please try again later.");
+            }
+        }
+        fetchRates();
+    }, []);
 
 
     return (
@@ -132,25 +138,25 @@ export default function HomePage() {
                 <h1>Shop By Categories</h1>
                 <h4>நாங்கள் வழங்குவதில் ஈடுபடுங்கள்.</h4>
                 <div>
-                    <Link to='/gold'>
+                    <Link to='/pro/gold'>
                         <div>
                             <img src={Category1} alt="Category 1" />
                             <h2>Gold</h2>
                         </div>
                     </Link>
-                    <Link to='/gold'>
+                    <Link to='/pro/silver'>
                         <div>
                             <img src={Category2} alt="Category 2" />
                             <h2>Silver</h2>
                         </div>
                     </Link>
-                    <Link to='/gold'>
+                    <Link to='/pro/platinum'>
                         <div>
                             <img src={Category3} alt="Category 3" />
                             <h2>Platinum</h2>
                         </div>
                     </Link>
-                    <Link to='/gold'>
+                    <Link to='/pro/coins'>
                         <div>
                             <img src={Category4} alt="Category 4" />
                             <h2>Coins</h2>

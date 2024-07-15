@@ -15,7 +15,7 @@ const Enquire = () => {
 
   const [openForm, setOpenForm] = useState(false)
 
-  let {id} = useParams() 
+  let {id,metal} = useParams() 
   // id can be used to save user with item
   // can also be used to fetch the product detail again for showcasing
   
@@ -23,7 +23,7 @@ const Enquire = () => {
     async function fetchRates() {
       try {
         const today = new Date().toISOString().slice(0, 10)
-        const response = await axios.get(`http://localhost:5000/gr/${today}`)
+        const response = await axios.get(`http://localhost:5000/gr/${today}/${metal}`)
         const response2 = await axios.get(`http://localhost:5000/gp/${id}`)
         setRate(response.data.gold_rate)
         setDetails(response2.data[0])
@@ -33,6 +33,10 @@ const Enquire = () => {
     }
     fetchRates()
   }, [])
+
+  // useEffect(()=>{
+  //   console.log(rate)
+  // },[rate])
 
   return (
     <>
@@ -48,9 +52,9 @@ const Enquire = () => {
               <p>{details.name}</p>
             </div>
             <p>Price : {rate}</p>
-            <p>Type : </p>
+            <p>Type : {details.type}</p>
             <p>Item ID : {details.id}</p>
-            <p>Gram : </p>
+            <p>Gram : {details.weight}</p>
           </div>
         </div>
       </div>  
@@ -58,7 +62,7 @@ const Enquire = () => {
       <div className='enquirePageBody'>
         <h1>My Information</h1>
         <hr />
-        <EnquireForm id={id}/>      
+        <EnquireForm id={id} metal={metal}/>      
       </div>  
 
       <Footer />

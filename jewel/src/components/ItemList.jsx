@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ItemList = ({item,rate}) => {
 return (
-    <Link className='itemBox' to={`/single/${item.id}`}>
+    <Link className='itemBox' to={`/single/${item.id}/${item.metal}`}>
         <div>
             <img src={item.imagelink1} />
             <img src={item.imagelink2} />

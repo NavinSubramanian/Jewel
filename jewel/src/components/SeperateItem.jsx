@@ -7,7 +7,7 @@ import Footer from './Footer'
 import axios from 'axios'
 
 const SeperateItem = () => {
-  let { id } = useParams()
+  let { id,metal } = useParams()
   const [details, setDetails] = useState({})
   const [rate, setRate] = useState()
   
@@ -15,7 +15,7 @@ const SeperateItem = () => {
     async function fetchRates() {
       try {
         const today = new Date().toISOString().slice(0, 10)
-        const response = await axios.get(`http://localhost:5000/gr/${today}`)
+        const response = await axios.get(`http://localhost:5000/gr/${today}/${metal}`)
         const response2 = await axios.get(`http://localhost:5000/gp/${id}`)
         setRate(response.data.gold_rate)
         setDetails(response2.data[0])
@@ -30,7 +30,7 @@ const SeperateItem = () => {
   let nav = useNavigate()
 
   const enquireForm = () => {
-    nav(`/single/${id}/enquire`)
+    nav(`/single/${id}/${metal}/enquire`)
   }
 
   return (

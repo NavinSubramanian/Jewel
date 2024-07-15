@@ -53,12 +53,12 @@ function App () {
         <Routes>
           <Route path='/' Component={HomePage}></Route>
           <Route path='/about' Component={About}></Route>
-          <Route path='/gold' Component={Gold}></Route>
+          <Route path='/pro/:metal' Component={Gold}></Route>
           <Route path='/custom' Component={Page}></Route>
           <Route path='/custom/form' Component={CustomizeForm}></Route>
           <Route path='/work' Component={Work}></Route>
-          <Route path='/single/:id' Component={SeperateItem}></Route>
-          <Route path='/single/:id/enquire' Component={Enquire}></Route>
+          <Route path='/single/:id/:metal' Component={SeperateItem}></Route>
+          <Route path='/single/:id/:metal/enquire' Component={Enquire}></Route>
           <Route path='/chitfund' Component={Chitfund}></Route>
           <Route path='/admin' Component={Admin}></Route>
           <Route path='/admin/price' Component={Price}></Route>
