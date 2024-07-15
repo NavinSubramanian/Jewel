@@ -31,15 +31,15 @@ const Gold = () => {
             description:'Discover the epitome of elegance with our Gold Jewelry Collection. Each piece in this collection is meticulously crafted from the finest gold, offering a timeless appeal and unmatched quality. From delicate necklaces and chic earrings to stunning rings and sophisticated bracelets, our collection embodies luxury and refinement. Perfect for those who appreciate classic beauty and contemporary design, these pieces are sure to become treasured staples in your jewelry wardrobe.'
         },
         'silver':{
-            img:'',
+            img:'https://www.wallacebishop.com.au/cdn/shop/collections/sterling-silver-jewellery-wallace-bishop_2600x.jpg?v=1651048595',
             description:'Explore the timeless beauty of our Silver Jewelry Collection. Each piece is designed with elegance and sophistication, perfect for any occasion. Our collection features a variety of styles, from classic to contemporary, ensuring there is something for everyone.'
         },
         'platinum':{
-            img:'',
+            img:'https://blog.stuller.com/wp-content/uploads/2019/05/Platinum-Metals-Blog-Header.jpg',
             description:'Experience the unparalleled luxury of our Platinum Jewelry Collection. Known for its durability and lustrous finish, platinum jewelry is a symbol of everlasting beauty. Discover our range of exquisite designs that are perfect for marking life’s special moments.'
         },
         'coins':{
-            img:'',
+            img:'https://img.freepik.com/premium-photo/gold-coins-gold-jewellery-floor-background_181203-21906.jpg',
             description:'Our Coins Collection offers a unique blend of artistry and value. From collectible coins to bullion, each piece is crafted with precision and attention to detail. Whether you are a seasoned collector or just starting, our collection has something to offer.'
         }
     } 
@@ -174,6 +174,13 @@ const Gold = () => {
         setFilteredItems(filtered);
     };
 
+    const clearFilter = () => {
+        setSelectedCategories([]);
+        setSelectedWeightRanges([]);
+        setSelectedPriceRanges([]);
+        setFilteredItems(initialItems);
+    }
+
     useEffect(() => {
         filterItems();
     }, [selectedCategories, selectedWeightRanges, selectedPriceRanges]);
@@ -254,7 +261,7 @@ const Gold = () => {
                             </div>
                         )}
                     </div>
-                    <button onClick={filterItems}>FILTER</button>
+                    <button onClick={clearFilter} className='clearBtn'>CLEAR</button>
                 </div>
             </div>
             <hr style={{ maxWidth: 1000, marginTop: '20px', marginLeft: 'auto', marginRight: 'auto' }} />

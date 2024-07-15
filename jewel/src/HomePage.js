@@ -19,6 +19,7 @@ import ImageHome1 from './assets/homeImages/imageHome1.jpg';
 import traditionalCared from './assets/homeImages/traditionallyCared.png';
 import CustomJewellery from './assets/homeImages/customJewel.png';
 import CeoBackground from './assets/homeImages/ceobackground.png';
+import StarsPanel from './assets/homeImages/starsPanel2.png'
 import shopCateBg from './assets/homeImages/shopCateBg.png';
 import Category1 from './assets/homeImages/category1.png';
 import Category2 from './assets/homeImages/category2.png';
@@ -66,14 +67,14 @@ export default function HomePage() {
                     <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                 </div>
                 <div className='rightLand'>
-                    <img src={LandingPageImage} style={{ height: '500px', position: 'relative', left: '-50px' }} alt="Landing Page" />
+                    <img src={LandingPageImage} draggable='false' style={{ height: '500px', position: 'relative', left: '-50px' }} alt="Landing Page" />
                 </div>
-                <img src={Background} className='bg_1' alt="Background" />
-                <img src={StarGroup} className='bg_2' alt="Star Group" />
+                <img src={Background} draggable='false' className='bg_1' alt="Background" />
+                <img src={StarGroup} draggable='false' className='bg_2' alt="Star Group" />
             </section>
 
             <section className='siteInformation'>
-                <img src={SidePhoto} alt="Side Photo" />
+                <img src={SidePhoto} alt="Side Photo" draggable='false' />
                 <div className='sitemainInfo'>
                     <div>
                         <h1>5K+</h1>
@@ -94,14 +95,14 @@ export default function HomePage() {
                 <h1>Todays Price</h1>
                 <div>
                     <div>
-                        <img src={GoldPriceImage} style={{ width: '370px' }} alt="Gold Price" />
+                        <img src={GoldPriceImage} style={{ width: '370px' }} draggable='false' alt="Gold Price" />
                         <div style={{ left: '20%', top: '35%' }}>
                             <h2>{goldPrice}</h2>
                             <h6>gm</h6>
                         </div>
                     </div>
                     <div>
-                        <img src={SilverPriceImage} alt="Silver Price" />
+                        <img src={SilverPriceImage} draggable='false' alt="Silver Price" />
                         <div style={{ left: '60%', top: '35%' }}>
                             <h2>{silverPrice}</h2>
                             <h6>gm</h6>
@@ -112,6 +113,7 @@ export default function HomePage() {
 
             <section className='dicoverSection'>
                 <h1>Discover Jewellery Collection</h1>
+                <img src={StarsPanel} draggable='false' />
                 <div className='discoverBottom'>
                     <div>
                         <img src={ImageHome1} alt="Image Home 1" />
@@ -121,15 +123,15 @@ export default function HomePage() {
                     </div>
                     <div>
                         <img src={ImageHome1} alt="Image Home 2" />
-                        <h2>Look for your style</h2>
-                        <p>Explore the unique world of our jewelry collection.</p>
-                        <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                        <h2>Create a custom <br />jewellery piece</h2>
+                        <p>We believe every piece of jewelry should tell a unique story—your story, make it special by customizing it!</p>
+                        <Link to='/custom'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
                         <img src={ImageHome1} alt="Image Home 3" />
-                        <h2>Look for your style</h2>
-                        <p>Explore the unique world of our jewelry collection.</p>
-                        <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                        <h2>Invest on Schemes</h2>
+                        <p>Got a piece of jewelry you'd love to have? Save now to buy later!</p>
+                        <Link to='/chitfund'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                 </div>
             </section>
@@ -167,7 +169,7 @@ export default function HomePage() {
 
             <section className='traditionalCared'>
                 <div className='traditionalImage'>
-                    <img src={traditionalCared} alt="Traditional Cared" />
+                    <img src={traditionalCared} draggable='false' alt="Traditional Cared" />
                 </div>
                 <div className='traditionalBottom'>
                     <h1>Traditionally cared since 1976</h1>
@@ -187,14 +189,14 @@ export default function HomePage() {
                         <Link>
                             <button>Explore Now</button>
                         </Link>
-                        <img src={CeoBackground} alt="CEO Background" />
+                        <img src={CeoBackground} draggable='false' alt="CEO Background" />
                     </div>
                 </div>
             </section>
 
             <section className='cusomJewellery'>
                 <div className='cutomJewelImage'>
-                    <img src={CustomJewellery} alt="Custom Jewellery" />
+                    <img src={CustomJewellery} draggable='false' alt="Custom Jewellery" />
                 </div>
                 <div className='customBottom'>
                     <h1>Custom Jewellery Piece</h1>

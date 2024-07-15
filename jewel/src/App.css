@@ -643,9 +643,17 @@ footer>hr{
   display: flex;
   align-items: center;
   column-gap: 10px;
-  background-color: transparent;
+  width: 160px;
   justify-content: center;
+  transition: all 0.5s ease-out;
   cursor: pointer;
+  background: linear-gradient(to right, var(--maincolor) 50%, #fff 50%);
+  background-size: 200% 100%;
+  background-position: right;
+}
+.leftLand>a>button:hover{
+  background-position: left;
+  color: white;
 }
 .leftLand>a>button>svg{
   font-size: 20px;
@@ -763,6 +771,7 @@ footer>hr{
   height: auto;
   height: 120vh;
   padding: 30px 0;
+  position: relative;
   flex-direction: column;
 }
 .dicoverSection>h1{
@@ -773,6 +782,10 @@ footer>hr{
   width: 30%;
   line-height: 50px;
   text-align: center;
+}
+.dicoverSection>img{
+  position: absolute;
+  height: 80%;
 }
 
 .discoverBottom{
@@ -830,7 +843,13 @@ footer>hr{
   border: 2px solid var(--maincolor);
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.4s;
 }
+.discoverBottom>div>a>button:hover{
+  color: white;
+  background-color: var(--maincolor);
+}
+
 
 
 
@@ -926,6 +945,7 @@ footer>hr{
 .customBottom>h1{
   font-family: var(--mainfont);
   font-size: 45px;
+  font-weight: 100;
   line-height: 40px;
 }
 .customBottom>h5{
@@ -1105,14 +1125,16 @@ footer>hr{
 /* Other Pages */
 
 
+/* Custom Jewel Page */
+
 .custom_container {
   margin-top: 40px;
-  margin-left: 100px;
-  margin-right: 100px;
 }
 
 .content {
   display: flex;
+  width: 90%;
+  margin: 0 auto;
   column-gap: 70px;
 }
 
@@ -1152,14 +1174,33 @@ footer>hr{
 }
 
 .custom_btn {
-  margin-top: 30px;
-  background-color: var(--maincolor);
+  background-color: var(--maincolor); 
+  color: white; 
+  padding: 10px 20px;
   border: none;
-  color: white;
-  height: 40px;
-  width: 100px;
-  border-radius: 30% 0% 30% 0%;
+  border-radius: 20px 0 20px 0;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
 }
+
+.custom_btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-30%);
+  width: 100%;
+  z-index: -100;
+  height: 100%;
+  border: 2px solid var(--maincolor); 
+  border-radius: 20px 0 30px 0;
+  background-color: white;
+}
+
 
 .textCustom{
   width: 100%;
@@ -1177,13 +1218,75 @@ footer>hr{
 .textCustom>p{
   font-family: var(--subfont);
 }
+
 .work_container {
-  display: flex;
-  align-items: flex-start;
-  text-align: center;
-  margin-top: 60px;
-  margin-left: 100px;
+  margin: 5em auto;
+  max-width: 34.15em;
 }
+.checkpoint{
+  max-width: 34em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  position: relative;
+}
+.checkpoint>div{
+  padding: 1.5em;
+}
+.checkpoint:nth-child(odd){
+  border-left: 2.5px solid var(--maincolor);
+  padding-left: 3em;
+  transform: translateX(16.87em);
+}
+.checkpoint:nth-child(even){
+  border-right: 2.5px solid var(--maincolor);
+  padding-right: 3em;
+  transform: translateX(-17em);
+}
+.checkpoint:nth-child(odd)::before,
+.checkpoint:nth-child(even)::before{
+  content: '';
+  background: var(--maincolor);
+  width: 3em;
+  height: 2.5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.checkpoint:nth-child(odd)::before{
+  left: 0;
+}
+.checkpoint:nth-child(even)::before{
+  right: 0;
+}
+.checkpoint:nth-child(odd) div::before,
+.checkpoint:nth-child(even) div::before{
+  content: '';
+  background-color: #fff;
+  box-shadow: 0 0 0.5em #0d71fc;
+  width: 0.8em;
+  height: 0.8em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+.checkpoint:nth-child(odd) div::before{
+  left: -0.5em;
+}
+.checkpoint:nth-child(even) div::before{
+  right: -0.5em;
+}
+
+.checkpoint>div>h1{
+  font-family: var(--mainfont);
+  font-weight: 100;
+  line-height: 40px;
+}
+.checkpoint>div>p{
+  font-family: var(--subfont);
+  font-weight: 300;
+}
+
 .inspirationWorks{
   display: flex;
   flex-direction: column;
@@ -1211,33 +1314,61 @@ footer>hr{
   flex-basis: 25%;
   object-fit: cover;
   border-radius: 20px;
-}
-.left {
-  flex: 1;
+  transition: 0.5s;
 }
 
-.right {
-  flex: 1;
+.inspirationWorks>div>img:hover{
+  transform: scale(1.045);
 }
-
-.left>div>h1, .right>div>h1{
-  font-family: var(--mainfont);
-  font-weight: 100;
-  line-height: 30px;
-  text-align: left;
-}
-
-.about_container1 {
-  display: flex;
-  align-items: flex-start;
-  margin-top: 50px;
-  margin-left: 80px;
+.inspirationWorks>div>img:not(:hover){
+  transform: scale(0.95);
 }
 
 .thisIsHowWorks{
   font-family: var(--mainfont);
   font-size: 45px;
   font-weight: 100;
+}
+
+@media screen and (max-width:1150px) {
+  .work_container{
+    text-align: center;
+    width: 80vw;
+  }
+  .work_container .checkpoint{
+    width: 100%;
+    transform: none;
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+  }
+  .work_container .checkpoint::before{
+    width: 3px;
+    height: 4em;
+    top: -2em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .work_container .checkpoint div::before{
+    top: -0.5em;
+    left: 50%;
+    transform: translateX(-50%);
+  }  
+}
+
+
+
+
+/* About Page */
+
+
+
+
+.about_container1 {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-left: 80px;
 }
 
 .about {
@@ -1382,6 +1513,8 @@ footer>hr{
 /* work with us  */
 
 
+
+
 .working_container{
   display: flex;
   align-items: flex-start;
@@ -1462,6 +1595,21 @@ footer>hr{
   font-family: var(--subfont);
   font-size: 14px;
   font-weight: 300;
+}
+
+.clearBtn{
+  padding: 3px 5px;
+  background-color: var(--maincolor);
+  color: white;
+  border-radius : 2px;
+  font-family: var(--subfont);
+  font-weight: 600;
+  cursor: pointer;
+  border-color: transparent;
+  transition: 0.3s;
+}
+.clearBtn:hover{
+  transform: scale(0.95);
 }
 
 .prod_filter{
