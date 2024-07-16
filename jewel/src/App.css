@@ -2027,7 +2027,6 @@ footer>hr{
   display: flex;
   flex-direction: column;
   height: auto;
-  row-gap: 20px;
 }
 .profileTop{
   display: flex;
@@ -2047,25 +2046,8 @@ footer>hr{
   font-size: 12px;
   padding-left: 20px;
 }
-.profileAbsolute{
-  position: absolute;
-  right: 50px;
-  bottom: -180px;
-  width: 200px;
-  padding: 25px;
-  height: 250px;
-  background-color: white;
-  color: black;
-  border-radius: 20px;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
-}
 .profileAbsolute>div>svg{
-  font-size: 40px;
+  font-size: 60px;
   margin-bottom: 10px;
 }
 .profileAbsolute>div{
@@ -2074,26 +2056,32 @@ footer>hr{
   align-items: center;
   row-gap: 3px;
 }
+.profileAbsolute>div>h5{
+  /* color: var(--subcolor); */
+  color: black;
+}
 
 .profileMiddle{
   display: flex;
-  flex-direction: column;
-  row-gap: 40px;
   padding: 30px;
-  padding-left: 50px;
 }
-.profileMiddle>div{
+.profileMiddle>div:first-child{
   display: flex;
-  column-gap: 30px;
-  width: 600px;
+  flex-basis: 20%;
   position: relative;
-  box-shadow: 1px 1px 10px  black;
-  transition: 0.75s;
-  justify-content: space-between;
-  padding: 30px;
-}
-.profileMiddle>div:hover{
-  box-shadow: 1px 1px 25px black;
+  padding: 25px;
+  height: 250px;
+  background-color: white;
+  color: black;
+  font-family: var(--subfont);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.354);
+  padding: 40px;
 }
 .profileMiddle>div>p{
   position: absolute;
@@ -2118,34 +2106,34 @@ footer>hr{
   left: 34px;
   bottom: -5px;
 }
-.profileExamDetails{
+
+.profileFavorites{
+  flex-basis: 70%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 20px;
+  padding: 30px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 5px;
 }
-.profileExamDetails span{
-  font-size: 13px;
-  font-weight: 400;
-  padding-left: 10px;
+
+.profileFavorites>h2{
+  font-family: var(--subfont);
+  font-weight: 700;
+  color: var(--maincolor);
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
 }
-.profileExamDetails>h2{
-  font-size: 23px;
-}
-.profileCircle{
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px solid #1f4c78;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.profileCircle>h1{
-  color: #1f4c78;
-}
-.profileCircle>h6{
-  font-size: 9px;
+.profileFavorites>h2::before{
+  position: absolute;
+  bottom: -7px;
+  z-index: 100;
+  content: '';
+  background-color: var(--maincolor);
+  height: 2px;
+  width: 13%;
 }
 
 .profileBottom{
@@ -2167,4 +2155,9 @@ footer>hr{
   width: 60px;
   left: 14px;
   bottom: -5px;
+}
+
+.itemList{
+  display: flex;
+  flex-wrap: wrap;
 }

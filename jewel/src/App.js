@@ -22,6 +22,8 @@ import mainLogo from './assets/homeImages/mainLogo2.svg'
 
 import MoonLoader from 'react-spinners/MoonLoader';
 
+import ScrollToTop from './logic/ScrollToTop';
+
 function App () {
 
   const [loading, setLoading] = useState(false)
@@ -31,7 +33,7 @@ function App () {
     // V.V.V.I.P
     setTimeout(()=>{
       setLoading(false)
-    }, 3000)
+    }, 2000)
   }, [])
 
   return(
@@ -50,21 +52,25 @@ function App () {
         <p>Since 1988</p>
       </div>
       :
-        <Routes>
-          <Route path='/' Component={HomePage}></Route>
-          <Route path='/about' Component={About}></Route>
-          <Route path='/pro/:metal' Component={Product}></Route>
-          <Route path='/custom' Component={Custom}></Route>
-          <Route path='/custom/form' Component={CustomizeForm}></Route>
-          <Route path='/work' Component={Work}></Route>
-          <Route path='/single/:id/:metal' Component={SeperateItem}></Route>
-          <Route path='/single/:id/:metal/enquire' Component={Enquire}></Route>
-          <Route path='/chitfund' Component={Chitfund}></Route>
-          <Route path='/admin' Component={Admin}></Route>
-          <Route path='/admin/price' Component={Price}></Route>
-          <Route path='/admin/newprod' Component={Product}></Route>
-          <Route path='/profile' Component={Profile}></Route>
-        </Routes>
+        <>
+          <ScrollToTop />
+
+          <Routes>
+            <Route path='/' Component={HomePage}></Route>
+            <Route path='/about' Component={About}></Route>
+            <Route path='/pro/:metal' Component={Product}></Route>
+            <Route path='/custom' Component={Custom}></Route>
+            <Route path='/custom/form' Component={CustomizeForm}></Route>
+            <Route path='/work' Component={Work}></Route>
+            <Route path='/single/:id/:metal' Component={SeperateItem}></Route>
+            <Route path='/single/:id/:metal/enquire' Component={Enquire}></Route>
+            <Route path='/chitfund' Component={Chitfund}></Route>
+            <Route path='/admin' Component={Admin}></Route>
+            <Route path='/admin/price' Component={Price}></Route>
+            <Route path='/admin/newprod' Component={Product}></Route>
+            <Route path='/profile' Component={Profile}></Route>
+          </Routes>
+        </>
       }
     </BrowserRouter>
   )
