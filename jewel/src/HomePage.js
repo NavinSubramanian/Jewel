@@ -25,6 +25,7 @@ import Category1 from './assets/homeImages/category1.png';
 import Category2 from './assets/homeImages/category2.png';
 import Category3 from './assets/homeImages/category3.png';
 import Category4 from './assets/homeImages/category4.png';
+import NavBar2 from './components/NavBar2';
 
 export default function HomePage() {
     const [goldPrice, setGoldPrice] = useState(0);

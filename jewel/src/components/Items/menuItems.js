@@ -3,7 +3,8 @@ export const menuItems = [{
     submenu: [{
             title: "Shop By Category",
             submenu : [{
-                title: "Men"
+                title: "Men",
+                link: ""
             },
             {
                 title: "Women"
@@ -17,12 +18,19 @@ export const menuItems = [{
             title: "Shop By Material",
             submenu: [{
                     title: "Gold",
+                    link: "/pro/gold"
                 },
                 {
                     title: "Silver",
+                    link: "/pro/silver"
+                },
+                {
+                    title: "Platinum",
+                    link: "/pro/platinum"
                 },
                 {
                     title: "Coins",
+                    link: "/pro/coins"
                 }
             ],
         },
@@ -43,17 +51,21 @@ export const menuItems = [{
 },
 {
     title: "Custom Jewellery",
+    link: '/custom'
 },
 {
     title: "More",
     submenu: [{
             title: "Chitfund Scheme",
+            link: '/chitfund'
         },
         {
             title: "Join Us",
+            link: '/work'
         },
         {
             title: "About Us",
+            link: '/about'
         },
     ],
 },
