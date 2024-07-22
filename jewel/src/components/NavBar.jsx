@@ -21,6 +21,8 @@ export default function NavBar (props) {
     const [silverPrice, setSilverPrice] = useState(0);
     const [error, setError] = useState(null);
 
+    const website_url = 'localhost:3000'; // Needs to be changed for the navigation to work
+
     useEffect(() => {
         async function fetchRates() {
             try {
@@ -66,7 +68,7 @@ export default function NavBar (props) {
                 </div>
 
                 <div className='navIcons'>
-                    <div onClick={()=>{nav('#categories')}}>
+                    <div onClick={()=>{window.location.hash = 'categories'}}>
                         <CiShoppingCart style={{fontSize:'25px'}} />
                         <h4>Shop</h4>
                     </div>
@@ -90,14 +92,127 @@ export default function NavBar (props) {
 
             </div>
             <div className='bigMenuNav'>
-                <ul>
-                    <li>Gold</li>
-                    <li>Silver</li>
-                    <li>Platinum</li>
-                    <li>Coins</li>
-                    <li>Customize</li>
-                    <li>Chit</li>
-                    <li>Join us</li>
+                <ul className='navbar-links'>
+                    <li class="navbar-dropdown">
+                        <a href="#">Gold</a>
+                        <div class="dropdown">
+                            <div>
+                                <h4>Men</h4>
+                                <a href="#">Kada</a>
+                                <a href="#">Chain</a>
+                                <a href="#">Bracelet</a>
+                                <a href="#">Watche</a>
+                            </div>
+                            <div>
+                                <h4>Women</h4>
+                                <a href="#">Haram</a>
+                                <a href="#">Earing</a>
+                                <a href="#">Mangal Sutra</a>
+                                <a href="#">Mattal</a>
+                                <a href="#">Nosepin</a>
+                                <a href="#">Netthichutti</a>
+                                <a href="#">Necklace</a>
+                                <a href="#">Pendants</a>
+                                <a href="#">Brooches</a>
+                            </div>
+                            <div>
+                                <h4>Kids</h4>
+                                <a href="#">Cufflinks</a>
+                                <a href="#">Tiara</a>
+                                <a href="#">Bangle</a>
+                                <a href="#">Hipchain</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="navbar-dropdown">
+                        <a href="#">Silver</a>
+                        <div class="dropdown">
+                            <div>
+                                <h4>Men</h4>
+                                <a href="#">Kada</a>
+                                <a href="#">Chain</a>
+                                <a href="#">Bracelet</a>
+                                <a href="#">Watche</a>
+                            </div>
+                            <div>
+                                <h4>Women</h4>
+                                <a href="#">Haram</a>
+                                <a href="#">Earing</a>
+                                <a href="#">Mangal Sutra</a>
+                                <a href="#">Mattal</a>
+                                <a href="#">Nosepin</a>
+                                <a href="#">Netthichutti</a>
+                                <a href="#">Necklace</a>
+                                <a href="#">Pendants</a>
+                                <a href="#">Brooches</a>
+                            </div>
+                            <div>
+                                <h4>Kids</h4>
+                                <a href="#">Cufflinks</a>
+                                <a href="#">Tiara</a>
+                                <a href="#">Bangle</a>
+                                <a href="#">Hipchain</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="navbar-dropdown">
+                        <a href="#">Platinum</a>
+                        <div class="dropdown">
+                            <div>
+                                <h4>Men</h4>
+                                <a href="#">Kada</a>
+                                <a href="#">Chain</a>
+                                <a href="#">Bracelet</a>
+                                <a href="#">Watche</a>
+                            </div>
+                            <div>
+                                <h4>Women</h4>
+                                <a href="#">Haram</a>
+                                <a href="#">Earing</a>
+                                <a href="#">Mangal Sutra</a>
+                                <a href="#">Mattal</a>
+                                <a href="#">Nosepin</a>
+                                <a href="#">Netthichutti</a>
+                                <a href="#">Necklace</a>
+                                <a href="#">Pendants</a>
+                                <a href="#">Brooches</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="navbar-dropdown">
+                        <a href="#">Coins</a>
+                        <div class="dropdown">
+                            <div>
+                                <h4>Gold</h4>
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">4</a>
+                                <a href="#">8</a>
+                                <a href="#">16</a>
+                                <a href="#">32</a>
+                                <a href="#">40</a>
+                            </div>
+                            <div>
+                                <h4>Silver</h4>
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">5</a>
+                                <a href="#">10</a>
+                                <a href="#">20</a>
+                                <a href="#">50</a>
+                                <a href="#">100</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="navbar-dropdown">
+                        <a href="/custom">Customize</a>
+                    </li>
+                    <li class="navbar-dropdown">
+                        <a href="/chitfund">Chit</a>
+                    </li>
+                    <li class="navbar-dropdown">
+                        <a href="/work">Join us</a>
+                    </li>
                 </ul>
             </div>
         </nav>

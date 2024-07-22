@@ -325,30 +325,81 @@ body{
   transition: 0.3s;
 
 }
-.bigMenuNav>ul>li{
+.bigMenuNav>ul>li>a{
   cursor: pointer;
   position: relative;
   transition: 0.3s;
-
+  color: black;
+  padding: 10px 0;
+  text-decoration: none;
 }
-.bigMenuNav>ul>li::before{
+.bigMenuNav>ul>li>a::before{
   content: "";
   position: absolute;
-  bottom: -5px;
-  border-radius: 10px;
   width: 100%;
   height: 0px;
+  bottom: 10px;
+  z-index: -10;
   transition: 0.3s;
   background-color: var(--maincolor);
 }
 
-.bigMenuNav>ul>li:hover{
-  color: var(--maincolor);
-}
-.bigMenuNav>ul>li:hover::before{
-  height: 2px;
+
+.dropdown{
+  display: flex;
+  column-gap: 60px;
+  justify-content: space-between;
 }
 
+.navbar-dropdown>a:hover{
+  color: white;
+}
+.bigMenuNav>ul>li>a:hover::before{
+  height: 50%;
+}
+
+
+.navbar-links li.navbar-dropdown {
+  position: relative;
+}
+
+.navbar-links li.navbar-dropdown:hover .dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(5px);
+}
+.navbar-links li.navbar-dropdown .dropdown:nth-child(1), .navbar-links li.navbar-dropdown .dropdown:nth-child(1) {
+  width: 35vw;
+}
+
+.navbar-links li.navbar-dropdown .dropdown {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding: 20px 20px;
+  top: 100%;
+  transform: translateY(30px);
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 10px 10px 3px rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  z-index: 111;
+  transition: 0.3s all;
+}
+.navbar-links li.navbar-dropdown .dropdown a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 400;
+  text-decoration: none;
+  display: block;
+  font-weight: 200;
+  color: black;
+  transition: 0.3s;
+}
+.navbar-links li.navbar-dropdown .dropdown a:hover {
+  color: var(--maincolor);
+}
 
 
 /* Footer component */
@@ -482,8 +533,10 @@ footer>hr{
   text-decoration: none;
   font-size: 14px;
   transition: 0.4s;
+  cursor: pointer;
+  font-weight: 300;
 }
-.pageNavigation>a:hover{
+.pageNavigation>*:hover{
   text-decoration:underline;
 }
 
@@ -536,7 +589,7 @@ footer>hr{
   transition: 0.5s;
 }
 .actionsItem button:first-child:hover {
-  background-color: #ddd;
+  background-color: var(--maincolorlight);
   color: #000;
 }
 .actionsItem button:last-child{
@@ -570,6 +623,106 @@ footer>hr{
 @media (max-width:945px){
   .gallery-container{
     flex-direction: column;
+  }
+}
+
+
+.priceBreakup{
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 34px;
+  padding-left: 40px;
+  font-family: var(--mainfont);
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.object-table {
+  width: 70%;
+  margin-left: 40px;
+  font-family: var(--subfont);
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+.object-table thead th {
+  display: none;
+}
+
+.object-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.object-table tbody tr:hover {
+  background-color: var(--maincolorlight);
+}
+
+.object-table th,
+.object-table td {
+  padding: 0.5rem 0.75rem;
+}
+
+.object-table td {
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.object-table td::before {
+  content: attr(data-cell);
+  font-weight: normal;
+  width: 5rem;
+  display: inline-block;
+}
+
+.object-table tbody td > div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.object-table tbody td span {
+  background-color: #e0f7fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.object-table tbody td span.type-2 {
+  background-color: #fff3e0;
+}
+
+@media (min-width: 640px) {
+  .object-table th {
+      display: table-cell;
+      font-weight: 300;
+      color: #666;
+      text-align: left;
+  }
+
+  .object-table td {
+      display: table-cell;
+  }
+
+  .object-table td::before {
+      display: none;
+  }
+
+  .object-table tbody td:first-child {
+      padding-top: 0.5rem;
+  }
+
+  .object-table tbody td:last-child {
+      padding-bottom: 0.5rem;
   }
 }
 
@@ -1871,15 +2024,14 @@ footer>hr{
 
 .filterPopups{
   position: absolute;
-  top: 100%;
+  top: 20px;
   left: 0;
-  margin-top: 5px;
-  border: 2px solid var(--subcolor);
+  border: 2px solid var(--maincolor);
   padding: 20px;
   border-radius: 5px;
   background-color: white;
   z-index: 1;
-  box-shadow: 0 2px 5px var(--subcolor);
+  box-shadow: 0 2px 5px var(--maincolor);
   display: grid;
   font-family: var(--subfont);
   grid-template-columns: repeat(4, 1fr);

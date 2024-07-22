@@ -92,7 +92,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className='jewelPrices' style={{ backgroundImage: `url(${RateBanner})` }}>
+            <section className='jewelPrices' style={{ backgroundImage: `url(${RateBanner})` }} id='prices'>
                 <h1>Todays Price</h1>
                 <div>
                     <div>
@@ -112,7 +112,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className='dicoverSection'>
+            <section className='dicoverSection' id='collections'>
                 <h1>Discover Jewellery Collection</h1>
                 <img src={StarsPanel} draggable='false' />
                 <div className='discoverBottom'>

@@ -40,14 +40,14 @@ const SeperateItem = () => {
       <div className='pageNavigation'>
         <Link to='/'>HOME</Link>
         <span>/</span>
-        <Link to='/gold'>GOLD</Link>
+        <Link to={`/pro/${metal}`}>GOLD</Link>
         <span>/</span>
-        <Link to='/'>CHAINS</Link>
+        <h3 style={{textTransform:'uppercase'}}>{details.type}</h3>
         <span>/</span>
-        <Link to='/'>Sample Item</Link>
+        <h3>{details.name}</h3>
       </div>
       
-      <div className="gallery-container" style={{marginBottom:'50px'}}>
+      <div className="gallery-container">
         {images.length > 0 && <ImageGallery images={images} />}
         <div className="product-info">
           <div>
@@ -61,11 +61,60 @@ const SeperateItem = () => {
           </div>
           <div className="details">
             <h4>DETAILS</h4>
+            <p>Metal: </p>
+            <p>Purity: </p>
             <p>Gram rate: {rate}</p>
             <p>Sizes: {details.size}</p>
             <p>Weight: {details.weight}</p>
           </div>
         </div>
+      </div>
+
+      <div className='priceBreakup'>
+        <h1 class="title">
+          Price Breakup
+        </h1>
+        <table class="object-table">
+            <tbody>
+                <tr>
+                    <td data-cell="Name">Material</td>
+                    <td data-cell="Attribute">
+                        <div>
+                            {/* <span class="type-2">Front End Development</span> */}
+                            <span>Gold</span>
+                        </div>
+                    </td>
+                    <td data-cell="Price">89,00 Rs</td>
+                </tr>
+                <tr>
+                    <td data-cell="Name">Stone</td>
+                    <td data-cell="Attribute">
+                        <div>
+                            <span>Purity</span>
+                        </div>
+                    </td>
+                    <td data-cell="Purity">19,000 Rs</td>
+                </tr>
+                <tr>
+                    <td data-cell="Name">Production</td>
+                    <td data-cell="Attribute">
+                        <div>
+                            <span>Making Cost</span>
+                        </div>
+                    </td>
+                    <td data-cell="Making">20,000 Rs</td>
+                </tr>
+                <tr>
+                    <td data-cell="Name">Others</td>
+                    <td data-cell="Attribute">
+                        <div>
+                            <span>Tax</span>
+                        </div>
+                    </td>
+                    <td data-cell="Making">6,000 Rs</td>
+                </tr>
+            </tbody>
+        </table>
       </div>
 
       <Footer />

@@ -181,6 +181,12 @@ const Product = () => {
         setFilteredItems(initialItems);
     }
 
+    const closePopup = () => {
+        setShowCategoryPopup(false)
+        setShowPricePopup(false)
+        setShowWeightPopup(false)
+    }
+
     useEffect(() => {
         filterItems();
     }, [selectedCategories, selectedWeightRanges, selectedPriceRanges]);
@@ -199,9 +205,9 @@ const Product = () => {
                 <div className='prod_filter'>
                     <p style={{ color: 'grey' }}>SORT BY:</p>
                     <div style={{ position: 'relative' }}>
-                        <p onClick={toggleCategoryPopup} style={{ cursor: 'pointer' }}>Category</p>
+                        <p onMouseEnter={toggleCategoryPopup} style={{ cursor: 'pointer' }}>Category</p>
                         {showCategoryPopup && (
-                            <div className='filterPopups'>
+                            <div className='filterPopups' onMouseLeave={closePopup}>
                                 {Object.keys(categories).map(category => (
                                     <div key={category}>
                                         <p><strong>{category}</strong></p>
@@ -224,9 +230,9 @@ const Product = () => {
                         )}
                     </div>
                     <div style={{ position: 'relative' }}>
-                        <p onClick={toggleWeightPopup} style={{ cursor: 'pointer' }}>Weight Range</p>
+                        <p onMouseEnter={toggleWeightPopup} style={{ cursor: 'pointer' }}>Weight Range</p>
                         {showWeightPopup && (
-                            <div className='filterWeightPopups'>
+                            <div className='filterWeightPopups' onMouseLeave={closePopup}>
                                 {weightRangeOptions.map((range) => (
                                     <div key={range}>
                                         <input
@@ -243,9 +249,9 @@ const Product = () => {
                         )}
                     </div>
                     <div style={{ position: 'relative' }}>
-                        <p onClick={togglePricePopup} style={{ cursor: 'pointer' }}>Price</p>
+                        <p onMouseEnter={togglePricePopup} style={{ cursor: 'pointer' }}>Price</p>
                         {showPricePopup && (
-                            <div className='filterPricePopups'>
+                            <div className='filterPricePopups' onMouseLeave={closePopup}>
                                 {priceRangeOptions.map((range) => (
                                     <div key={range}>
                                         <input
