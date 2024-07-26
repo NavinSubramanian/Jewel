@@ -23,6 +23,8 @@ import mainLogo from './assets/homeImages/mainLogo2.svg'
 import MoonLoader from 'react-spinners/MoonLoader';
 
 import ScrollToTop from './logic/ScrollToTop';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App () {
 
@@ -68,7 +70,10 @@ function App () {
             <Route path='/admin' Component={Admin}></Route>
             <Route path='/admin/price' Component={Price}></Route>
             <Route path='/admin/newprod' Component={Product}></Route>
+
             <Route path='/profile' Component={Profile}></Route>
+            <Route path='/login' Component={Login}></Route>
+            <Route path='/signup' Component={Signup}></Route>
           </Routes>
         </>
       }

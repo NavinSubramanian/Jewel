@@ -76,7 +76,7 @@ export default function NavBar (props) {
                         <IoPricetagsOutline style={{fontSize:'20px'}} />
                         <h4>Prices</h4>
                     </div>
-                    <div>
+                    <div onClick={()=>{nav('/login')}}>
                         <IoPersonOutline style={{fontSize:'22px'}} />
                         <h4>Acount</h4>
                     </div>
