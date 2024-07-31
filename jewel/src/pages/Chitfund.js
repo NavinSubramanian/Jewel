@@ -24,73 +24,183 @@ const Chitfund = () => {
             </div>
 
             <div className='chitTable'>
-                <h1>12-மாத நிலையான திட்டம்</h1>
+                <h1>15-மாத நிலையான திட்டம்</h1>
                 <table id="planMain">
                     <tr>
                         <th>Month</th>
-                        <th>Gold Rate</th>
-                        <th>Fixed Installment</th>
-                        <th>Grams Deposited</th>
+                        <th>500 Chit</th>
+                        <th>1000 Chit</th>
+                        <th>1500 Chit</th>
+                        <th>2000 Chit</th>
+                        <th>2500 Chit</th>
+                        <th>3000 Chit</th>
+                        <th>5000 Chit</th>
+                        <th>10000 Chit</th>
                     </tr>
                     <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                        <td>Germany</td>
+                        <td>1</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Berglunds snabbköp</td>
-                        <td>Christina Berglund</td>
-                        <td>Sweden</td>
-                        <td>Sweden</td>
+                        <td>2</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
-                        <td>Mexico</td>
+                        <td>3</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Ernst Handel</td>
-                        <td>Roland Mendel</td>
-                        <td>Austria</td>
-                        <td>Austria</td>
+                        <td>4</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Island Trading</td>
-                        <td>Helen Bennett</td>
-                        <td>UK</td>
-                        <td>UK</td>
+                        <td>5</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Königlich Essen</td>
-                        <td>Philip Cramer</td>
-                        <td>Germany</td>
-                        <td>Germany</td>
+                        <td>6</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Laughing Bacchus Winecellars</td>
-                        <td>Yoshi Tannamuri</td>
-                        <td>Canada</td>
-                        <td>Canada</td>
+                        <td>7</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Magazzini Alimentari Riuniti</td>
-                        <td>Giovanni Rovelli</td>
-                        <td>Italy</td>
-                        <td>Italy</td>
+                        <td>8</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>North/South</td>
-                        <td>Simon Crowther</td>
-                        <td>UK</td>
-                        <td>UK</td>
+                        <td>9</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                     <tr>
-                        <td>Paris spécialités</td>
-                        <td>Marie Bertrand</td>
-                        <td>France</td>
-                        <td>France</td>
+                        <td>10</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>1500</td>
+                        <td>2000</td>
+                        <td>2500</td>
+                        <td>3000</td>
+                        <td>5000</td>
+                        <td>10000</td>
                     </tr>
                 </table>
             </div>

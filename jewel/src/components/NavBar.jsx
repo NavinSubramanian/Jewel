@@ -53,6 +53,12 @@ export default function NavBar (props) {
     const profileView = () => {
         nav('/profile')
     }
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
     
     return(
         <nav className='mainNav'>
@@ -89,12 +95,17 @@ export default function NavBar (props) {
                         <h4>About</h4>
                     </div>
                 </div>
+                <div className='hamburger-menu' onClick={toggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
             </div>
-            <div className='bigMenuNav'>
+            <div className={`bigMenuNav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className='navbar-links'>
                     <li class="navbar-dropdown">
-                        <a href="#">Gold</a>
+                        <a>Gold</a>
                         <div class="dropdown">
                             <div>
                                 <h4>Men</h4>
@@ -125,7 +136,7 @@ export default function NavBar (props) {
                         </div>
                     </li>
                     <li class="navbar-dropdown">
-                        <a href="#">Silver</a>
+                        <a>Silver</a>
                         <div class="dropdown">
                             <div>
                                 <h4>Men</h4>
@@ -156,7 +167,7 @@ export default function NavBar (props) {
                         </div>
                     </li>
                     <li class="navbar-dropdown">
-                        <a href="#">Platinum</a>
+                        <a>Platinum</a>
                         <div class="dropdown">
                             <div>
                                 <h4>Men</h4>
@@ -180,7 +191,7 @@ export default function NavBar (props) {
                         </div>
                     </li>
                     <li class="navbar-dropdown">
-                        <a href="#">Coins</a>
+                        <a>Coins</a>
                         <div class="dropdown">
                             <div>
                                 <h4>Gold</h4>

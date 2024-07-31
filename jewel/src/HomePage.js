@@ -68,7 +68,7 @@ export default function HomePage() {
                     <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                 </div>
                 <div className='rightLand'>
-                    <img src={LandingPageImage} draggable='false' style={{ height: '500px', position: 'relative', left: '-50px' }} alt="Landing Page" />
+                    <img src={LandingPageImage} draggable='false' style={{ position: 'relative', left: '-50px' }} alt="Landing Page" />
                 </div>
                 <img src={Background} draggable='false' className='bg_1' alt="Background" />
                 <img src={StarGroup} draggable='false' className='bg_2' alt="Star Group" />
@@ -96,7 +96,7 @@ export default function HomePage() {
                 <h1>Todays Price</h1>
                 <div>
                     <div>
-                        <img src={GoldPriceImage} style={{ width: '370px' }} draggable='false' alt="Gold Price" />
+                        <img src={GoldPriceImage} draggable='false' alt="Gold Price" />
                         <div style={{ left: '20%', top: '35%' }}>
                             <h2>{goldPrice}</h2>
                             <h6>gm</h6>
@@ -124,8 +124,8 @@ export default function HomePage() {
                     </div>
                     <div>
                         <img src={ImageHome1} alt="Image Home 2" />
-                        <h2>Create a custom <br />jewellery piece</h2>
-                        <p>We believe every piece of jewelry should tell a unique story—your story, make it special by customizing it!</p>
+                        <h2>Custom jewellery piece</h2>
+                        <p>Every jewelry should tell a unique. Customize it to make it special!</p>
                         <Link to='/custom'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
@@ -174,7 +174,7 @@ export default function HomePage() {
                 </div>
                 <div className='traditionalBottom'>
                     <h1>Traditionally cared since 1976</h1>
-                    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
+                    <p>Explore a world of exquisite craftsmanship and timeless beauty. Eternal elegant, modern glamour, heritage treasures, you name it, we got it!</p>
                     <Link to='/about'>
                         <button>See More <FontAwesomeIcon icon={faArrowRight} /> </button>
                     </Link>

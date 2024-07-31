@@ -36,13 +36,6 @@ const Login = () => {
                     name="password"
                     required />
 
-                    <label for="password">Re-enter Password</label>
-                    <input
-                    type="password"
-                    placeholder="Re-Enter Password"
-                    name="password"
-                    required />
-
                     <button type="submit" class="login-btn">Sign up</button>
                     <div class="links">
                         <Link to="/signup">Do not have an account? Signup</Link>
