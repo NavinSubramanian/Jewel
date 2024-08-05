@@ -1,27 +1,34 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import Thankyou from '../Popups/Thankyou'
+import { UserContext } from '../../UserContext'
 
 const EnquireForm = ({ id,metal }) => {
   const [customerName, setCustomerName] = useState('')
   const [email, setEmail] = useState('')
   const [description, setDescription] = useState('')
+  const { user } = useContext(UserContext);
   
   const [formFilled, setFormFilled] = useState(false)
   // This is for the user thank you popup
 
-  // Need to have metal passed to the database
-  // VIP
+  useEffect(()=>{
+    if(user != null){
+      setEmail(user.email)
+    }
+  },[])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('http://localhost:5000/enquire', {
+      // console.log(customerName+" "+email)
+      await axios.post('http://localhost:5000/penquire', {
         product_id: id,
         customer_name: customerName,
         customer_email: email,
-        description: description
+        description: description,
+        metal: metal
       })
       alert('Enquiry submitted successfully!')
       window.scrollTo({
@@ -41,8 +48,13 @@ const EnquireForm = ({ id,metal }) => {
       <input type="text" disabled value={id} />
       <label htmlFor="">Customer Name:</label>
       <input type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} required />
-      <label htmlFor="">Email:</label>
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      {user != null ? <>
+        <label htmlFor="">Email:</label>
+        <input type="email" value={user.email} disabled />
+      </> : <>
+        <label htmlFor="">Email:</label>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      </>}
       <label htmlFor="">Description:</label>
       <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
       <button type="submit">Submit</button>

@@ -1,51 +1,81 @@
-import React from 'react'
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
-import '../App.css'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { UserContext } from '../UserContext';
+
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import '../App.css';
 
 const Login = () => {
-  return (
-    <>
-        <NavBar />
-        <div className='mainLoginContainer'>
-            <div class="left-side"></div>
-        
-            <div class="right-side">
-                <form>
-                    <div class="btn-group">
-                        <button class="btn">
-                            <img class="logo" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d1c98974-c62d-4071-8bd2-ab859fc5f4e9" alt="" />
-                            <span>Sign in with Google</span>
-                        </button>
-                        <button class="btn">
-                            <img class="logo" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/59c1561b-8152-4d05-b617-0680a7629a0e" alt="" />
-                            <span>Sign in with Apple</span>
-                        </button>
-                    </div>
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const { loginUser } = useContext(UserContext);
+    const navigate = useNavigate();
+    const { user } = useContext(UserContext);
 
-                    <div class="or">OR</div>
+    const nav = useNavigate();
 
-                    <label for="email">Email</label>
-                    <input type="text" placeholder="Enter Email" name="email" required />
+    useEffect(()=>{
+        if(user != null){
+            nav('/')
+        }
+    },[])
 
-                    <label for="password">Password</label>
-                    <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="password"
-                    required />
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setError('');
 
-                    <button type="submit" class="login-btn">Sign up</button>
-                    <div class="links">
-                        <Link to="/signup">Do not have an account? Signup</Link>
-                    </div>
-                </form>
+        try {
+            const response = await axios.post('http://localhost:5000/login', { email, password });
+
+            if (response.data.success) {
+                loginUser({ email, token: response.data.token });
+                navigate('/profile'); // Navigate to profile page after successful login
+            }
+        } catch (error) {
+            if (error.response && error.response.data) {
+                setError(error.response.data.message);
+            } else {
+                setError('Failed to login');
+            }
+        }
+    };
+
+    return (
+        <>
+            <NavBar />
+            <div className='mainLoginContainer'>
+                <div className="left-side"></div>
+                <div className="right-side">
+                    <form onSubmit={handleLogin}>
+                        <div className="btn-group">
+                            <button className="btn">
+                                <img className="logo" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d1c98974-c62d-4071-8bd2-ab859fc5f4e9" alt="Google logo" />
+                                <span>Sign in with Google</span>
+                            </button>
+                            <button className="btn">
+                                <img className="logo" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/59c1561b-8152-4d05-b617-0680a7629a0e" alt="Apple logo" />
+                                <span>Sign in with Apple</span>
+                            </button>
+                        </div>
+                        <div className="or">
+                            <span>Or</span>
+                        </div>
+                        <input type="email" placeholder="Enter Mail Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <input type="password" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        {error && <p className="error">{error}</p>}
+                        <button type="submit" className="login-btn">Sign in</button>
+                        <div className="register">
+                            <p>Don't have an account? <Link to="/signup">Register</Link></p>
+                        </div>
+                    </form>
                 </div>
             </div>
-        <Footer />
-    </>
-  )
-}
+            <Footer />
+        </>
+    );
+};
 
-export default Login
+export default Login;

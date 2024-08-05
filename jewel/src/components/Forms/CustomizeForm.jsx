@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios';
 
 import NavBar from '../NavBar'
 import Footer from '../Footer'
-
-import axios from 'axios';
 import Thankyou from '../Popups/Thankyou';
+import { UserContext } from '../../UserContext';
 
 const CustomizeForm = () => {
 
     const [showForm, setShowForm] = useState(false);
+    const { user } = useContext(UserContext);
+
     const [formData, setFormData] = useState({
         fullName: '',
         number: '',
-        email: '',
+        email: user ? user.email : '',
         description: '',
         file: null,
     });
+
 
     const [formFilled, setFormFilled] = useState(false)
     // For the Thank You popup state
@@ -92,8 +95,14 @@ const CustomizeForm = () => {
                     <label htmlFor="number">Number</label>
                     <input type="text" name='number' value={formData.number} onChange={handleInputChange} />
 
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name='email' value={formData.email} onChange={handleInputChange} />
+                    {user != null ? <>
+                        <label htmlFor="">Email:</label>
+                        <input type="email" value={user.email} disabled />
+                    </> : <>
+                        <label htmlFor="email">Email</label>
+                        <input type="text" name='email' value={formData.email} onChange={handleInputChange} />
+                    </>}
+                    
 
                     <label htmlFor="description">Description of your idea/product</label>
                     <textarea name='description' value={formData.description} onChange={handleInputChange} />

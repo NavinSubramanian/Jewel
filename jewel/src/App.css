@@ -228,7 +228,33 @@ body{
   position: relative;
   height: 50%;
 }
-.searchInputWeb>input{
+.searchInputWeb>div{
+  width: 100%;
+  position: relative;
+}
+.searchInputWeb>div>div{
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 0 5px black;
+}
+.searchInputWeb>div>div>ul{
+  list-style-type: none;
+  padding: 10px;
+  font-family: var(--subfont);
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.searchInputWeb>div>div>ul>li{
+  cursor: pointer;
+}
+.searchInputWeb>div>div>ul>li:hover{
+  color: var(--maincolor);
+
+}
+.searchInputWeb>div>input{
   height: 100%;
   font-family: var(--subfont);
   padding-left: 7px;
@@ -835,6 +861,7 @@ footer>hr{
 }
 .customizeFormBody>form>input{
   height: 30px;
+  font-family: var(--subfont);
 }
 .customizeFormBody>form>textarea{
   height: 100px;
@@ -845,6 +872,18 @@ footer>hr{
 .customizeFormBody>form>button{
   width: 100px;
   padding: 7px 12px;
+  border: 2px solid var(--maincolor);
+  background-color: transparent;
+  color: var(--maincolor);
+  border-radius: 7px;
+  transition: 0.4s;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.customizeFormBody>form>button:hover{
+  background-color: var(--maincolor);
+  color: white;
 }
 
 /* Enquire Page + Form */
@@ -872,18 +911,34 @@ footer>hr{
   margin-bottom: 100px;
   width: 500px;
 }
+.enquireFormBody>input:focus,
+.enquireFormBody>input:active{
+  border: 2px solid var(--maincolor);
+  transition: background-color 5000s ease-in-out 0s;
+}
 .enquireFormBody>input,.enquireFormBody>textarea{
+  border: 1px solid #ccc;
   padding: 10px;
+  font-family: var(--subfont);
 }
 .enquireFormBody>textarea{
   height: 100px;
   resize: none;
-  font-family: var(--subfont);
 }
 .enquireFormBody>button{
   max-width: 100px;
   padding: 7px;
+  background-color: var(--maincolor);
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
+  transition: 0.4s;
+}
+.enquireFormBody>button:hover{
+  border-radius: 20px;
 }
 
 .productInquiry{
@@ -947,6 +1002,7 @@ footer>hr{
   position: relative;
   padding: 40px;
   width: 100%;
+  font-family: var(--subfont);
   max-width: 640px;
   display: flex;
   flex-direction: column;
@@ -1231,6 +1287,7 @@ footer>hr{
 .dicoverSection>img{
   position: absolute;
   height: 80%;
+  top:0;
 }
 
 .discoverBottom{
@@ -2701,7 +2758,27 @@ footer>hr{
 }
 
 
-
+.emptyProfile{
+  min-height: 80vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  row-gap: 10px;
+  font-family: var(--subfont);
+  width: 100%;
+}
+.emptyProfile>img{
+  mix-blend-mode: multiply;
+}
+.emptyProfile>h1{
+  font-weight: 800;
+}
+.emptyProfile>h3{
+  font-weight: 400;
+}
 
 /* Login Page */
 
@@ -2884,3 +2961,28 @@ footer>hr{
   text-decoration: underline;
 }
 
+
+
+
+/* Search Page */
+
+
+
+.searchedContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+  row-gap: 25px;
+}
+.searchedContainer>img{
+  height: 40vh;
+  width: 90%;
+  object-fit: cover;
+}
+.searchedContainer>h4{
+  font-family: var(--subfont);
+  font-weight: 300;
+  text-align: left;
+  width: 90%;
+}

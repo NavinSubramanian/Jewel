@@ -25,6 +25,9 @@ import MoonLoader from 'react-spinners/MoonLoader';
 import ScrollToTop from './logic/ScrollToTop';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Searched from './pages/Searched';
+
+import { UserProvider } from './UserContext';
 
 function App () {
 
@@ -39,45 +42,51 @@ function App () {
   }, [])
 
   return(
-    <BrowserRouter>
-      {loading ? 
-      <div className='loaderDiv'>
-        <h1>NAME</h1>
-        <MoonLoader
-          color={'#C18843'}
-          loading={loading}
-          size={90}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
-        <img src={mainLogo}/>
-        <p>Since 1988</p>
-      </div>
-      :
-        <>
-          <ScrollToTop />
+    <UserProvider>
+      <BrowserRouter>
+        {loading ? 
+        <div className='loaderDiv'>
+          <h1>NAME</h1>
+          <MoonLoader
+            color={'#C18843'}
+            loading={loading}
+            size={90}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+          <img src={mainLogo}/>
+          <p>Since 1988</p>
+        </div>
+        :
+          <>
+            <ScrollToTop />
 
-          <Routes>
-            <Route path='/' Component={HomePage}></Route>
-            <Route path='/about' Component={About}></Route>
-            <Route path='/pro/:metal' Component={Product}></Route>
-            <Route path='/custom' Component={Custom}></Route>
-            <Route path='/custom/form' Component={CustomizeForm}></Route>
-            <Route path='/work' Component={Work}></Route>
-            <Route path='/single/:id/:metal' Component={SeperateItem}></Route>
-            <Route path='/single/:id/:metal/enquire' Component={Enquire}></Route>
-            <Route path='/chitfund' Component={Chitfund}></Route>
-            <Route path='/admin' Component={Admin}></Route>
-            <Route path='/admin/price' Component={Price}></Route>
-            <Route path='/admin/newprod' Component={Product}></Route>
+            <Routes>
+              <Route path='/' Component={HomePage}></Route>
+              <Route path='/about' Component={About}></Route>
+              <Route path='/pro/:metal' Component={Product}></Route>
+              <Route path='/custom' Component={Custom}></Route>
+              <Route path='/custom/form' Component={CustomizeForm}></Route>
+              <Route path='/work' Component={Work}></Route>
+              <Route path='/single/:id/:metal' Component={SeperateItem}></Route>
+              <Route path='/search/:name' Component={Searched}></Route>
 
-            <Route path='/profile' Component={Profile}></Route>
-            <Route path='/login' Component={Login}></Route>
-            <Route path='/signup' Component={Signup}></Route>
-          </Routes>
-        </>
-      }
-    </BrowserRouter>
+              <Route path='/single/:id/:metal/enquire' Component={Enquire}></Route>
+              <Route path='/chitfund' Component={Chitfund}></Route>
+
+              <Route path='/admin' Component={Admin}></Route>
+              <Route path='/admin/price' Component={Price}></Route>
+              <Route path='/admin/newprod' Component={Product}></Route>
+
+              <Route path='/profile' Component={Profile}></Route>
+              <Route path='/login' Component={Login}></Route>
+              <Route path='/signup' Component={Signup}></Route>
+            </Routes>
+          </>
+        }
+      </BrowserRouter>
+    </UserProvider>
+
   )
 }
 

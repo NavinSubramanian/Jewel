@@ -16,6 +16,8 @@ import GoldPriceImage from './assets/homeImages/goldPrice.png';
 import RateBanner from './assets/homeImages/rateBanner.png';
 import LandingPageImage from './assets/homeImages/landingPageImage.png';
 import ImageHome1 from './assets/homeImages/imageHome1.jpg';
+import ImageHome2 from './assets/homeImages/imageHome2.jpg';
+import ImageHome3 from './assets/homeImages/ImageHome3.png';
 import traditionalCared from './assets/homeImages/traditionallyCared.png';
 import CustomJewellery from './assets/homeImages/customJewel.png';
 import CeoBackground from './assets/homeImages/ceobackground.png';
@@ -123,13 +125,13 @@ export default function HomePage() {
                         <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
-                        <img src={ImageHome1} alt="Image Home 2" />
+                        <img src={ImageHome2} alt="Image Home 2" />
                         <h2>Custom jewellery piece</h2>
                         <p>Every jewelry should tell a unique. Customize it to make it special!</p>
                         <Link to='/custom'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
-                        <img src={ImageHome1} alt="Image Home 3" />
+                        <img src={ImageHome3} alt="Image Home 3" />
                         <h2>Invest on Schemes</h2>
                         <p>Got a piece of jewelry you'd love to have? Save now to buy later!</p>
                         <Link to='/chitfund'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
