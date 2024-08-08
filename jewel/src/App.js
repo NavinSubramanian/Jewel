@@ -66,6 +66,7 @@ function App () {
               <Route path='/' Component={HomePage}></Route>
               <Route path='/about' Component={About}></Route>
               <Route path='/pro/:metal' Component={Product}></Route>
+              <Route path='/pro/:metal/:type' Component={Product} />
               <Route path='/custom' Component={Custom}></Route>
               <Route path='/custom/form' Component={CustomizeForm}></Route>
               <Route path='/work' Component={Work}></Route>

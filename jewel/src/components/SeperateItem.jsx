@@ -76,8 +76,8 @@ const SeperateItem = () => {
                     </div>
                     <div className="details">
                         <h4>DETAILS</h4>
-                        <p>Metal: </p>
-                        <p>Purity: </p>
+                        <p>Metal: {details.metal}</p>
+                        <p>Purity: {details.carat}</p>
                         <p>Gram rate: {rate}</p>
                         <p>Sizes: {details.size}</p>
                         <p>Weight: {details.weight}</p>

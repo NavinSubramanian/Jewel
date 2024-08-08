@@ -30,6 +30,10 @@ export default function NavBar (props) {
     const [weightRangeOptions, setWeightRangeOptions] = useState([]);
     const [priceRangeOptions, setPriceRangeOptions] = useState([]);
 
+    const [goldJewelTypes, setGoldJewelTypes] = useState({});
+    const [silverJewelTypes, setSilverJewelTypes] = useState({});
+    const [platinumJewelTypes, setPlatinumJewelTypes] = useState({});
+
     const [categories, setCategories] = useState({});
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedWeightRanges, setSelectedWeightRanges] = useState([]);
@@ -57,24 +61,52 @@ export default function NavBar (props) {
     const website_url = 'localhost:3000'; // Needs to be changed for the navigation to work
 
     // Other Functions
+
+    useEffect(() => {
+        async function fetchJewelTypes(metal) {
+            try {
+                const response = await axios.get(`http://localhost:5000/gf/${metal}`);
+                const jewelTypes = response.data.reduce((acc, item) => {
+                    if (!acc[item.category]) {
+                        acc[item.category] = [];
+                    }
+                    acc[item.category].push(item.type);
+                    return acc;
+                }, {});
+                switch(metal) {
+                    case 'gold':
+                        setGoldJewelTypes(jewelTypes);
+                        break;
+                    case 'silver':
+                        setSilverJewelTypes(jewelTypes);
+                        break;
+                    case 'platinum':
+                        setPlatinumJewelTypes(jewelTypes);
+                        break;
+                    default:
+                        break;
+                }
+            } catch (error) {
+                console.error("There was an error fetching the jewel types!", error);
+                setError("Failed to fetch jewel types. Please try again later.");
+            }
+        }
+
+        fetchJewelTypes('gold');
+        fetchJewelTypes('silver');
+        fetchJewelTypes('platinum');
+    }, []);
     
     useEffect(() => {
         async function fetchRates() {
             try {
-                // Get today's date in YYYY-MM-DD format
                 const today = new Date().toISOString().slice(0, 10);
-                
-                // Make the API request with the date parameter
-                const response = await axios.get(`http://localhost:5000/gr/${today}/silver`);
-                const response2 = await axios.get(`http://localhost:5000/gr/${today}/gold`);
-                // const response3 = await axios.get(`http://localhost:5000/gr/${today}/diamond`);
-                // const response4 = await axios.get(`http://localhost:5000/gr/${today}/platinum`);
-                const rate1 = response.data.rates;
-                const rate2 = response2.data.rates;
-                // const rate3 = response3.data.rates;
-                // const rate4 = response4.data.rates;
-                setGoldPrice(rate1);
-                setSilverPrice(rate2);
+                const [silverResponse, goldResponse] = await Promise.all([
+                    axios.get(`http://localhost:5000/gr/${today}/silver`),
+                    axios.get(`http://localhost:5000/gr/${today}/gold`)
+                ]);
+                setSilverPrice(silverResponse.data.rates);
+                setGoldPrice(goldResponse.data.rates);
             } catch (error) {
                 console.error("There was an error fetching the rates!", error);
                 setError("Failed to fetch rates. Please try again later.");
@@ -110,7 +142,7 @@ export default function NavBar (props) {
         async function fetchProductNames() {
             try {
                 const response = await axios.get('http://localhost:5000/search');
-                setProductNames(response.data.map(row => row.name));
+                setProductNames(response.data.map(row => row));
             } catch (error) {
                 console.error("There was an error fetching the product names!", error);
                 setError("Failed to fetch product names. Please try again later.");
@@ -153,21 +185,26 @@ export default function NavBar (props) {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
 
-        return inputLength === 0 ? [] : productNames.filter(name =>
-            name.toLowerCase().includes(inputValue)
+        return inputLength === 0 ? [] : productNames.filter(item =>
+            item.name.toLowerCase().includes(inputValue)
         );
     };
 
-    const getSuggestionValue = suggestion => suggestion;
+    const getSuggestionValue = suggestion => suggestion.name;
 
     const renderSuggestion = suggestion => (
         <div>
-            {suggestion}
+            {suggestion.name}
         </div>
     );
 
     const onChange = (event, { newValue }) => {
         setSearchValue(newValue);
+    };
+
+    const onSuggestionSelected = (event, { suggestion }) => {
+        const { id, metal } = suggestion;
+        nav(`/single/${id}/${metal}`);
     };
 
     const nav = useNavigate();
@@ -194,6 +231,7 @@ export default function NavBar (props) {
                             value: searchValue,
                             onChange: onChange
                         }}
+                        onSuggestionSelected={onSuggestionSelected}
                     />
                     <CiSearch />
                 </div>
@@ -241,95 +279,48 @@ export default function NavBar (props) {
             </div>
             <div className={`bigMenuNav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className='navbar-links'>
-                    <li class="navbar-dropdown">
-                        <a>Gold</a>
-                        <div class="dropdown">
-                            <div>
-                                <h4>Men</h4>
-                                <a href="#">Kada</a>
-                                <a href="#">Chain</a>
-                                <a href="#">Bracelet</a>
-                                <a href="#">Watche</a>
-                            </div>
-                            <div>
-                                <h4>Women</h4>
-                                <a href="#">Haram</a>
-                                <a href="#">Earing</a>
-                                <a href="#">Mangal Sutra</a>
-                                <a href="#">Mattal</a>
-                                <a href="#">Nosepin</a>
-                                <a href="#">Netthichutti</a>
-                                <a href="#">Necklace</a>
-                                <a href="#">Pendants</a>
-                                <a href="#">Brooches</a>
-                            </div>
-                            <div>
-                                <h4>Kids</h4>
-                                <a href="#">Cufflinks</a>
-                                <a href="#">Tiara</a>
-                                <a href="#">Bangle</a>
-                                <a href="#">Hipchain</a>
-                            </div>
+                <li className="navbar-dropdown">
+                        <a href="#">Gold</a>
+                        <div className="dropdown">
+                            {Object.keys(goldJewelTypes).map(category => (
+                                <div key={category}>
+                                    <h4>{category}</h4>
+                                    {goldJewelTypes[category].map(type => (
+                                        <Link to={`/pro/gold/${type}`} key={type}>{type}</Link>
+                                    ))}
+                                </div>
+                            ))}
                         </div>
                     </li>
-                    <li class="navbar-dropdown">
-                        <a>Silver</a>
-                        <div class="dropdown">
-                            <div>
-                                <h4>Men</h4>
-                                <a href="#">Kada</a>
-                                <a href="#">Chain</a>
-                                <a href="#">Bracelet</a>
-                                <a href="#">Watche</a>
-                            </div>
-                            <div>
-                                <h4>Women</h4>
-                                <a href="#">Haram</a>
-                                <a href="#">Earing</a>
-                                <a href="#">Mangal Sutra</a>
-                                <a href="#">Mattal</a>
-                                <a href="#">Nosepin</a>
-                                <a href="#">Netthichutti</a>
-                                <a href="#">Necklace</a>
-                                <a href="#">Pendants</a>
-                                <a href="#">Brooches</a>
-                            </div>
-                            <div>
-                                <h4>Kids</h4>
-                                <a href="#">Cufflinks</a>
-                                <a href="#">Tiara</a>
-                                <a href="#">Bangle</a>
-                                <a href="#">Hipchain</a>
-                            </div>
+                    <li className="navbar-dropdown">
+                        <a href="#">Silver</a>
+                        <div className="dropdown">
+                            {Object.keys(silverJewelTypes).map(category => (
+                                <div key={category}>
+                                    <h4>{category}</h4>
+                                    {silverJewelTypes[category].map(type => (
+                                        <Link to={`/pro/silver/${type}`} key={type}>{type}</Link>
+                                    ))}
+                                </div>
+                            ))}
                         </div>
                     </li>
-                    <li class="navbar-dropdown">
-                        <a>Platinum</a>
-                        <div class="dropdown">
-                            <div>
-                                <h4>Men</h4>
-                                <a href="#">Kada</a>
-                                <a href="#">Chain</a>
-                                <a href="#">Bracelet</a>
-                                <a href="#">Watche</a>
-                            </div>
-                            <div>
-                                <h4>Women</h4>
-                                <a href="#">Haram</a>
-                                <a href="#">Earing</a>
-                                <a href="#">Mangal Sutra</a>
-                                <a href="#">Mattal</a>
-                                <a href="#">Nosepin</a>
-                                <a href="#">Netthichutti</a>
-                                <a href="#">Necklace</a>
-                                <a href="#">Pendants</a>
-                                <a href="#">Brooches</a>
-                            </div>
+                    <li className="navbar-dropdown">
+                        <a href="#">Platinum</a>
+                        <div className="dropdown">
+                            {Object.keys(platinumJewelTypes).map(category => (
+                                <div key={category}>
+                                    <h4>{category}</h4>
+                                    {platinumJewelTypes[category].map(type => (
+                                        <a href="#" key={type}>{type}</a>
+                                    ))}
+                                </div>
+                            ))}
                         </div>
                     </li>
-                    <li class="navbar-dropdown">
-                        <a>Coins</a>
-                        <div class="dropdown">
+                    <li className="navbar-dropdown">
+                        <a href="#">Coins</a>
+                        <div className="dropdown">
                             <div>
                                 <h4>Gold</h4>
                                 <a href="#">1</a>
@@ -344,11 +335,11 @@ export default function NavBar (props) {
                                 <h4>Silver</h4>
                                 <a href="#">1</a>
                                 <a href="#">2</a>
-                                <a href="#">5</a>
-                                <a href="#">10</a>
-                                <a href="#">20</a>
-                                <a href="#">50</a>
-                                <a href="#">100</a>
+                                <a href="#">4</a>
+                                <a href="#">8</a>
+                                <a href="#">16</a>
+                                <a href="#">32</a>
+                                <a href="#">40</a>
                             </div>
                         </div>
                     </li>

@@ -223,7 +223,6 @@ app.post('/login', async (req, res) => {
 app.post("/enquire", upload.single('file'), async (req, res) => {
     const { fullName, number, email, description } = req.body;
     const file = req.file;
-    console.log(req.body)
 
     try {
         // Insert enquiry into the database
@@ -297,9 +296,6 @@ app.post("/enquire", upload.single('file'), async (req, res) => {
 app.post("/penquire", async (req, res) => {
     console.log(req.body)
     const { product_id, customer_name, customer_email, description, metal } = req.body;
-
-    //Need to edit database to have metal column
-    //For now will just send it to mail
 
     try {
         // Insert enquiry into the database
@@ -416,10 +412,34 @@ app.get("/gp/:id", (req, res) => {
         }
     })
 })
+// app.get("/gf/:metal",(req,res)=>{
+//     const {metal}=req.params
+//     console.log(metal)
+//     pool.query("select name from products where metal = ?",[metal],(err,result)=>{
+//         if(err){
+//             console.log(err)
+//         }
+//         else{
+//             res.json(result)
+//         }
+//     })
+// })
+app.get("/gf/:metal", (req, res) => {
+    const { metal } = req.params;
+    console.log(`Received request for metal: ${metal}`);
 
+    pool2.query("SELECT type,category FROM products WHERE metal = ?", [metal], (err, result) => {
+        if (err) {
+            console.error("Error executing query:", err);
+            res.status(500).json({ error: "Database query failed" });
+        } else {
+            res.json(result);
+        }
+    });
+}); 
 app.get("/search",async (req,res)=>{
     try{
-const response= await pool.query("select distinct name from products");
+const response= await pool.query("select distinct name, id, metal from products");
 res.json(response[0])
     }
     catch(err){
