@@ -28,6 +28,7 @@ import Signup from './pages/Signup';
 import Searched from './pages/Searched';
 
 import { UserProvider } from './UserContext';
+import AddProduct from './AddProduct';
 
 function App () {
 
@@ -46,7 +47,7 @@ function App () {
       <BrowserRouter>
         {loading ? 
         <div className='loaderDiv'>
-          <h1>NAME</h1>
+          <h1>GEETHA JEWELLERY</h1>
           <MoonLoader
             color={'#C18843'}
             loading={loading}
@@ -76,7 +77,7 @@ function App () {
 
               <Route path='/admin' Component={Admin}></Route>
               <Route path='/admin/price' Component={Price}></Route>
-              <Route path='/admin/newprod' Component={Product}></Route>
+              <Route path='/admin/newprod' Component={AddProduct}></Route>
 
               <Route path='/profile' Component={Profile}></Route>
               <Route path='/login' Component={Login}></Route>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
@@ -17,6 +17,7 @@ import MenuItems from "./MenuItems";
 import { UserContext } from '../UserContext';
 
 export default function NavBar (props) {
+
     const isLoad = useState(false);
     const [goldPrice, setGoldPrice] = useState(0);
     const [silverPrice, setSilverPrice] = useState(0);
@@ -39,15 +40,24 @@ export default function NavBar (props) {
     const [productNames, setProductNames] = useState([]);
 
     const { user } = useContext(UserContext);
+    const { logoutUser } = useContext(UserContext);
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    /* References */
 
+    const categRef = props.categRef
+    const priceRef = props.priceRef
+
+    const categScroll = () => categRef.current.scrollIntoView()
+    const priceScroll = () => priceRef.current.scrollIntoView()
+
+    // Website URL
 
     const website_url = 'localhost:3000'; // Needs to be changed for the navigation to work
 
+    // Other Functions
+    
     useEffect(() => {
         async function fetchRates() {
             try {
@@ -109,8 +119,12 @@ export default function NavBar (props) {
         fetchProductNames();
     }, []);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     const logoutFunction = () => {
-        //code to logout
+        logoutUser()
     }
 
     const extractCategories = (items) => {
@@ -165,11 +179,9 @@ export default function NavBar (props) {
     return(
         <nav className='mainNav'>
             <div className='shopTimings'>
-                <marquee behavior="" direction="">Shop open from <span>8am to 11pm</span> on weekends <span>Gold price: </span> {goldPrice} <span>Silver price: </span> {silverPrice}</marquee>
+                <marquee behavior="" direction="">Shop open from <span>8am to 11pm</span> on weekends.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span className='tab'></span> <span>Gold price: </span> {goldPrice} <span>Silver price: </span> {silverPrice}</marquee>
             </div>
             <div className='bottomNav'>
-                <Link to='/'><img src={mainLogo} className='mainLogoWebsite' alt=""/></Link>
-
                 <div className='searchInputWeb'>
                     <Autosuggest
                         suggestions={suggestions}
@@ -186,12 +198,17 @@ export default function NavBar (props) {
                     <CiSearch />
                 </div>
 
+                <Link to='/'>
+                    <img src={mainLogo} className='mainLogoWebsite' alt=""/>
+                    <p>Geetha Jewellers</p>
+                </Link>
+
                 <div className='navIcons'>
-                    <div onClick={() => { window.location.hash = 'categories'; }}>
+                    <div onClick={categScroll}>
                         <CiShoppingCart style={{ fontSize: '25px' }} />
                         <h4>Shop</h4>
                     </div>
-                    <div onClick={() => { nav('#prices'); }}>
+                    <div onClick={priceScroll}>
                         <IoPricetagsOutline style={{ fontSize: '20px' }} />
                         <h4>Prices</h4>
                     </div>
@@ -202,8 +219,8 @@ export default function NavBar (props) {
                             </div>
                         </> : <>
                             <div onClick={logoutFunction}>
-                            <CiLogout style={{fontSize:'22px'}} />
-                            <h4>Logout</h4>
+                                <CiLogout style={{fontSize:'22px'}} />
+                                <h4>Logout</h4>
                             </div>
                         </>
                     }

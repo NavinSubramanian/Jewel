@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
@@ -34,6 +34,14 @@ export default function HomePage() {
     const [silverPrice, setSilverPrice] = useState(0);
     const [error, setError] = useState(null);
 
+    const categRef = useRef(null)
+    const priceRef = useRef(null)
+    const shopRef = useRef(null)
+
+    const categScroll = () => categRef.current.scrollIntoView()
+    const shopScroll = () => shopRef.current.scrollIntoView()
+
+
     useEffect(() => {
         async function fetchRates() {
             try {
@@ -62,12 +70,13 @@ export default function HomePage() {
 
     return (
         <>
-            <NavBar />
+            <NavBar categRef={categRef} priceRef={priceRef} />
             <section className='landSection'>
                 <div className='leftLand'>
+                    {/* <p>Welcome to Getha Jewelry</p> */}
                     <h1>Desire meets new style</h1>
                     <h4>Explore the unique world of our jewelry where, sophistication intertwines with perfection.</h4>
-                    <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                    <Link onClick={categScroll}><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                 </div>
                 <div className='rightLand'>
                     <img src={LandingPageImage} draggable='false' style={{ position: 'relative', left: '-50px' }} alt="Landing Page" />
@@ -77,7 +86,7 @@ export default function HomePage() {
             </section>
 
             <section className='siteInformation'>
-                <img src={SidePhoto} alt="Side Photo" draggable='false' />
+                <img src='https://media.istockphoto.com/id/1276740597/photo/indian-traditional-gold-necklace.jpg?s=612x612&w=0&k=20&c=OYp1k0OVJObYq9hqVK_r6NwYa_W54km4nya1R-ovIUY=' alt="Side Photo" draggable='false' />
                 <div className='sitemainInfo'>
                     <div>
                         <h1>5K+</h1>
@@ -89,32 +98,32 @@ export default function HomePage() {
                     </div>
                     <div>
                         <h1>4.5</h1>
-                        <p>Customer Reviews</p>
+                        <p>Customer Rating</p>
                     </div>
                 </div>
             </section>
 
-            <section className='jewelPrices' style={{ backgroundImage: `url(${RateBanner})` }} id='prices'>
+            <section className='jewelPrices' style={{ backgroundImage: `url(${RateBanner})` }} ref={priceRef}>
                 <h1>Todays Price</h1>
                 <div>
                     <div>
                         <img src={GoldPriceImage} draggable='false' alt="Gold Price" />
                         <div style={{ left: '20%', top: '35%' }}>
                             <h2>{goldPrice}</h2>
-                            <h6>gm</h6>
+                            <h6>/gm</h6>
                         </div>
                     </div>
                     <div>
                         <img src={SilverPriceImage} draggable='false' alt="Silver Price" />
                         <div style={{ left: '60%', top: '35%' }}>
                             <h2>{silverPrice}</h2>
-                            <h6>gm</h6>
+                            <h6>/gm</h6>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className='dicoverSection' id='collections'>
+            <section className='dicoverSection' ref={categRef}>
                 <h1>Discover Jewellery Collection</h1>
                 <img src={StarsPanel} draggable='false' />
                 <div className='discoverBottom'>
@@ -122,7 +131,7 @@ export default function HomePage() {
                         <img src={ImageHome1} alt="Image Home 1" />
                         <h2>Look for your style</h2>
                         <p>Explore the unique world of our jewelry collection.</p>
-                        <Link to=''><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                        <Link onClick={shopScroll}><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
                         <img src={ImageHome2} alt="Image Home 2" />
@@ -139,7 +148,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className='shopCategories' style={{ backgroundImage: `url(${shopCateBg})` }}>
+            <section className='shopCategories' style={{ backgroundImage: `url(${shopCateBg})` }} ref={shopRef}>
                 <h1>Shop By Categories</h1>
                 <h4>நாங்கள் வழங்குவதில் ஈடுபடுங்கள்.</h4>
                 <div>
@@ -175,8 +184,10 @@ export default function HomePage() {
                     <img src={traditionalCared} draggable='false' alt="Traditional Cared" />
                 </div>
                 <div className='traditionalBottom'>
-                    <h1>Traditionally cared since 1976</h1>
-                    <p>Explore a world of exquisite craftsmanship and timeless beauty. Eternal elegant, modern glamour, heritage treasures, you name it, we got it!</p>
+                    <div>
+                        <h1>Traditionally cared since 1976</h1>
+                        <p>Explore a world of exquisite craftsmanship and timeless beauty. Eternal elegant, modern glamour, heritage treasures, you name it, we got it!</p>
+                    </div>
                     <Link to='/about'>
                         <button>See More <FontAwesomeIcon icon={faArrowRight} /> </button>
                     </Link>
@@ -186,13 +197,13 @@ export default function HomePage() {
             <section className='ceotalkSection'>
                 <h1>We aim to make you find your style </h1>
                 <div>
-                    <img src='' alt="CEO Talk" />
+                    <img src='https://media.istockphoto.com/id/1158583412/video/speaker-businessman-talking-at-webcam-making-conference-video-call.jpg?s=640x640&k=20&c=Yw2J5fFEW2wlbtUr7R_i_IQVANnas_wBtHyY-DFnnH0=' alt="CEO Talk" />
                     <div>
                         <p>Watch our CEO share valuable insights, stories, and inspirations behind our exquisite jewelry collection. Discover the passion and craftsmanship that drives us to create unique pieces for jewelry enthusiasts like you.</p>
                         <Link>
                             <button>Explore Now</button>
                         </Link>
-                        <img src={CeoBackground} draggable='false' alt="CEO Background" />
+                        {/* <img  draggable='false' alt="CEO Background" /> */}
                     </div>
                 </div>
             </section>

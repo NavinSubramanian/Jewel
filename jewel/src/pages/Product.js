@@ -191,6 +191,24 @@ const Product = () => {
         filterItems();
     }, [selectedCategories, selectedWeightRanges, selectedPriceRanges]);
 
+
+
+    /* To display the filters */
+
+    const renderSelectedFilters = () => {
+        const selectedCategoryFilters = selectedCategories.map(category => {
+            const [cat, type] = category.split('-');
+            return `${cat} - ${type}`;
+        });
+    
+        const selectedWeightFilters = selectedWeightRanges.map(range => `Up to ${range} grams`);
+        const selectedPriceFilters = selectedPriceRanges.map(range => `Up to ₹${range}`);
+    
+        return [...selectedCategoryFilters, ...selectedWeightFilters, ...selectedPriceFilters].join(', ');
+    };
+
+    
+
     return (
         <>
             <NavBar />
@@ -271,6 +289,12 @@ const Product = () => {
                 </div>
             </div>
             <hr style={{ maxWidth: 1000, marginTop: '20px', marginLeft: 'auto', marginRight: 'auto' }} />
+            <div className='displayFilters'>
+                <h3>Applied Filters : </h3>
+                {renderSelectedFilters()}
+            </div>
+            <hr style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }} />
+
 
             <div className='prod_display'>
                 {filteredItems.map((item) => (

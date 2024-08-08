@@ -16,11 +16,14 @@ body{
 :root {
   --mainfont: 'Calmius Sans High';
   --subfont: 'Karla';
+
   --maincolor: #C18843;
   --maincolorlight: #FDE5B1;
   /* --maincolorlight: #ffe3c2; */
   --subcolor: #0E343D;
-  --headclamp: clamp(20px, 7vw, 60px)
+
+  --headclamp: clamp(20px, 7vw, 60px);
+  --lineclamp: clamp(5px, 7vw, 50px);
 }
 
 /* Components */
@@ -203,20 +206,32 @@ body{
 
 /* Navbar 2 */
 
+.tab{
+  tab-size: 10;
+}
+
 .bottomNav>a{
   height: 70px;
-  width: 100px;
+  width: auto;
+  color: var(--maincolor);
+  text-decoration: none;
+  font-family: var(--subfont);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomNav>a>p{
+  font-size: 12px;
 }
 .mainLogoWebsite{
   height:100%;
   width:100%;
-  position: relative;
-  right: 30px;
 }
 .bottomNav{
   display: flex;
   align-items: center;
   padding: 0 50px;
+  justify-content: space-between;
   width: 100%;
   column-gap: 50px;
   background-color: var(--maincolorlight);
@@ -224,7 +239,7 @@ body{
 
 .searchInputWeb{
   display: flex;
-  width: 60%;
+  width: 40%;
   position: relative;
   height: 50%;
 }
@@ -303,7 +318,7 @@ body{
   color: var(--maincolor);
   font-family: var(--subfont);
   column-gap: 20px;
-  flex-basis: 40%;
+  flex-basis: 30%;
   justify-content: space-between;
   height: 55%;
 }
@@ -378,11 +393,8 @@ body{
   justify-content: space-between;
 }
 
-.navbar-dropdown>a:hover{
-  color: white;
-}
 .bigMenuNav>ul>li>a:hover::before{
-  height: 50%;
+  height: 6%;
 }
 
 
@@ -467,6 +479,8 @@ body{
   .bottomNav {
     justify-content: space-between;
     width: 100%;
+    padding: 0;
+    padding-right: 20px;
   }
 
   .navIcons {
@@ -1032,6 +1046,7 @@ footer>hr{
   display: flex;
   justify-content: space-between;
   height: 70vh;
+  margin-bottom: 100px;
   position: relative;
 }
 
@@ -1053,11 +1068,34 @@ footer>hr{
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  position: relative;
   row-gap: 50px;
   padding: 0 70px;
   flex-basis: 50%;
 }
+.leftLand>h1::before {
+  content: "Welcome to Geetha Jewellers";
+  font-family: var(--subfont);
+  font-size: 17px;
+  font-weight: 500;
+  height: 40px;
+  position: absolute;
+  top: -35px;
+  left: 0;
+  padding-left: 20px;
+  color: var(--maincolor);
+}
+
+.leftLand>h1::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  height: 20px;
+  border-left: 3px solid var(--maincolor);
+}
 .leftLand>h1{
+  position: relative;
   font-family: var(--mainfont);
   color: var(--maincolor);
   font-size: clamp(20px, 10vw, 90px);
@@ -1101,7 +1139,7 @@ footer>hr{
   position: relative;
 }
 .rightLand>img{
-  height: clamp(50%, 30vw, 100%);
+  height: clamp(50%, 50vw, 110%);
   position: absolute;
 }
 @media (max-width:520px){
@@ -1139,6 +1177,10 @@ footer>hr{
 
 .siteInformation>img{
   height: clamp(50%, 20vw, 100%);
+  width: 330px;
+  border-radius: 0 60px 0 0;
+  border: 3px solid #b66e15;
+  object-fit: cover;
 }
 
 .sitemainInfo{
@@ -1240,6 +1282,7 @@ footer>hr{
 .jewelPrices>div>div:first-child>img{
   width: 370px !important;
 }
+
 @media (max-width:690px){
   .jewelPrices>div>div:last-child>img{
     width: 200px;
@@ -1249,7 +1292,12 @@ footer>hr{
     width: 250px !important;
     height: 100px;
   }
+
+  .jewelPrices>div>div>div>h2{
+    font-size: 24px;
+  }
 }
+
 @media (max-width:470px){
   .jewelPrices>div>div:last-child>img{
     width: 150px;
@@ -1259,6 +1307,16 @@ footer>hr{
     width: 200px !important;
     height: 75px;
   }
+
+  .jewelPrices>div>div>div>h2{
+    font-size: 17px;
+  }
+  .jewelPrices>div>div:last-child>div{
+    left: 75px !important;
+  }
+  .jewelPrices>div>div:first-child>div{
+    left: 25px !important;
+  }
 }
 
 
@@ -1267,27 +1325,27 @@ footer>hr{
   display: flex;
   width: 100%;
   align-items: center;
-  row-gap: 20px;
+  row-gap: 60px;
   overflow-x: hidden;
   height: auto;
   height: 120vh;
-  padding: 30px 0;
   position: relative;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 .dicoverSection>h1{
   font-family: var(--mainfont);
   color: var(--maincolor);
   font-weight: 100;
   font-size: var(--headclamp);
-  line-height: 50px;
+  line-height: var(--lineclamp);
   text-align: center;
   width: 80%;
 }
 .dicoverSection>img{
   position: absolute;
   height: 80%;
-  top:0;
+  top: 0;
 }
 
 .discoverBottom{
@@ -1297,6 +1355,8 @@ footer>hr{
   height: 100%;
   width: 100%;
   justify-content: center;
+  position: relative;
+  left: 50px;
 }
 .discoverBottom>div{
   flex-basis: 25%;
@@ -1359,6 +1419,21 @@ footer>hr{
   background-color: var(--maincolor);
 }
 
+@media (max-width:1025px){
+  .discoverBottom{
+    left: 0;
+  }
+  .dicoverSection>img{
+    height: 60%;
+  }
+}
+
+@media (max-width:650px){
+  .dicoverSection{
+    row-gap: 10px;
+  }
+}
+
 @media (max-width:530px){
   .discoverBottom>div>a>button{
     padding: 4px;
@@ -1373,13 +1448,12 @@ footer>hr{
 
 
 
-
-
 .traditionalCared{
   display: flex;
   width: 100%;
   min-height: 80vh;
   overflow-x: hidden;
+  overflow-y: hidden;
   height: auto;
   align-items: center;
   margin: 0 auto;
@@ -1407,18 +1481,28 @@ footer>hr{
 .traditionalBottom{
   display: flex;
   flex-direction: column;
-  height: 60%;
+  height: 100%;
   row-gap: 50px;
+  min-height: 50vh;
+  justify-content: space-around;
+  position: relative;
+  top: -40px;
 }
-.traditionalBottom>h1{
+.traditionalBottom>div>h1{
   font-family: var(--mainfont);
   font-weight: 100;
-  font-size: 40px;
-  line-height: 50px;
-  max-width: 60%;
+  font-size: 60px;
+  line-height: 60px;
+  max-width: 80%;
 }
-.traditionalBottom>p{
+.traditionalBottom>div{
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+.traditionalBottom>div>p{
   font-family: var(--subfont);
+  /* max-width: 70%; */
 }
 .traditionalBottom>a{
   text-decoration: none;
@@ -1486,7 +1570,7 @@ footer>hr{
   font-family: var(--mainfont);
   font-size: var(--headclamp);
   font-weight: 100;
-  line-height: 50px;
+  line-height: var(--lineclamp);
 }
 .customBottom>h5{
   font-family: var(--subfont);
@@ -1545,7 +1629,7 @@ footer>hr{
   color: white;
   font-weight: 100;
   text-align: center;
-  line-height: 50px;
+  line-height: var(--lineclamp);
   font-size: var(--headclamp);
 }
 .ceotalkSection>div{
@@ -1560,17 +1644,20 @@ footer>hr{
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
+  z-index: 100;
   position: relative;
   row-gap: 50px;
 }
 .ceotalkSection>div>div>img{
   position: absolute;
-  top: 0;
-  left: -20px;
   z-index: -100;
-  width: 80%;
+  top: 150px;
+  width: 100%;
+  background-size: 100px;
+  opacity: 0.1;
   mix-blend-mode: multiply;
-  height: 130%;
+  height: 100%;
 }
 .ceotalkSection>div>div>p{
   font-family: var(--subfont);
@@ -1589,12 +1676,15 @@ footer>hr{
   position: relative;
   z-index: 1000;
   cursor: pointer;
+  background-color: white;
+  z-index: 100;
 }
-.ceotalkSection>div>div>a>button::after{
+.ceotalkSection>div>div>a>button::before{
   content: "";
   position: absolute;
   left: 10px;
   border-radius: 15px 0 15px 0;
+  z-index: 0;
   border: 2px solid white;
   height: 100%;
   width: 100%;
@@ -1611,7 +1701,7 @@ footer>hr{
 .shopCategories{
   display: flex;
   flex-direction: column;
-  padding: 0 40px;
+  padding: 20px 40px;
   overflow-x: hidden;
   background-color: var(--subcolor);
   width: 100%;
@@ -1621,7 +1711,7 @@ footer>hr{
   font-size: var(--headclamp);
   font-weight: 100;
   font-family: var(--mainfont);
-  line-height: 40px;
+  line-height: var(--lineclamp);
   margin-bottom: 35px;
   color: white;
 }
@@ -1671,6 +1761,9 @@ footer>hr{
   .shopCategories>div{
     display: grid;
     grid-template-columns: auto auto;
+  }
+  .shopCategories>h1{
+    margin-bottom: 10px;
   }
 }
 
@@ -2217,6 +2310,7 @@ footer>hr{
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 30px;
+  margin-bottom: 50px;
   column-gap: 50px;
   row-gap: 30px;
   align-items: center;
@@ -2300,18 +2394,27 @@ footer>hr{
   text-transform: uppercase;
   color: var(--maincolor);
 }
-
+.filterPopups input[type="checkbox"], .filterWeightPopups input[type="checkbox"], .filterPricePopups input[type="checkbox"]{
+  visibility: hidden;
+  display: none;
+}
+.filterPopups label{
+  font-weight: 300;
+}
+.filterPopups label:hover{
+  color: var(--maincolor);
+}
 .filterWeightPopups,.filterPricePopups{
   position: absolute;
   top: 100%;
   left: 0;
   margin-top: 5px;
-  border: 2px solid var(--subcolor);
+  border: 2px solid var(--maincolor);
   padding: 20px;
   border-radius: 5px;
   background-color: white;
   z-index: 1;
-  box-shadow: 0 2px 5px var(--subcolor);
+  box-shadow: 0 2px 5px var(--maincolor);
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 10px;
@@ -2323,7 +2426,7 @@ footer>hr{
   font-weight: 300;
   align-items: center;
   justify-content: flex-start;
-  width: 110px;
+  width: 125px;
 }
 .filterWeightPopups>div>label:hover, .filterPricePopups>div>label:hover{
   color: var(--maincolor);
@@ -2335,12 +2438,27 @@ footer>hr{
   font-weight: 300;
   align-items: center;
   justify-content: flex-start;
-  width: 160px;
+  width: 120px;
 }
 
-
+.displayFilters{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0;
+  font-family: var(--subfont);
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+.displayFilters>h3{
+  color: var(--maincolor);
+  opacity: 0.8;
+}
 
 /* Chitfund Page */
+
+
+
 
 .landChitfund{
   display: flex;

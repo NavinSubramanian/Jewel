@@ -7,7 +7,7 @@ import About3 from '../assets/onePagesImages/about3.png';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
-import { faPhone,faMailReply } from "@fortawesome/free-solid-svg-icons"
+import { faPhone,faMailReply,faLocationDot } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const About = () => {
@@ -19,9 +19,7 @@ const About = () => {
                 <div className="textAbout">
                     <h1 style={{ marginTop: '30px' }}>ABOUT US</h1>
                     <h2>About'yourname' Get to know more about our company</h2>
-                    <p>Discover the heart behind our craft. Uncover our அனுபவங்களை,
-                        தன்மையுடன் பிரதிநிதிகளை மற்றும் பயன்படுத்தல்களைப் பொதுவாக உள்ளிடுகிறோம்.
-                        As we strive to create bespoke jewelry that reflects your unique essence.</p>
+                    <p>At Geetha Jewellers, we uphold the values of integrity, creativity, and customer satisfaction. We are passionate about crafting timeless jewelry that honors life's special moments. Our mission is to deliver the finest quality pieces by merging traditional techniques with modern elegance, ensuring that each creation is a symbol of beauty and lasting value.</p>
                 </div>
                 <div className="image_container">
                     <img className="about" src={About1} alt="about1" />
@@ -34,12 +32,7 @@ const About = () => {
                 </div>
                 <div className='about2p'>
                     <h1 style={{ marginTop: '30px' }}>History of our Company</h1>
-                    <p style={{ marginTop: '10px', maxWidth: '600px' }}>The Indian rupee is the official currency in the Republic of India.
-                        The rupee is The Indian rupee is the official currency in the Republic of India.
-                        The rupee is The Indian rupee is the official currency in the Republic of India.
-                        The rupee is The Indian rupee is the official currency in the Republic of India.
-                        The rupee is The Indian rupee is the official currency in the Republic of India.
-                        The rupee is The Indian rupee is the official currency in the Republic of India. </p>
+                    <p style={{ marginTop: '10px', maxWidth: '600px' }}>In 1998, Vivekkanna founded Geetha Jewellers with a vision for unparalleled craftsmanship and a dedication to quality. What began as a modest family enterprise has since evolved into a renowned name in the jewelry world, celebrated for its distinctive designs and outstanding customer service. <br /><br /><br />Our diverse clientele includes both trend-savvy individuals seeking contemporary designs and traditionalists who appreciate classic elegance. We strive to meet the needs of every customer, creating pieces that resonate with both modern tastes and timeless sensibilities.</p>
                 </div>
             </div>
 
@@ -65,6 +58,10 @@ const About = () => {
                         <div>
                             <FontAwesomeIcon icon={faMailReply}></FontAwesomeIcon>
                             <p>abc@gmail.com</p>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
+                            <p>xyz, <br/>aab, <br/>asnd,<br/>Chennai-53.</p>
                         </div>
                     </div>
                 </div>
