@@ -47,10 +47,10 @@ export default function HomePage() {
                 const today = new Date().toISOString().slice(0, 10);
                 
                 // Make the API request with the date parameter
-                const response = await axios.get(`http://localhost:5000/gr/${today}/silver`);
-                const response2 = await axios.get(`http://localhost:5000/gr/${today}/gold`);
-              //   const response3 = await axios.get(`http://localhost:5000/gr/${today}/diamond`);
-              //   const response4 = await axios.get(`http://localhost:5000/gr/${today}/platinum`);
+                const response = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/silver`);
+                const response2 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/gold`);
+              //   const response3 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/diamond`);
+              //   const response4 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/platinum`);
                 const rate1 = response.data.rates;
                 const rate2 = response2.data.rates;
               //   const rate3 = response3.data.rates;

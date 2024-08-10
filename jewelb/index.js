@@ -10,7 +10,9 @@ const app = express();
 const crypto = require('crypto');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(express.json());
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {

@@ -50,7 +50,7 @@ const Signup = () => {
             e.preventDefault();
             setError('');
             try {
-                const response = await axios.post('http://localhost:5000/signup', { email, password });
+                const response = await axios.post('https://jewelbackend.vercel.app/signup', { email, password });
                 if (response.data.success) {
                     setIsOtpSent(true);
                 }
@@ -68,7 +68,7 @@ const Signup = () => {
         e.preventDefault();
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/verify-otp', { email, otp, password });
+            const response = await axios.post('https://jewelbackend.vercel.app/verify-otp', { email, otp, password });
             if (response.data.success) {
                 toast.success("Successfully Created User");
                 navigate("/login")
@@ -87,7 +87,7 @@ const Signup = () => {
     const handleResendOtp = async () => {
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/resend-otp', { email });
+            const response = await axios.post('https://jewelbackend.vercel.app/resend-otp', { email });
             if (response.data.success) {
                 setTimer(600); // Reset timer to 10 minutes
                 setIsOtpSent(true);

@@ -54,7 +54,7 @@ export default function NavBar (props) {
 
     // Website URL
 
-    const website_url = 'http://localhost:3000/'; // Needs to be changed for the navigation to work
+    const website_url = 'https://jewelfrontend.vercel.app/'; // Needs to be changed for the navigation to work
 
 
     /* References */
@@ -82,7 +82,7 @@ export default function NavBar (props) {
     useEffect(() => {
         async function fetchJewelTypes(metal) {
             try {
-                const response = await axios.get(`http://localhost:5000/gf/${metal}`);
+                const response = await axios.get(`https://jewelbackend.vercel.app/gf/${metal}`);
                 const jewelTypes = response.data.reduce((acc, item) => {
                     if (!acc[item.category]) {
                         acc[item.category] = [];
@@ -119,8 +119,8 @@ export default function NavBar (props) {
             try {
                 const today = new Date().toISOString().slice(0, 10);
                 const [silverResponse, goldResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/gr/${today}/silver`),
-                    axios.get(`http://localhost:5000/gr/${today}/gold`)
+                    axios.get(`https://jewelbackend.vercel.app/gr/${today}/silver`),
+                    axios.get(`https://jewelbackend.vercel.app/gr/${today}/gold`)
                 ]);
                 setSilverPrice(silverResponse.data.rates);
                 setGoldPrice(goldResponse.data.rates);
@@ -137,8 +137,8 @@ export default function NavBar (props) {
             try {
                 const today = new Date().toISOString().slice(0, 10);
                 const [rateResponse, itemsResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/gr/${today}/gold`),
-                    axios.get(`http://localhost:5000/getproduct/gold`)
+                    axios.get(`https://jewelbackend.vercel.app/gr/${today}/gold`),
+                    axios.get(`https://jewelbackend.vercel.app/getproduct/gold`)
                 ]);
                 const { rates} = rateResponse.data;
                 setGoldPrice(rates);
@@ -158,7 +158,7 @@ export default function NavBar (props) {
     useEffect(() => {
         async function fetchProductNames() {
             try {
-                const response = await axios.get('http://localhost:5000/search');
+                const response = await axios.get('https://jewelbackend.vercel.app/search');
                 setProductNames(response.data.map(row => row));
             } catch (error) {
                 console.error("There was an error fetching the product names!", error);

@@ -31,7 +31,7 @@ const Login = () => {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:5000/login', { email, password });
+            const response = await axios.post('https://jewelbackend.vercel.app/login', { email, password });
 
             if (response.data.success) {
                 loginUser({ email, token: response.data.token });

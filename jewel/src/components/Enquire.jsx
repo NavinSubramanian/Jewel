@@ -23,8 +23,8 @@ const Enquire = () => {
     async function fetchRates() {
       try {
         const today = new Date().toISOString().slice(0, 10)
-        const response = await axios.get(`http://localhost:5000/gr/${today}/${metal}`)
-        const response2 = await axios.get(`http://localhost:5000/gp/${id}`)
+        const response = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/${metal}`)
+        const response2 = await axios.get(`https://jewelbackend.vercel.app/gp/${id}`)
         setRate(response.data.gold_rate)
         setDetails(response2.data[0])
       } catch (err) {
