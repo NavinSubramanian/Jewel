@@ -7,6 +7,7 @@ import { UserContext } from '../../UserContext'
 const EnquireForm = ({ id,metal }) => {
   const [customerName, setCustomerName] = useState('')
   const [email, setEmail] = useState('')
+  const [number, setNumber] = useState('')
   const [description, setDescription] = useState('')
   const { user } = useContext(UserContext);
   
@@ -27,6 +28,7 @@ const EnquireForm = ({ id,metal }) => {
         product_id: id,
         customer_name: customerName,
         customer_email: email,
+        customer_number: number,
         description: description,
         metal: metal
       })
@@ -46,8 +48,13 @@ const EnquireForm = ({ id,metal }) => {
     <form className='enquireFormBody' onSubmit={handleSubmit}>
       <label htmlFor="">Product ID:</label>
       <input type="text" disabled value={id} />
+
+      <label htmlFor="">Number :</label>
+      <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} required />     
+
       <label htmlFor="">Customer Name:</label>
       <input type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} required />
+      
       {user != null ? <>
         <label htmlFor="">Email:</label>
         <input type="email" value={user.email} disabled />
@@ -55,8 +62,10 @@ const EnquireForm = ({ id,metal }) => {
         <label htmlFor="">Email:</label>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </>}
+
       <label htmlFor="">Description:</label>
       <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
+      
       <button type="submit">Submit</button>
 
       <Thankyou trigger={formFilled}/>

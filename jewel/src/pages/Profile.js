@@ -7,49 +7,52 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../UserContext';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import ItemList from '../components/ItemList';
 
 const Profile = () => {
     const { user } = useContext(UserContext);
     const [favourites, setFavourites] = useState([]);
     const [listItems, setListItems] = useState([]);
-    const [initialItems, setInitialItems] = useState([]);
     const [goldPrice, setGoldPrice] = useState(0);
-    
-    // useEffect(()=>{
-    //     setFavourites(user.favourites)
-    // },[initialItems])
-
-    // useEffect(()=>{
-    //     let temp = []
-    //     initialItems.map((item)=>{
-    //         let id = item.id.toString();
-    //         console.log(favourites.includes(id));
-    //         // if(favourites.includes(item.id)){
-    //         //     temp.push(item);
-    //         // }
-    //     })
-    //     // console.log(temp)
-    // },[favourites])
+    const [filteredItems, setFilteredItems] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchUserDetails() {
             try {
-                const today = new Date().toISOString().slice(0, 10);
-                const [rateResponse, itemsResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/gr/${today}/gold`),
-                    axios.get(`http://localhost:5000/getproduct/gold`)
-                ]);
-                const { rates} = rateResponse.data;
-                setGoldPrice(rates);
-                const items = itemsResponse.data;
-                setInitialItems(items);
+                const userDetailsResponse = await axios.get(`http://localhost:5000/user/${user.email}`);
+                const userFavourites = userDetailsResponse.data.favourites || [];
+                setFavourites(userFavourites);
+
+                // Fetch details for each favourite item
+                const productDetailsPromises = userFavourites.map(id =>
+                    axios.get(`http://localhost:5000/gp/${id}`)
+                );
+                const products = await Promise.all(productDetailsPromises);
+                setFilteredItems(products.map(response => response.data[0])); // Assuming API returns array with one item
             } catch (error) {
-                console.error("There was an error fetching the data!", error);
+                console.error("There was an error fetching the user details!", error);
             }
         }
-        fetchData();
+
+        if (user) {
+            fetchUserDetails();
+        }
+    }, [user]);
+
+    useEffect(() => {
+        async function fetchGoldPrice() {
+            try {
+                const today = new Date().toISOString().slice(0, 10);
+                const rateResponse = await axios.get(`http://localhost:5000/gr/${today}/gold`);
+                const { rates } = rateResponse.data;
+                setGoldPrice(rates);
+            } catch (error) {
+                console.error("There was an error fetching the gold price!", error);
+            }
+        }
+        fetchGoldPrice();
     }, []);
-    
+
     const bannerImg = "https://img.freepik.com/premium-photo/golden-transparent-leaves-illustration-dark-background-gold-autumn-leaves-isolated-dark-background-with-copy-space-luxury-autumn-leaves-banner-gold-black-colors_756498-1829.jpg";
 
     return (
@@ -58,22 +61,24 @@ const Profile = () => {
 
             {user != null ? (
                 <div className='profileMain'>
-                    <div className='profileTop' style={{ backgroundImage: `url(${bannerImg})` }}>
+                    <div className='profileTop' style={{ backgroundImage: `url(${bannerImg}) `}}>
                     </div>
                     <div className='profileMiddle'>
                         <div className='profileAbsolute'>
                             <div>
                                 <FontAwesomeIcon icon={faUser} />
-                                <h3 style={{}}>Hello {user ? user.name : "User"}</h3>
-                                <h5 style={{ fontWeight: '400' }}>ID : {user ? user.email : "N/A"}</h5>
+                                <h3>Hello {user.name}</h3>
+                                <h5 style={{ fontWeight: '400' }}>ID : {user.email}</h5>
                             </div>
-                            <h4 style={{ color: 'gray' }}>Total Favourites : <span style={{ fontWeight: '400' }}>0</span></h4>
+                            <h4 style={{ color: 'gray' }}>Total Favourites : <span style={{ fontWeight: '400' }}>{favourites.length}</span></h4>
                         </div>
                         <div className='profileFavorites'>
                             <h2>FAVOURITES</h2>
                             <hr />
                             <div className='itemList'>
-                                {/* {favourites.map((id)=>{})} */}
+                                {filteredItems.map((item) => (
+                                    <ItemList key={item.id} item={item} rate={goldPrice} />
+                                ))}
                             </div>
                         </div>
                     </div>

@@ -295,13 +295,13 @@ app.post("/enquire", upload.single('file'), async (req, res) => {
 // POST endpoint to handle enquiries
 app.post("/penquire", async (req, res) => {
     console.log(req.body)
-    const { product_id, customer_name, customer_email, description, metal } = req.body;
+    const { product_id, customer_name, customer_email, customer_number, description, metal } = req.body;
 
     try {
         // Insert enquiry into the database
         await pool.query(
-            'INSERT INTO enquiries (product_id, customer_name, customer_email, description) VALUES (?, ?, ?, ?)',
-            [product_id, customer_name, customer_email, description]
+            'INSERT INTO enquiries (product_id, customer_name, customer_email, customer_number, description) VALUES (?, ?, ?, ?, ?)',
+            [product_id, customer_name, customer_email, customer_number, description]
         );
 
         // Send email notification
@@ -310,6 +310,41 @@ app.post("/penquire", async (req, res) => {
             to: 'mohamedfawazshahulameed@gmail.com',
             subject: 'New Enquiry Received',
             text: `Product ID: ${product_id} on Metal: ${metal}\nCustomer Name: ${customer_name}\nCustomer Email: ${customer_email}\nDescription: ${description}`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error("Error sending email:", error);
+                return res.status(500).json({ message: "Failed to send email" });
+            }
+            console.log('Email sent: ' + info.response);
+        });
+
+        res.status(200).json({ message: 'Enquiry submitted successfully' });
+    } catch (error) {
+        console.error("Error handling enquiry:", error);
+        res.status(500).json({ message: 'Failed to handle enquiry' });
+    }
+});
+
+// POST endpoint to handle Chitfund
+app.post("/chitenquire", async (req, res) => {
+    console.log(req.body)
+    const { customer_number, customer_name, customer_email, description } = req.body;
+
+    try {
+        // Insert enquiry into the database
+        await pool.query(
+            'INSERT INTO chitenquiries (customer_name, customer_email, customer_number, description) VALUES (?, ?, ?, ?)',
+            [customer_name, customer_email, customer_number, description]
+        );
+
+        // Send email notification
+        const mailOptions = {
+            from: 'jewwltest@gmail.com', // replace with your email
+            to: 'mohamedfawazshahulameed@gmail.com',
+            subject: 'New Chitfund Enquiry Received',
+            text: `Customer Name: ${customer_name}\nCustomer Number: ${customer_number}\nCustomer Email: ${customer_email}\nDescription: ${description}`
         };
 
         transporter.sendMail(mailOptions, (error, info) => {

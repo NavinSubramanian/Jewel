@@ -33,7 +33,7 @@ const Custom = () => {
                     </div>
                 </div>
 
-                <h1 className='thisIsHowWorks' style={{ marginTop: '30px', textAlign: 'center', color: '#C18843' }}>This is how it works..</h1>
+                <h1 className='thisIsHowWorks' style={{ marginTop: '30px', textAlign: 'center', color: '#C18843' }}>How We Craft Your Ideas</h1>
 
                 <div className='work_container'>
                     <div className='checkpoint'>
@@ -70,9 +70,9 @@ const Custom = () => {
                 <div className='inspirationWorks'>
                     <h1 style={{textAlign: 'center' }}>Get some design inspiration from other customers</h1>
                     <div>
-                        <img src='https://finercustomjewelry.com/wp-content/uploads/2021/12/1608107482514Custom_Jewelry_Design_Image_900x600.jpg' />
-                        <img src='https://assets.winni.in/product/primary/2023/2/82885.jpeg?dpr=2&w=220' />
-                        <img src='https://insdindia.com/wp-content/uploads/2022/12/custom-jewellery-600x450.jpg' />
+                        <img src='https://donjjewellery.com/wp-content/uploads/2022/02/1-CUSTOM-FINE-JEWELRY-.jpg' />
+                        <img src='https://c0.wallpaperflare.com/preview/111/723/664/jewellery-chokker-gold-gold-jewellery.jpg' />
+                        <img src='https://5.imimg.com/data5/SELLER/Default/2022/10/RU/UI/YC/6344869/custom-jewelry-manufacturer-in-india-500x500.jpg' />
                         <img src='https://silvery.co.za/wp-content/uploads/2021/08/Custom-Product-Image-1000x1000.jpg' />
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
 import { faPhone,faMailReply,faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const About = () => {
@@ -18,7 +19,7 @@ const About = () => {
             <div className="about_container1">
                 <div className="textAbout">
                     <h1 style={{ marginTop: '30px' }}>ABOUT US</h1>
-                    <h2>About'yourname' Get to know more about our company</h2>
+                    <h2>About Us : Get to know more about our company</h2>
                     <p>At Geetha Jewellers, we uphold the values of integrity, creativity, and customer satisfaction. We are passionate about crafting timeless jewelry that honors life's special moments. Our mission is to deliver the finest quality pieces by merging traditional techniques with modern elegance, ensuring that each creation is a symbol of beauty and lasting value.</p>
                 </div>
                 <div className="image_container">
@@ -49,19 +50,27 @@ const About = () => {
             <div className='about_container4'>
                 <h1>Contact Information</h1>
                 <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.9293786930657!2d80.10093376954615!3d12.989911005993727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260017b666647%3A0x7cdb07addfa74ca9!2sManickam%20Nagar%20Main%20Rd%2C%20Kovur%2C%20Kundrathur%2C%20Tamil%20Nadu%20600069!5e0!3m2!1sen!2sin!4v1719378875819!5m2!1sen!2sin" width="500" height="350" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15633.401969369806!2d78.6023982!3d11.5983419!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bab9d95c8274f95%3A0xc6b891123e0cba21!2sGeetha%20Jewellers!5e0!3m2!1sen!2sin!4v1723094660028!5m2!1sen!2sin" width="500" height="350" style={{border:'0'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div>
                         <div>
                             <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
-                            <p>+91 8203922012</p>
+                            <p>+91 73971 84803</p>
                         </div>
                         <div>
                             <FontAwesomeIcon icon={faMailReply}></FontAwesomeIcon>
                             <p>abc@gmail.com</p>
                         </div>
                         <div>
+                            <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                            <p>geethajewellers</p>
+                        </div>
+                        <div>
                             <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
-                            <p>xyz, <br/>aab, <br/>asnd,<br/>Chennai-53.</p>
+                            <p>No 20, Geetha jewellers, <br />
+                                Bazar street Ranipetai, <br />
+                                near taluk office, <br />
+                                Attur - 636102.
+                            </p>
                         </div>
                     </div>
                 </div>

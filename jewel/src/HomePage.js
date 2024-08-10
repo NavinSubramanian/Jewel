@@ -10,7 +10,6 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import Background from './assets/homeImages/bg.png';
 import StarGroup from './assets/homeImages/starGroup.png';
-import SidePhoto from './assets/homeImages/sidePhoto.jpg';
 import SilverPriceImage from './assets/homeImages/silverPrice.png';
 import GoldPriceImage from './assets/homeImages/goldPrice.png';
 import RateBanner from './assets/homeImages/rateBanner.png';
@@ -20,14 +19,13 @@ import ImageHome2 from './assets/homeImages/imageHome2.jpg';
 import ImageHome3 from './assets/homeImages/ImageHome3.png';
 import traditionalCared from './assets/homeImages/traditionallyCared.png';
 import CustomJewellery from './assets/homeImages/customJewel.png';
-import CeoBackground from './assets/homeImages/ceobackground.png';
 import StarsPanel from './assets/homeImages/starsPanel2.png'
 import shopCateBg from './assets/homeImages/shopCateBg.png';
 import Category1 from './assets/homeImages/category1.png';
 import Category2 from './assets/homeImages/category2.png';
 import Category3 from './assets/homeImages/category3.png';
 import Category4 from './assets/homeImages/category4.png';
-import NavBar2 from './components/NavBar2';
+import SiteInfoImage from './assets/homeImages/siteInfoImage.png';
 
 export default function HomePage() {
     const [goldPrice, setGoldPrice] = useState(0);
@@ -86,20 +84,24 @@ export default function HomePage() {
             </section>
 
             <section className='siteInformation'>
-                <img src='https://media.istockphoto.com/id/1276740597/photo/indian-traditional-gold-necklace.jpg?s=612x612&w=0&k=20&c=OYp1k0OVJObYq9hqVK_r6NwYa_W54km4nya1R-ovIUY=' alt="Side Photo" draggable='false' />
+                <img src={SiteInfoImage} alt="Side Photo" draggable='false' />
                 <div className='sitemainInfo'>
+                    <img src='https://images.unsplash.com/photo-1689367436442-76c859315008?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z29sZCUyMGpld2VsbGVyeXxlbnwwfHwwfHx8MA%3D%3D' />
                     <div>
-                        <h1>5K+</h1>
-                        <p>Product Available</p>
+                        <div>
+                            <h1>5K+</h1>
+                            <p>Product Available</p>
+                        </div>
+                        <div>
+                            <h1>2K+</h1>
+                            <p>Product Reviews</p>
+                        </div>
+                        <div>
+                            <h1>4.5</h1>
+                            <p>Customer Rating</p>
+                        </div>
                     </div>
-                    <div>
-                        <h1>2K+</h1>
-                        <p>Product Reviews</p>
-                    </div>
-                    <div>
-                        <h1>4.5</h1>
-                        <p>Customer Rating</p>
-                    </div>
+                    <img src='https://images.unsplash.com/photo-1650455221359-3aebf920bcc5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z29sZCUyMGpld2VsbGVyeXxlbnwwfHwwfHx8MA%3D%3D' />
                 </div>
             </section>
 
@@ -199,11 +201,16 @@ export default function HomePage() {
                 <div>
                     <img src='https://media.istockphoto.com/id/1158583412/video/speaker-businessman-talking-at-webcam-making-conference-video-call.jpg?s=640x640&k=20&c=Yw2J5fFEW2wlbtUr7R_i_IQVANnas_wBtHyY-DFnnH0=' alt="CEO Talk" />
                     <div>
-                        <p>Watch our CEO share valuable insights, stories, and inspirations behind our exquisite jewelry collection. Discover the passion and craftsmanship that drives us to create unique pieces for jewelry enthusiasts like you.</p>
-                        <Link>
-                            <button>Explore Now</button>
-                        </Link>
-                        {/* <img  draggable='false' alt="CEO Background" /> */}
+                        <p>Watch our CEO share valuable insights, stories, and inspirations behind our exquisite jewelry collection. In this exclusive presentation, you'll delve into the heart of our brand, exploring the journey that has shaped us into the creators of some of the most stunning and unique jewelry pieces available today. Discover the passion and craftsmanship that drives us to create unique pieces for jewelry enthusiasts like you.</p>
+                        <h3>
+                            "Crafting dreams into timeless treasures."
+                        </h3>
+                        <div>
+                            <p>- Our CEO</p>
+                            <Link to='/about'>
+                                <span>Know More</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import SeperateItem from './components/SeperateItem'
 import Enquire from './components/Enquire'
 import CustomizeForm from './components/Forms/CustomizeForm';
+import ChitFundForm from './components/Forms/ChitFundForm';
 
 import mainLogo from './assets/homeImages/mainLogo2.svg'
 
@@ -46,18 +47,18 @@ function App () {
     <UserProvider>
       <BrowserRouter>
         {loading ? 
-        <div className='loaderDiv'>
-          <h1>GEETHA JEWELLERY</h1>
-          <MoonLoader
-            color={'#C18843'}
-            loading={loading}
-            size={90}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-          <img src={mainLogo}/>
-          <p>Since 1988</p>
-        </div>
+          <div className='loaderDiv'>
+            <h1>GEETHA JEWELLERY</h1>
+            <MoonLoader
+              color={'#C18843'}
+              loading={loading}
+              size={90}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+            <img src={mainLogo}/>
+            <p>Since 1988</p>
+          </div>
         :
           <>
             <ScrollToTop />
@@ -75,6 +76,7 @@ function App () {
 
               <Route path='/single/:id/:metal/enquire' Component={Enquire}></Route>
               <Route path='/chitfund' Component={Chitfund}></Route>
+              <Route path='/chitfund/enquire' Component={ChitFundForm}></Route>
 
               <Route path='/admin' Component={Admin}></Route>
               <Route path='/admin/price' Component={Price}></Route>

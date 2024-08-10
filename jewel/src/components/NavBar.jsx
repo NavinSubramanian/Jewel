@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Autosuggest from 'react-autosuggest';
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { IoPricetagsOutline, IoPersonOutline  } from "react-icons/io5";
 import { CiHeart, CiShoppingCart, CiSearch, CiLogout  } from "react-icons/ci";
 
-import mainLogo from '../assets/homeImages/mainLogo2.svg'
+import mainLogo from '../assets/homeImages/mainLogo3.png'
 import { height, ligatures } from '@fortawesome/free-solid-svg-icons/fa0'
 
 import {
@@ -48,17 +51,31 @@ export default function NavBar (props) {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
+    // Website URL
+
+    const website_url = 'http://localhost:3000/'; // Needs to be changed for the navigation to work
+
+
     /* References */
 
     const categRef = props.categRef
     const priceRef = props.priceRef
 
-    const categScroll = () => categRef.current.scrollIntoView()
-    const priceScroll = () => priceRef.current.scrollIntoView()
-
-    // Website URL
-
-    const website_url = 'localhost:3000'; // Needs to be changed for the navigation to work
+    const categScroll = () => {
+        if(window.location.href == website_url){
+            categRef.current.scrollIntoView();
+        }else{
+            nav('/')
+        }
+    }
+    const priceScroll = () => {
+        if(window.location.href == website_url){
+            priceRef.current.scrollIntoView();
+        }else{
+            nav('/')
+        }
+    }
 
     // Other Functions
 
@@ -156,6 +173,9 @@ export default function NavBar (props) {
     };
 
     const logoutFunction = () => {
+        toast.success("Logout Sucessfull", {
+            autoClose: 2000,
+        });
         logoutUser()
     }
 
@@ -238,7 +258,6 @@ export default function NavBar (props) {
 
                 <Link to='/'>
                     <img src={mainLogo} className='mainLogoWebsite' alt=""/>
-                    <p>Geetha Jewellers</p>
                 </Link>
 
                 <div className='navIcons'>
@@ -279,7 +298,7 @@ export default function NavBar (props) {
             </div>
             <div className={`bigMenuNav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className='navbar-links'>
-                <li className="navbar-dropdown">
+                    <li className="navbar-dropdown">
                         <a href="#">Gold</a>
                         <div className="dropdown">
                             {Object.keys(goldJewelTypes).map(category => (
@@ -353,6 +372,36 @@ export default function NavBar (props) {
                         <a href="/work">Join us</a>
                     </li>
                 </ul>
+                <div className='navIconsMobile'>
+                    <div onClick={categScroll}>
+                        <CiShoppingCart style={{ fontSize: '25px' }} />
+                        <h4>Shop</h4>
+                    </div>
+                    <div onClick={priceScroll}>
+                        <IoPricetagsOutline style={{ fontSize: '20px' }} />
+                        <h4>Prices</h4>
+                    </div>
+                    {user == null ? <>
+                            <div onClick={()=>{nav('/login')}}>
+                            <IoPersonOutline style={{fontSize:'22px'}} />
+                            <h4>Acount</h4>
+                            </div>
+                        </> : <>
+                            <div onClick={logoutFunction}>
+                                <CiLogout style={{fontSize:'22px'}} />
+                                <h4>Logout</h4>
+                            </div>
+                        </>
+                    }
+                    <div onClick={() => { nav('/profile'); }}>
+                        <CiHeart style={{ fontSize: '25px' }} />
+                        <h4>WishList</h4>
+                    </div>
+                    <div onClick={() => { nav('/about'); }}>
+                        <AiOutlineExclamationCircle style={{ fontSize: '22px' }} />
+                        <h4>About</h4>
+                    </div>
+                </div>
             </div>
         </nav>
     );

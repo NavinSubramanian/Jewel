@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../UserContext';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import '../App.css';
@@ -33,8 +36,16 @@ const Login = () => {
             if (response.data.success) {
                 loginUser({ email, token: response.data.token });
                 navigate('/profile'); // Navigate to profile page after successful login
+
+                toast.success("Login Sucessfull", {
+                    autoClose: 2000,
+                });
             }
         } catch (error) {
+            toast.error("Login Error", {
+                autoClose: 2000,
+            });
+
             if (error.response && error.response.data) {
                 setError(error.response.data.message);
             } else {
@@ -63,7 +74,7 @@ const Login = () => {
                         <div className="or">
                             <span>Or</span>
                         </div>
-                        <input type="email" placeholder="Enter Mail Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <input type="email" placeholder="Enter Mail Address" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="on" name='email' required />
                         <input type="password" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} required />
                         {error && <p className="error">{error}</p>}
                         <button type="submit" className="login-btn">Sign in</button>

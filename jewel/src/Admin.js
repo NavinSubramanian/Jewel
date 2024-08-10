@@ -32,15 +32,6 @@ const Admin = () => {
                         <Link style={{ color: 'white', textDecoration: 'none' }} to='/admin/newprod'>Enter</Link>
                     </button>
                 </div>
-
-                <div className="flex-item">
-                    <img className="item1" src='https://cdni.iconscout.com/illustration/premium/thumb/dashboard-4439194-3726403.png?f=webp' />
-                    <p className="item-body">Dashboard</p>
-                    <p className="item-stat">Swiftly access all the user details, upto date and edit the details when needed for the changes.</p>
-                    <button className='button2' style={{ backgroundColor: '#333' }}>
-                        <Link style={{ color: 'white', textDecoration: 'none' }} to='/dashboard'>Enter</Link>
-                    </button>
-                </div>
             </div>
 
 

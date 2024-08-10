@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -45,10 +47,11 @@ const ImageGallery = ({ images }) => {
   }
 
   return (
-    <GalleryContainer>
-      <Thumbnails>
+    <GalleryContainer className='imageGalleryMain'>
+      <Thumbnails className='allThumbnails'>
         {images.map((image, index) => (
           <Thumbnail
+            className='eachThumbnailMain'
             key={index}
             src={image}
             alt={`Thumbnail ${index + 1}`}
@@ -57,7 +60,7 @@ const ImageGallery = ({ images }) => {
           />
         ))}
       </Thumbnails>
-      <MainImage src={selectedImage} alt="Selected" />
+      <MainImage src={selectedImage} alt="Selected" className='selectedMainImage' />
     </GalleryContainer>
   );
 };

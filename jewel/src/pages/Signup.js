@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import '../App.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../App.css';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+
 import { UserContext } from '../UserContext';
 
 const Signup = () => {
@@ -65,11 +70,12 @@ const Signup = () => {
         try {
             const response = await axios.post('http://localhost:5000/verify-otp', { email, otp, password });
             if (response.data.success) {
-                alert('User verified and created successfully');
+                toast.success("Successfully Created User");
                 navigate("/login")
-                // Redirect or clear the form
             }
         } catch (error) {
+            toast.error("Error In Signing Up");
+
             if (error.response && error.response.data) {
                 setError(error.response.data.message);
             } else {
@@ -103,7 +109,7 @@ const Signup = () => {
                 <div className="right-side">
                     {!isOtpSent ? (
                         <form onSubmit={handleSignup} autocomplete="on">
-                            <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="on" name='email' />
                             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                             <input type="password" placeholder="Re-Enter Password" value={password2} onChange={(e) => setPassword2(e.target.value)} required />
                             <button className='login-btn' type="submit">Sign Up</button>

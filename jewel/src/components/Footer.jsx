@@ -3,14 +3,19 @@ import React from "react"
 import { faFacebookF, faXTwitter, faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { useNavigate } from "react-router-dom"
+
 export default function Footer () {
+
+    const nav = useNavigate();
+
     return(
         <footer>
             <div className="topFooter">
                 <div className="lefttopFooter">
                     <div>
-                        <h2>Your Name</h2>
-                        <p>This is a demo tag needed to be replaced afterwords.</p>
+                        <h2>Geetha Jewellers</h2>
+                        <p>passionate about crafting timeless jewelry that honors life's special moments.</p>
                     </div>
                     <div className="footerLogos">
                         <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
@@ -22,22 +27,22 @@ export default function Footer () {
                 <div className="righttopFooter">
                     <div>
                         <h4 style={{fontWeight:'600', marginBottom:'6px'}}>About us</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Our shop</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Services</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Contact</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/about')}>Our shop</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/about')}>Services</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/about')}>Contact</h4>
                     </div>
                     <div>
                         <h4 style={{fontWeight:'600', marginBottom:'6px'}}>FAQ</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Chit schemes</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Custom Jewellery</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>More details</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/chitfund')}>Chit schemes</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/custom')}>Custom Jewellery</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/about')}>More details</h4>
                     </div>
                     <div>
                         <h4 style={{fontWeight:'600', marginBottom:'6px'}}>Products</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Categories</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Men's wear</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Women's wear</h4>
-                        <h4 style={{fontSize:'15px',fontWeight:'200'}}>Material type</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/')}>Categories</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/pro/gold')}>Gold Jewellery</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/pro/silver')}>Silver Jewellery</h4>
+                        <h4 style={{fontSize:'15px',fontWeight:'200'}} onClick={()=>nav('/pro/platinum')}>Platinum Jewellery</h4>
                     </div>
                 </div>
             </div>
