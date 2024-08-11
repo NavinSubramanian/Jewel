@@ -29,8 +29,8 @@ body{
   /* --maincolorlight: #ffe3c2; */
   --subcolor: #0E343D;
 
-  --headclamp: clamp(20px, 7vw, 60px);
-  --lineclamp: clamp(5px, 7vw, 50px);
+  --headclamp: clamp(25px, 10vw, 60px);
+  --lineclamp: clamp(10px, 10vw, 50px);
 }
 
 /* Components */
@@ -419,6 +419,15 @@ body{
     height: auto;
     display: flex;
   }
+
+  .dropdown{
+    flex-wrap: wrap;
+    column-gap: 20px;
+    font-size: small;
+  }
+  .navbar-links li.navbar-dropdown .dropdown a{
+    padding: 3px 0;
+  }
 }
 
 /* Footer component */
@@ -535,6 +544,11 @@ footer>hr{
   }
 }
 
+@media (max-width:600px){
+  .bottomFooter>h4{
+    font-size: 10px;
+  }
+}
 
 /* Seperate Item */
 
@@ -1047,8 +1061,8 @@ footer>hr{
   position: relative;
   font-family: var(--mainfont);
   color: var(--maincolor);
-  font-size: clamp(20px, 10vw, 90px);
-  line-height: clamp(30px, 8vw, 100px);
+  font-size: clamp(25px, 13vw, 70px);
+  line-height: var(--lineclamp);
   font-weight: 100;
 }
 .leftLand>h4{
@@ -1091,6 +1105,16 @@ footer>hr{
   height: clamp(50%, 50vw, 110%);
   position: absolute;
 }
+
+@media (max-width:900px){
+  .leftLand>h1::before{
+    display: none;
+  }
+  .leftLand>h1::after{
+    display: none;
+  }
+}
+
 @media (max-width:520px){
   .rightLand{
     top: 20px;
@@ -1106,19 +1130,13 @@ footer>hr{
   }
   .landSection{
     height: 50vh;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
   .rightLand>img{
     height: clamp(50%, 55vw, 100%);
     left: -25px !important;
   }
-  .leftLand>h1::before{
-    font-size: 11px;
-    top: -20px;
-  }
-  .leftLand>h1::after{
-    top: -10px;
-  }
+  
 }
 
 
@@ -1519,7 +1537,7 @@ footer>hr{
     bottom: -200px;
   }
 }
-@media (max-width:500px){
+@media (max-width:600px){
   .traditionalCared{
     flex-direction: column;
   }
@@ -1695,7 +1713,7 @@ footer>hr{
 .ceotalkSection>div>div>div>a:hover{
   letter-spacing: 3px;
 }
-@media (max-width:770px){
+@media (max-width:965px){
   .ceotalkSection>div{
     flex-direction: column;
   }
@@ -1772,6 +1790,14 @@ footer>hr{
   .shopCategories>h1{
     margin-bottom: 10px;
   }
+  .shopCategories{
+    padding: 10px 20px;
+  }
+  .shopCategories>div>a>div>img{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+  }
 }
 
 
@@ -1813,31 +1839,7 @@ footer>hr{
   height: 300px;
 }
 
-.textAbout {
-  flex: 1;
-  max-width: 600px;
-  padding-right: 20px; 
-}
-.textAbout>h1{
-  border-left: 3px solid var(--maincolor);
-  padding-left: 6px;
-  font-family: var(--subfont);
-  font-weight: 800;
-  color: var(--maincolor);
-  font-size: 15px;
-}
-.textAbout > h2{
-  font-family: var(--mainfont);
-  font-size: 40px;
-  font-weight: 100;
-  line-height: 40px;
-  margin: 10px 0;
-  color: var(--maincolor);
-}
-.textAbout > p {
-  font-family: var(--subfont);
-  margin-top: 20px;
-}
+
 
 .custom_btn {
   background-color: var(--maincolor); 
@@ -2119,6 +2121,32 @@ footer>hr{
   margin-left: 80px;
 }
 
+.textAbout {
+  flex: 1;
+  max-width: 600px;
+  padding-right: 20px; 
+}
+.textAbout>h1{
+  border-left: 3px solid var(--maincolor);
+  padding-left: 6px;
+  font-family: var(--subfont);
+  font-weight: 800;
+  color: var(--maincolor);
+  font-size: 15px;
+}
+.textAbout > h2{
+  font-family: var(--mainfont);
+  font-size: 40px;
+  font-weight: 100;
+  line-height: 40px;
+  margin: 10px 0;
+  color: var(--maincolor);
+}
+.textAbout > p {
+  font-family: var(--subfont);
+  margin-top: 20px;
+}
+
 .about {
   max-width: 40%;
   margin-left: 40%;
@@ -2218,16 +2246,6 @@ footer>hr{
   height: 350px;
 }
 
-@media (max-width:680px){
-  .about_container4>div{
-    flex-direction: column;
-  }
-  .about_container1 iframe{
-    width: 100%;
-    height: 100%;
-  }
-}
-
 @media (max-width:1290px){
   .about_container3{
     flex-direction: column;
@@ -2235,7 +2253,6 @@ footer>hr{
     row-gap: 50px;
   }
 }
-
 
 @media (max-width:950px){
   .about_container1, .about_container2{
@@ -2246,6 +2263,25 @@ footer>hr{
   }
   .about_container2{
     flex-direction: column-reverse;
+  }
+}
+
+@media (max-width:680px){
+  .about_container4>div{
+    flex-direction: column;
+  }
+  .about_container1 iframe{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width:600px){
+  .textAbout{
+    padding-left: 20px;
+  }
+  .about2p{
+    padding-left: 20px;
   }
 }
 
@@ -2325,6 +2361,12 @@ footer>hr{
 @media (max-width:640px){
   .workwithusImage{
     width: 90%;
+  }
+}
+
+@media (max-width:600px){
+  .workWithImage{
+    width: 60% !important;
   }
 }
 
@@ -2557,6 +2599,9 @@ footer>hr{
   text-transform: capitalize;
 }
 
+
+
+
 /* Chitfund Page */
 
 
@@ -2695,9 +2740,17 @@ footer>hr{
   .chitPlanRight{
     width: 360px;
   }
+  
 }
 
-
+@media (max-width:425px){
+  .chitPlanRight{
+    width: 280px;
+  }
+  .chitTable{
+    overflow-x: auto;
+  }
+}
 
 
 

@@ -299,7 +299,7 @@ export default function NavBar (props) {
             <div className={`bigMenuNav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className='navbar-links'>
                     <li className="navbar-dropdown">
-                        <a href="#">Gold</a>
+                        <a>Gold</a>
                         <div className="dropdown">
                             {Object.keys(goldJewelTypes).map(category => (
                                 <div key={category}>
@@ -312,7 +312,7 @@ export default function NavBar (props) {
                         </div>
                     </li>
                     <li className="navbar-dropdown">
-                        <a href="#">Silver</a>
+                        <a>Silver</a>
                         <div className="dropdown">
                             {Object.keys(silverJewelTypes).map(category => (
                                 <div key={category}>
@@ -325,7 +325,7 @@ export default function NavBar (props) {
                         </div>
                     </li>
                     <li className="navbar-dropdown">
-                        <a href="#">Platinum</a>
+                        <a>Platinum</a>
                         <div className="dropdown">
                             {Object.keys(platinumJewelTypes).map(category => (
                                 <div key={category}>
@@ -338,7 +338,7 @@ export default function NavBar (props) {
                         </div>
                     </li>
                     <li className="navbar-dropdown">
-                        <a href="#">Coins</a>
+                        <a>Coins</a>
                         <div className="dropdown">
                             <div>
                                 <h4>Gold</h4>

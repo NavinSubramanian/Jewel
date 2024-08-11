@@ -72,7 +72,7 @@ const Work = () => {
                 </p>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <img style={{ marginTop: '50px', width: '40%' }} src={w} alt='work' />
+                <img style={{ marginTop: '50px', width: '40%' }} src={w} alt='work' className='workWithImage'/>
             </div>
 
             <div>
@@ -96,7 +96,7 @@ const Work = () => {
                     </div>
 
                     <div>
-                        <button style={{ backgroundColor: '#C18843', border: 'none', color: 'white', height: '40px', width: '30%', marginTop: '50px', borderRadius: '8px' }}>Contact +91 73971 84803</button>
+                        <button style={{ backgroundColor: '#C18843', border: 'none', color: 'white',padding:'0 10px', height: '40px', width: 'auto', marginTop: '50px', borderRadius: '8px' }}>Contact +91 73971 84803</button>
                         <p style={{fontWeight:300,marginTop:'5px'}}>* For more info</p>
                     </div>
                 </div>
