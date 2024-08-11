@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const mysql2 = require("mysql2/promise"); // Using promise version for async/await support
 const mysql = require("mysql2"); // Using promise version for async/await support
 const nodemailer = require("nodemailer");
