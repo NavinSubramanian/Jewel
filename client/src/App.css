@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Calmius Sans High';
+  src: url('./fonts/CalmiusSans-High.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -1085,8 +1092,12 @@ footer>hr{
   position: absolute;
 }
 @media (max-width:520px){
+  .rightLand{
+    top: 20px;
+  }
   .leftLand{
     padding: 0 10px;
+    top: 20px;
     justify-content: flex-start;
   }
   .leftLand>h4{
@@ -1095,10 +1106,18 @@ footer>hr{
   }
   .landSection{
     height: 50vh;
+    margin-bottom: 10px;
   }
   .rightLand>img{
     height: clamp(50%, 55vw, 100%);
     left: -25px !important;
+  }
+  .leftLand>h1::before{
+    font-size: 11px;
+    top: -20px;
+  }
+  .leftLand>h1::after{
+    top: -10px;
   }
 }
 
@@ -1148,6 +1167,7 @@ footer>hr{
   display: flex;
   position: relative;
   bottom: 50px;
+  text-align: center;
   column-gap: 100px;
   height: 50%;
   margin: auto 0;
@@ -1190,6 +1210,14 @@ footer>hr{
   }
 }
 
+@media (max-width:600px){
+  .sitemainInfo>div{
+    column-gap: 20px;
+  }
+  .sitemainInfo>div>div:not(:last-child)::after{
+    right: -6px;
+  }
+}
 
 
 
@@ -1395,6 +1423,12 @@ footer>hr{
   .discoverBottom>div>a>button{
     padding: 4px;
     font-size: 10px;
+  }
+}
+
+@media (max-width:455px){
+  .dicoverSection{
+    height: 90vh;
   }
 }
 
@@ -3014,6 +3048,13 @@ footer>hr{
 .emptyProfile>h3{
   font-weight: 400;
 }
+
+@media (max-width:540px){
+  .emptyProfile>img{
+    width: 100%;
+  }
+}
+
 
 /* Login Page */
 
