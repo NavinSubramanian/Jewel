@@ -70,7 +70,7 @@ const SeperateItem = () => {
     let nav = useNavigate();
 
     const enquireForm = () => {
-        nav(`https://jewelbackend.vercel.app/single/${id}/${metal}/enquire`);
+        nav(`/single/${id}/${metal}/enquire`);
     };
 
     const isFavourite = user?.favourites?.includes(id);

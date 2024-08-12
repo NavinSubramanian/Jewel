@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
+
+/* Other Imports */
+
+
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,6 +30,49 @@ import Category2 from './assets/homeImages/category2.png';
 import Category3 from './assets/homeImages/category3.png';
 import Category4 from './assets/homeImages/category4.png';
 import SiteInfoImage from './assets/homeImages/siteInfoImage.png';
+
+
+/* FOR MUI */
+
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+const images = [
+  {
+    label: 'Look for your style',
+    desc: 'Explore the unique world of our jewelry collection.',
+    link: `bruh`,
+    imgPath: `${ImageHome1}`
+  },
+  {
+    label: 'Custom jewellery piece',
+    desc: 'Every jewelry should tell a unique. Customize it to make it special!',
+    imgPath: `${ImageHome2}`,
+    link: '/custom'
+  },
+  {
+    label: 'Invest on Schemes',
+    desc: `Got a piece of jewelry you'd love to have? Save now to buy later!`,
+    imgPath: `${ImageHome3}`,
+    link: '/chitfund'
+  },
+];
 
 export default function HomePage() {
     const [goldPrice, setGoldPrice] = useState(0);
@@ -64,6 +111,23 @@ export default function HomePage() {
         }
         fetchRates();
     }, []);
+
+
+    const theme = useTheme();
+    const [activeStep, setActiveStep] = React.useState(0);
+    const maxSteps = images.length;
+
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleStepChange = (step) => {
+        setActiveStep(step);
+    };
 
 
     return (
@@ -147,6 +211,74 @@ export default function HomePage() {
                         <p>Got a piece of jewelry you'd love to have? Save now to buy later!</p>
                         <Link to='/chitfund'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
+                </div>
+
+                <div className='discoverBottomMobile'>
+                    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+                        <Paper
+                            square
+                            elevation={0}
+                            sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            height: 50,
+                            pl: 2,
+                            bgcolor: 'background.default',
+                            }}
+                        >
+                        </Paper>
+                        <AutoPlaySwipeableViews
+                            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                            index={activeStep}
+                            onChangeIndex={handleStepChange}
+                            enableMouseEvents
+                        >
+                            {images.map((step, index) => (
+                            <div key={step.label}>
+                                {Math.abs(activeStep - index) <= 2 ? (
+                                <Box
+                                    component="img"
+                                    sx={{
+                                    height: 255,
+                                    display: 'block',
+                                    maxWidth: 200,
+                                    overflow: 'hidden',
+                                    width: '100%',
+                                    margin: '0 auto'
+                                    }}
+                                    src={step.imgPath}
+                                    alt={step.label}
+                                />
+                                ) : null}
+                            </div>
+                            ))}
+                        </AutoPlaySwipeableViews>
+                        <Typography sx={{
+                            textAlign:'center',
+                            fontSize: '25px',
+                            color: '#C18843',
+                            fontFamily: 'Calmius Sans High'
+                            }}>{images[activeStep].label}</Typography>
+                        <Typography sx={{
+                            textAlign:'center',
+                            fontSize: '14px',
+                            maxWidth: '250px',
+                            margin: '0 auto',
+                            color: '#C18843',
+                            fontFamily: 'Karla',
+                            fontWeight: '300',
+                            marginTop: '10px'
+                            }}>{images[activeStep].desc}</Typography>
+                        <MobileStepper
+                            steps={maxSteps}
+                            position="static"
+                            activeStep={activeStep}
+                            sx={{
+                                margin: '0 auto',
+                                color: '#C18843',
+                            }}
+                        />
+                    </Box>
                 </div>
             </section>
 
