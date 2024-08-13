@@ -95,8 +95,8 @@ export default function HomePage() {
                 const response2 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/gold`);
               //   const response3 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/diamond`);
               //   const response4 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/platinum`);
-                const rate1 = response.data.rates;
-                const rate2 = response2.data.rates;
+                const rate1 = response2.data.rates;
+                const rate2 = response.data.rates;
               //   const rate3 = response3.data.rates;
               //   const rate4 = response4.data.rates;
                 setGoldPrice(rate1);
@@ -171,14 +171,14 @@ export default function HomePage() {
                 <div>
                     <div>
                         <img src={GoldPriceImage} draggable='false' alt="Gold Price" />
-                        <div style={{ left: '20%', top: '35%' }}>
+                        <div style={{ left: '10%', top: '35%' }}>
                             <h2>{goldPrice}</h2>
                             <h6>/gm</h6>
                         </div>
                     </div>
                     <div>
                         <img src={SilverPriceImage} draggable='false' alt="Silver Price" />
-                        <div style={{ left: '60%', top: '35%' }}>
+                        <div style={{ left: '50%', top: '35%' }}>
                             <h2>{silverPrice}</h2>
                             <h6>/gm</h6>
                         </div>

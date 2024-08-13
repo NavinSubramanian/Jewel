@@ -1464,7 +1464,6 @@ footer>hr{
   .dicoverSection{
     row-gap: 10px;
     height: auto;
-    max-height: 120vh;
   }
 }
 
@@ -1477,7 +1476,7 @@ footer>hr{
 
 @media (max-width:455px){
   .dicoverSection{
-    height: 90vh;
+    height: auto;
   }
 }
 
@@ -1580,7 +1579,7 @@ footer>hr{
 }
 @media (max-width:500px){
   .traditionalCared{
-    min-height: 60vh;
+    min-height: 70vh;
   }
 }
 

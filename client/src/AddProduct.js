@@ -44,6 +44,10 @@ const AddProduct = () => {
             return;
         }
 
+        if(metal != 'Gold' || metal != 'Coins'){
+            setCarat("22")  // Placeholder Value
+        }
+
         const productData = {
             productName,
             productDesc,
@@ -60,7 +64,7 @@ const AddProduct = () => {
         };
 
         try {
-            await axios.post('http://localhost:5000/addproduct', productData);
+            await axios.post('https://jewelbackend.vercel.app/addproduct', productData);
             setSuccessMessage('Product added successfully');
             alert("Product added");
             if (!addAnother) {
@@ -204,7 +208,7 @@ const AddProduct = () => {
                                 <option value="Gold">Gold</option>
                                 <option value="Silver">Silver</option>
                                 <option value="Platinum">Platinum</option>
-                                <option value="Diamond">Diamond</option>
+                                <option value="Coins">Coins</option>
                             </select>
                             {errors.metal && <p>{errors.metal}</p>}
                         </div>
@@ -212,7 +216,7 @@ const AddProduct = () => {
                 </div>
 
                 {/* New Carat Field (conditionally rendered) */}
-                {(metal === 'Gold' || metal === 'Diamond') && (
+                {(metal === 'Gold' || metal === 'Coins') && (
                     <div className="form-container">
                         <div className="form-item">
                             <label htmlFor='carat'>Carat:</label>

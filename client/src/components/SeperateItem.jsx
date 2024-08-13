@@ -127,7 +127,7 @@ const SeperateItem = () => {
                         <p>Metal: {details.metal}</p>
                         <p>Purity: {details.carat}</p>
                         <p>Gram rate: {rate}</p>
-                        <p>Sizes: {details.size}</p>
+                        {/* <p>Sizes: {details.size}</p> */}
                         <p>Weight: {details.weight}</p>
                     </div>
                 </div>
@@ -147,15 +147,19 @@ const SeperateItem = () => {
                             </td>
                             <td data-cell="Price">{rate} per gram</td>
                         </tr>
-                        <tr>
-                            <td data-cell="Name">Stone</td>
-                            <td data-cell="Attribute">
-                                <div>
-                                    <span>Purity</span>
-                                </div>
-                            </td>
-                            <td data-cell="Purity">{details.carat} carat</td>
-                        </tr>
+                        {details.metal == 'Gold' || details.metal == 'Coins' ?
+                            <tr>
+                                <td data-cell="Name">Stone</td>
+                                <td data-cell="Attribute">
+                                    <div>
+                                        <span>Purity</span>
+                                    </div>
+                                </td>
+                                <td data-cell="Purity">{details.carat} carat</td>
+                            </tr>
+                        :
+                            <></>
+                        }
                         <tr>
                             <td data-cell="Name">Production</td>
                             <td data-cell="Attribute">
