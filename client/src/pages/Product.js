@@ -65,6 +65,12 @@ const Product = () => {
         setShowWeightPopup(false);
     };
 
+    const disablePopup = () => {
+        setShowWeightPopup(false);
+        setShowCategoryPopup(false);
+        setShowPricePopup(false);
+    }
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -273,7 +279,13 @@ const Product = () => {
                 <div className='prod_filter'>
                     <p style={{ color: 'grey' }}>SORT BY:</p>
                     <div style={{ position: 'relative' }}>
-                        <p onMouseEnter={toggleCategoryPopup} style={{ cursor: 'pointer' }}>Category</p>
+                        <p  onMouseEnter={toggleCategoryPopup} 
+                            onFocus={toggleCategoryPopup}
+                            // onBlur={disablePopup}
+                            // onMouseLeave={disablePopup}
+                            style={{ cursor: 'pointer' }}>
+                                Category
+                        </p>
                         {showCategoryPopup && (
                             <div className='filterPopups' onMouseLeave={closePopup}>
                                 {Object.keys(categories).map(category => (
@@ -298,7 +310,13 @@ const Product = () => {
                         )}
                     </div>
                     <div style={{ position: 'relative' }}>
-                        <p onMouseEnter={toggleWeightPopup} style={{ cursor: 'pointer' }}>Weight Range</p>
+                        <p  onMouseEnter={toggleWeightPopup} 
+                            onFocus={toggleWeightPopup}
+                            // onMouseLeave={disablePopup}
+                            // onBlur={disablePopup}
+                            style={{ cursor: 'pointer' }}>
+                                Weight Range
+                        </p>
                         {showWeightPopup && (
                             <div className='filterWeightPopups' onMouseLeave={closePopup}>
                                 {weightRangeOptions.map((range) => (
@@ -317,7 +335,13 @@ const Product = () => {
                         )}
                     </div>
                     <div style={{ position: 'relative' }}>
-                        <p onMouseEnter={togglePricePopup} style={{ cursor: 'pointer' }}>Price</p>
+                        <p  onMouseEnter={togglePricePopup}
+                            onFocus={togglePricePopup}
+                            // onMouseLeave={disablePopup}
+                            // onBlur={disablePopup}
+                            style={{ cursor: 'pointer' }}>
+                                Price
+                        </p>
                         {showPricePopup && (
                             <div className='filterPricePopups' onMouseLeave={closePopup}>
                                 {priceRangeOptions.map((range) => (

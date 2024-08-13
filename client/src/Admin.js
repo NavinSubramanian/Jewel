@@ -1,7 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from './UserContext';
 
 const Admin = () => {
+
+    const { user } = useContext(UserContext);
+    const nav = useNavigate();
+
+    useEffect(()=>{
+        try{
+            if(user.email != 'admin@gmail'){
+                nav('/');
+            }
+        }
+        catch{
+            nav('/');
+        }
+    },[])
+
     return (
         <div>
             <div className='admin-top'>

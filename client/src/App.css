@@ -1125,6 +1125,12 @@ footer>hr{
   }
 }
 
+@media (max-width:600px){
+  .leftLand{
+    padding: 0 20px;
+  }
+}
+
 @media (max-width:520px){
   .rightLand{
     top: 20px;
@@ -1570,6 +1576,11 @@ footer>hr{
   .traditionalImage>img{
     bottom: 0;
     right: -500px;
+  }
+}
+@media (max-width:500px){
+  .traditionalCared{
+    min-height: 60vh;
   }
 }
 
@@ -2664,6 +2675,7 @@ footer>hr{
 @media (max-width:550px){
   .prod_display{
     display: grid;
+    padding: 0 5px;
     grid-template-columns: auto auto;
   }
   .itemBox>div>img{
