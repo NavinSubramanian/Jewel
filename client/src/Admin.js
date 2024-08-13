@@ -8,14 +8,14 @@ const Admin = () => {
     const nav = useNavigate();
 
     useEffect(()=>{
-        try{
-            if(user.email != 'admin@gmail'){
-                nav('/');
-            }
-        }
-        catch{
-            nav('/');
-        }
+        // try{
+        //     if(user.email != 'admin@gmail'){
+        //         nav('/');
+        //     }
+        // }
+        // catch{
+        //     nav('/');
+        // }
     },[])
 
     return (

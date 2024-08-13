@@ -369,19 +369,31 @@ app.post("/chitenquire", async (req, res) => {
 
 // Existing endpoints
 app.post("/gr", async (req, res) => {
-    const { metal, rate } = req.body;
+    const { gold_rate, silver_rate } = req.body;
     const date = new Date().toISOString().slice(0, 10);
 
     try {
-        const [rows] = await pool.query('SELECT * FROM gold_rate WHERE date = ? AND metal = ?', [date, metal]);
-
-        if (rows.length > 0) {
-            await pool.query('UPDATE gold_rate SET rates = ? WHERE date = ? AND metal = ?', [rate, date, metal]);
-            res.json({ message: 'Rate updated successfully' });
-        } else {
-            await pool.query('INSERT INTO gold_rate (date, metal, rates) VALUES (?, ?, ?)', [date, metal, rate]);
-            res.json({ message: 'Rate inserted successfully' });
+        // Check if a record for the date already exists for gold
+        if (gold_rate !== undefined) {
+            const [goldRows] = await pool.query('SELECT * FROM gold_rate WHERE date = ? AND metal = ?', [date, 'gold']);
+            if (goldRows.length > 0) {
+                await pool.query('UPDATE gold_rate SET rates = ? WHERE date = ? AND metal = ?', [gold_rate, date, 'gold']);
+            } else {
+                await pool.query('INSERT INTO gold_rate (date, metal, rates) VALUES (?, ?, ?)', [date, 'gold', gold_rate]);
+            }
         }
+
+        // Check if a record for the date already exists for silver
+        if (silver_rate !== undefined) {
+            const [silverRows] = await pool.query('SELECT * FROM gold_rate WHERE date = ? AND metal = ?', [date, 'silver']);
+            if (silverRows.length > 0) {
+                await pool.query('UPDATE gold_rate SET rates = ? WHERE date = ? AND metal = ?', [silver_rate, date, 'silver']);
+            } else {
+                await pool.query('INSERT INTO gold_rate (date, metal, rates) VALUES (?, ?, ?)', [date, 'silver', silver_rate]);
+            }
+        }
+
+        res.json({ message: 'Rate updated or inserted successfully' });
     } catch (error) {
         console.error("Error updating or inserting rate:", error);
         res.status(500).json({ message: 'Failed to update or insert rate' });

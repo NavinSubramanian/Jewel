@@ -13,6 +13,10 @@ const AddProduct = () => {
     const [image3, setImage3] = useState('');
     const [image4, setImage4] = useState('');
 
+    // New states for Metal and Carat
+    const [metal, setMetal] = useState('');
+    const [carat, setCarat] = useState('');
+
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -25,6 +29,10 @@ const AddProduct = () => {
         if (!price) newErrors.price = 'Product price is required';
         if (!weight) newErrors.weight = 'Product weight is required';
         if (!image1) newErrors.image1 = 'At least one image link is required';
+        if (!metal) newErrors.metal = 'Metal selection is required';
+        if ((metal === 'Gold' || metal === 'Diamond') && !carat) {
+            newErrors.carat = 'Carat is required for Gold and Diamond';
+        }
         return newErrors;
     };
 
@@ -47,18 +55,20 @@ const AddProduct = () => {
             image2,
             image3,
             image4,
+            metal,
+            carat,
         };
 
         try {
-            await axios.post('https://jewelbackend.vercel.app/addproduct', productData);
+            await axios.post('http://localhost:5000/addproduct', productData);
             setSuccessMessage('Product added successfully');
-            alert("procuct added")
+            alert("Product added");
             if (!addAnother) {
                 resetForm();
             }
         } catch (error) {
-            alert(error)
             console.error('There was an error adding the product!', error);
+            alert('There was an error adding the product!');
             setSuccessMessage('Failed to add product');
         }
 
@@ -78,6 +88,8 @@ const AddProduct = () => {
         setImage2('');
         setImage3('');
         setImage4('');
+        setMetal('');
+        setCarat('');
         setErrors({});
     };
 
@@ -87,6 +99,7 @@ const AddProduct = () => {
             {successMessage && <p>{successMessage}</p>}
 
             <form onSubmit={(e) => handleSubmit(e, false)}>
+                {/* Existing fields */}
                 <div className="form-container">
                     <div className="form-item">
                         <label htmlFor='prod_name'>Product name:</label>
@@ -149,7 +162,7 @@ const AddProduct = () => {
 
                 <div className="form-container">
                     <div className="form-item">
-                        <label htmlFor='prod_price'>making price:</label>
+                        <label htmlFor='prod_price'>Making price:</label>
                         <div className="input-group">
                             <input
                                 className="form-field"
@@ -177,6 +190,50 @@ const AddProduct = () => {
                     </div>
                 </div>
 
+                {/* New Metal Field */}
+                <div className="form-container">
+                    <div className="form-item">
+                        <label htmlFor='metal'>Metal:</label>
+                        <div className="input-group">
+                            <select
+                                className="form-field"
+                                value={metal}
+                                onChange={(e) => setMetal(e.target.value)}
+                            >
+                                <option value="">Select Metal</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Platinum">Platinum</option>
+                                <option value="Diamond">Diamond</option>
+                            </select>
+                            {errors.metal && <p>{errors.metal}</p>}
+                        </div>
+                    </div>
+                </div>
+
+                {/* New Carat Field (conditionally rendered) */}
+                {(metal === 'Gold' || metal === 'Diamond') && (
+                    <div className="form-container">
+                        <div className="form-item">
+                            <label htmlFor='carat'>Carat:</label>
+                            <div className="input-group">
+                                <select
+                                    className="form-field"
+                                    value={carat}
+                                    onChange={(e) => setCarat(e.target.value)}
+                                >
+                                    <option value="">Select Carat</option>
+                                    <option value="18">18 Carat</option>
+                                    <option value="22">22 Carat</option>
+                                    <option value="24">24 Carat</option>
+                                </select>
+                                {errors.carat && <p>{errors.carat}</p>}
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Existing Image Fields */}
                 <div className="form-container">
                     <div className="form-item">
                         <label htmlFor='image1'>Image link 1:</label>
@@ -235,10 +292,10 @@ const AddProduct = () => {
                 </div>
 
                 <button type="submit">Save</button>
-                <button type="button" onClick={(e) => handleSubmit(e, true)}>Save and Add another</button>
+                <button type="button" onClick={(e) => handleSubmit(e, true)}>Save and Add Another</button>
             </form>
         </div>
     );
-}
+};
 
 export default AddProduct;

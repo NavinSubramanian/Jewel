@@ -3,7 +3,7 @@ import React from "react"
 import { faFacebookF, faXTwitter, faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Footer () {
 
@@ -18,10 +18,10 @@ export default function Footer () {
                         <p>passionate about crafting timeless jewelry that honors life's special moments.</p>
                     </div>
                     <div className="footerLogos">
-                        <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
-                        <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
-                        <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
-                        <FontAwesomeIcon icon={faLinkedinIn}></FontAwesomeIcon>
+                        <a href="https://www.google.com" target="_blank"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></a>
+                        <a href="https://www.google.com" target="_blank"><FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon></a>
+                        <a href="https://www.instagram.com/geethajewellers/" target="_blank"><FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon></a>
+                        <a href="https://www.google.com" target="_blank"><FontAwesomeIcon icon={faLinkedinIn}></FontAwesomeIcon></a>
                     </div>
                 </div>
                 <div className="righttopFooter">

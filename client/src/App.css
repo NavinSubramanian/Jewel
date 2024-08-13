@@ -492,7 +492,7 @@ footer>hr{
   display: flex;
   column-gap: 10px;
 }
-.footerLogos>svg{
+.footerLogos>a>svg{
   background-color: white;
   padding: 7px 9px;
   cursor: pointer;
@@ -500,7 +500,7 @@ footer>hr{
   border-radius: 50%;
   transition: 0.4s;
 }
-.footerLogos>svg:hover{
+.footerLogos>a>svg:hover{
   color: white;
   background-color: var(--maincolor);
   border: 1px solid white;

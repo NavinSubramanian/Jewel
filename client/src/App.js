@@ -36,7 +36,7 @@ function App () {
   const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
-    setLoading(false) // Need to change to true before publishing
+    setLoading(true) // Need to change to true before publishing
     // V.V.V.I.P
     setTimeout(()=>{
       setLoading(false)
@@ -48,7 +48,7 @@ function App () {
       <BrowserRouter>
         {loading ? 
           <div className='loaderDiv'>
-            <h1>GEETHA JEWELLERY</h1>
+            <h1>GEETHA JEWELLERS</h1>
             <MoonLoader
               color={'#C18843'}
               loading={loading}
