@@ -19,13 +19,13 @@ const Profile = () => {
     useEffect(() => {
         async function fetchUserDetails() {
             try {
-                const userDetailsResponse = await axios.get(`https://jewelbackend.vercel.app/user/${user.email}`);
+                const userDetailsResponse = await axios.get(`http://localhost:5000/user/${user.email}`);
                 const userFavourites = userDetailsResponse.data.favourites || [];
                 setFavourites(userFavourites);
 
                 // Fetch details for each favourite item
                 const productDetailsPromises = userFavourites.map(id =>
-                    axios.get(`https://jewelbackend.vercel.app/gp/${id}`)
+                    axios.get(`http://localhost:5000/gp/${id}`)
                 );
                 const products = await Promise.all(productDetailsPromises);
                 setFilteredItems(products.map(response => response.data[0])); // Assuming API returns array with one item
@@ -43,7 +43,7 @@ const Profile = () => {
         async function fetchGoldPrice() {
             try {
                 const today = new Date().toISOString().slice(0, 10);
-                const rateResponse = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/gold`);
+                const rateResponse = await axios.get(`http://localhost:5000/gr/${today}/gold`);
                 const { rates } = rateResponse.data;
                 setGoldPrice(rates);
             } catch (error) {

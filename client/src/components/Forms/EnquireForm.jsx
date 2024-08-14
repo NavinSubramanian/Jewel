@@ -24,7 +24,7 @@ const EnquireForm = ({ id,metal }) => {
     event.preventDefault()
     try {
       // console.log(customerName+" "+email)
-      await axios.post('https://jewelbackend.vercel.app/penquire', {
+      await axios.post('http://localhost:5000/penquire', {
         product_id: id,
         customer_name: customerName,
         customer_email: email,

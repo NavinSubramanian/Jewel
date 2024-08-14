@@ -64,7 +64,7 @@ const AddProduct = () => {
         };
 
         try {
-            await axios.post('https://jewelbackend.vercel.app/addproduct', productData);
+            await axios.post('http://localhost:5000/addproduct', productData);
             setSuccessMessage('Product added successfully');
             alert("Product added");
             if (!addAnother) {

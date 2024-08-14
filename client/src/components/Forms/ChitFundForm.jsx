@@ -26,7 +26,7 @@ const ChitFundForm = () => {
       event.preventDefault()
       try {
         // console.log(customerName+" "+email)
-        await axios.post('https://jewelbackend.vercel.app/chitenquire', {
+        await axios.post('http://localhost:5000/chitenquire', {
           customer_name: customerName,
           customer_email: email,
           customer_number: number,

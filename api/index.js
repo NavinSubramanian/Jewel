@@ -10,6 +10,7 @@ const fs = require("fs");
 const crypto = require('crypto');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+// const wbm = require('wbm');
 
 const app = express();
 
@@ -235,6 +236,13 @@ app.post("/enquire", upload.single('file'), async (req, res) => {
             'INSERT INTO cenquiries (customer_name, customer_email, description) VALUES (?, ?, ?)',
             [fullName, email, description]
         );
+
+        // wbm.start().then(async () => {
+        //     const phones = [`7904262162`]  // Reciever phone number
+        //     const message = 'Good Morning.';
+        //     await wbm.send(phones, message);
+        //     await wbm.end();
+        // }).catch(err => console.log(err));
 
         // Email options for admin
         const mailOptionsAdmin = {

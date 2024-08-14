@@ -52,7 +52,7 @@ const CustomizeForm = () => {
         data.append('file', formData.file);
 
         try {
-            await axios.post('https://jewelbackend.vercel.app/enquire', data);
+            await axios.post('http://localhost:5000/enquire', data);
             // alert('Enquiry submitted successfully');
             window.scrollTo({
                 top: 0,
