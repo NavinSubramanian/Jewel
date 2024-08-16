@@ -18,7 +18,7 @@ const Price = () => {
 
     const handleUpdatePrice = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/gr', {
+            const response = await axios.post('https://www.geethajewellers.in/api/gr', {
                 gold_rate: goldPrice,
                 silver_rate: silverPrice
             });

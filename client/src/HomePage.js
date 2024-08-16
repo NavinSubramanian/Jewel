@@ -91,14 +91,11 @@ export default function HomePage() {
                 const today = new Date().toISOString().slice(0, 10);
                 
                 // Make the API request with the date parameter
-                const response = await axios.get(`http://localhost:5000/gr/${today}/silver`);
-                const response2 = await axios.get(`http://localhost:5000/gr/${today}/gold`);
-              //   const response3 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/diamond`);
-              //   const response4 = await axios.get(`https://jewelbackend.vercel.app/gr/${today}/platinum`);
+                const response = await axios.get(`https://www.geethajewellers.in/api/gr/${today}/silver`);
+                const response2 = await axios.get(`https://www.geethajewellers.in/api/gr/${today}/gold`);
                 const rate1 = response2.data.rates;
                 const rate2 = response.data.rates;
-              //   const rate3 = response3.data.rates;
-              //   const rate4 = response4.data.rates;
+
                 setGoldPrice(rate1);
                 setSilverPrice(rate2);
             } catch (error) {
@@ -129,7 +126,7 @@ export default function HomePage() {
 
     return (
         <>
-            <NavBar categRef={categRef} priceRef={priceRef} />
+            <NavBar categRef={categRef} priceRef={priceRef} silverPrice={silverPrice} goldPrice={goldPrice} />
             <section className='landSection'>
                 <div className='leftLand'>
                     {/* <p>Welcome to Getha Jewelry</p> */}

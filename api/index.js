@@ -68,7 +68,7 @@ function generateOtp() {
     return otp;
 }
 
-app.post('/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -104,7 +104,7 @@ app.post('/signup', async (req, res) => {
 });
 
 // Verify OTP route
-app.post('/verify-otp', async (req, res) => {
+app.post('/api/verify-otp', async (req, res) => {
     const { email, otp, password } = req.body;
 
     try {
@@ -123,7 +123,7 @@ app.post('/verify-otp', async (req, res) => {
 });
 
 // Resend OTP route
-app.post('/resend-otp', async (req, res) => {
+app.post('/api/resend-otp', async (req, res) => {
     const { email } = req.body;
 
     try {
@@ -155,7 +155,7 @@ app.post('/resend-otp', async (req, res) => {
 
 // Add to Favourites
 // Add to Favourites
-app.post('/add-favourite', async (req, res) => {
+app.post('/api/add-favourite', async (req, res) => {
     const { email, productId } = req.body;
     
     try {
@@ -168,7 +168,7 @@ app.post('/add-favourite', async (req, res) => {
 });
 
 // Remove from Favourites
-app.post('/remove-favourite', async (req, res) => {
+app.post('/api/remove-favourite', async (req, res) => {
     const { email, productId } = req.body;
     
     try {
@@ -198,7 +198,7 @@ app.get('/user/:email', async (req, res) => {
 
 
 // Login route
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     console.log(email,password)
     try {
@@ -226,7 +226,7 @@ app.post('/login', async (req, res) => {
 
 
 // POST endpoint to handle enquiries
-app.post("/enquire", upload.single('file'), async (req, res) => {
+app.post("/api/enquire", upload.single('file'), async (req, res) => {
     const { fullName, number, email, description } = req.body;
     const file = req.file;
 
@@ -306,7 +306,7 @@ app.post("/enquire", upload.single('file'), async (req, res) => {
 });
 
 // POST endpoint to handle enquiries
-app.post("/penquire", async (req, res) => {
+app.post("/api/penquire", async (req, res) => {
     console.log(req.body)
     const { product_id, customer_name, customer_email, customer_number, description, metal } = req.body;
 
@@ -341,7 +341,7 @@ app.post("/penquire", async (req, res) => {
 });
 
 // POST endpoint to handle Chitfund
-app.post("/chitenquire", async (req, res) => {
+app.post("/api/chitenquire", async (req, res) => {
     console.log(req.body)
     const { customer_number, customer_name, customer_email, description } = req.body;
 
@@ -376,7 +376,7 @@ app.post("/chitenquire", async (req, res) => {
 });
 
 // Existing endpoints
-app.post("/gr", async (req, res) => {
+app.post("/api/gr", async (req, res) => {
     const { gold_rate, silver_rate } = req.body;
     const date = new Date().toISOString().slice(0, 10);
 
@@ -408,7 +408,7 @@ app.post("/gr", async (req, res) => {
     }
 });
 
-app.post("/addproduct", async (req, res) => {
+app.post("/api/addproduct", async (req, res) => {
     const { productName, productDesc, category, type, price, weight, image1, image2, image3, image4, carat, metal } = req.body;
 
     try {
@@ -425,7 +425,7 @@ app.post("/addproduct", async (req, res) => {
     }
 });
 
-app.get("/gr/:date/:metal", async (req, res) => {
+app.get("/api/gr/:date/:metal", async (req, res) => {
     const { date, metal } = req.params;
 console.log(metal)
     try {
@@ -447,7 +447,7 @@ console.log(metal)
 });
 
 
-app.get("/getproduct/:metal", (req, res) => {
+app.get("/api/getproduct/:metal", (req, res) => {
     const metal = req.params.metal;
 
     pool2.query("SELECT * FROM products WHERE metal = ?", [metal], (err, result) => {
@@ -462,7 +462,7 @@ app.get("/getproduct/:metal", (req, res) => {
 });
 
 
-app.get("/gp/:id", (req, res) => {
+app.get("/api/gp/:id", (req, res) => {
     const { id } = req.params
     pool2.query("select * from products where id=?", [id], (err, result) => {
         if (err) {
@@ -484,7 +484,7 @@ app.get("/gp/:id", (req, res) => {
 //         }
 //     })
 // })
-app.get("/gf/:metal", (req, res) => {
+app.get("/api/gf/:metal", (req, res) => {
     const { metal } = req.params;
     console.log(`Received request for metal: ${metal}`);
 
@@ -497,20 +497,21 @@ app.get("/gf/:metal", (req, res) => {
         }
     });
 }); 
-app.get("/search",async (req,res)=>{
+
+app.get("/api/search",async (req,res)=>{
     try{
-const response= await pool.query("select distinct name, id, metal from products");
-res.json(response[0])
+        const response= await pool.query("select distinct name, id, metal from products");
+        res.json(response[0])
     }
     catch(err){
         res.send(err)
     }
 })
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
-app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-});
+// app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
+// app.get('*',(req,res)=>{
+//     res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+// });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

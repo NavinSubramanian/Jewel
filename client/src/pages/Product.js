@@ -76,8 +76,8 @@ const Product = () => {
             try {
                 const today = new Date().toISOString().slice(0, 10);
                 const [rateResponse, itemsResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/gr/${today}/${metal}`),
-                    axios.get(`http://localhost:5000/getproduct/${metal}`)
+                    axios.get(`https://www.geethajewellers.in/api/gr/${today}/${metal}`),
+                    axios.get(`https://www.geethajewellers.in/api/getproduct/${metal}`)
                 ]);
                 const { rates } = rateResponse.data;
                 setGoldPrice(rates);

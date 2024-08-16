@@ -50,7 +50,7 @@ const Signup = () => {
             e.preventDefault();
             setError('');
             try {
-                const response = await axios.post('http://localhost:5000/signup', { email, password });
+                const response = await axios.post('https://www.geethajewellers.in/api/signup', { email, password });
                 if (response.data.success) {
                     setIsOtpSent(true);
                 }
@@ -68,7 +68,7 @@ const Signup = () => {
         e.preventDefault();
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/verify-otp', { email, otp, password });
+            const response = await axios.post('https://www.geethajewellers.in/api/verify-otp', { email, otp, password });
             if (response.data.success) {
                 toast.success("Successfully Created User");
                 navigate("/login")
@@ -87,7 +87,7 @@ const Signup = () => {
     const handleResendOtp = async () => {
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/resend-otp', { email });
+            const response = await axios.post('https://www.geethajewellers.in/api/resend-otp', { email });
             if (response.data.success) {
                 setTimer(600); // Reset timer to 10 minutes
                 setIsOtpSent(true);

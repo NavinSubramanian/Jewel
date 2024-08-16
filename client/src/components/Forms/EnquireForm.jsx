@@ -24,7 +24,7 @@ const EnquireForm = ({ id,metal }) => {
     event.preventDefault()
     try {
       // console.log(customerName+" "+email)
-      await axios.post('http://localhost:5000/penquire', {
+      await axios.post('https://www.geethajewellers.in/api/penquire', {
         product_id: id,
         customer_name: customerName,
         customer_email: email,

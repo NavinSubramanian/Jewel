@@ -64,7 +64,7 @@ const AddProduct = () => {
         };
 
         try {
-            await axios.post('http://localhost:5000/addproduct', productData);
+            await axios.post('https://www.geethajewellers.in/api/addproduct', productData);
             setSuccessMessage('Product added successfully');
             alert("Product added");
             if (!addAnother) {

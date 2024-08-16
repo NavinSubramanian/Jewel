@@ -23,7 +23,6 @@ export default function NavBar (props) {
 
     const isLoad = useState(false);
     const [goldPrice, setGoldPrice] = useState(0);
-    const [silverPrice, setSilverPrice] = useState(0);
     const [error, setError] = useState(null);
     const [showCategoryPopup, setShowCategoryPopup] = useState(false);
     const [showWeightPopup, setShowWeightPopup] = useState(false);
@@ -54,7 +53,7 @@ export default function NavBar (props) {
 
     // Website URL
 
-    const website_url = 'http://localhost:3000/'; // Needs to be changed for the navigation to work
+    const website_url = 'https://www.geethajewellers.in/'; // Needs to be changed for the navigation to work
 
 
     /* References */
@@ -82,7 +81,7 @@ export default function NavBar (props) {
     useEffect(() => {
         async function fetchJewelTypes(metal) {
             try {
-                const response = await axios.get(`http://localhost:5000/gf/${metal}`);
+                const response = await axios.get(`https://www.geethajewellers.in/api/gf/${metal}`);
                 const jewelTypes = response.data.reduce((acc, item) => {
                     if (!acc[item.category]) {
                         acc[item.category] = [];
@@ -113,35 +112,14 @@ export default function NavBar (props) {
         fetchJewelTypes('silver');
         fetchJewelTypes('platinum');
     }, []);
-    
-    useEffect(() => {
-        async function fetchRates() {
-            try {
-                const today = new Date().toISOString().slice(0, 10);
-                const [silverResponse, goldResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/gr/${today}/silver`),
-                    axios.get(`http://localhost:5000/gr/${today}/gold`)
-                ]);
-                setSilverPrice(silverResponse.data.rates);
-                setGoldPrice(goldResponse.data.rates);
-            } catch (error) {
-                console.error("There was an error fetching the rates!", error);
-                setError("Failed to fetch rates. Please try again later.");
-            }
-        }
-        fetchRates();
-    }, []);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const today = new Date().toISOString().slice(0, 10);
                 const [rateResponse, itemsResponse] = await Promise.all([
-                    axios.get(`http://localhost:5000/gr/${today}/gold`),
-                    axios.get(`http://localhost:5000/getproduct/gold`)
+                    axios.get(`https://www.geethajewellers.in/api/getproduct/gold`)
                 ]);
-                const { rates} = rateResponse.data;
-                setGoldPrice(rates);
+                setGoldPrice(props.goldPrice);
                 const items = itemsResponse.data;
                 setInitialItems(items);
                 setFilteredItems(items);
@@ -158,7 +136,7 @@ export default function NavBar (props) {
     useEffect(() => {
         async function fetchProductNames() {
             try {
-                const response = await axios.get('http://localhost:5000/search');
+                const response = await axios.get('https://www.geethajewellers.in/api/search');
                 setProductNames(response.data.map(row => row));
             } catch (error) {
                 console.error("There was an error fetching the product names!", error);
@@ -236,7 +214,7 @@ export default function NavBar (props) {
     return(
         <nav className='mainNav'>
             <div className='shopTimings'>
-                <marquee behavior="" direction="">Shop open from <span>8am to 11pm</span> on weekends.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span className='tab'></span> <span>Gold price: </span> {goldPrice} <span>Silver price: </span> {silverPrice}</marquee>
+                <marquee behavior="" direction="">Shop open from <span>8am to 11pm</span> on weekends.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span className='tab'></span> <span>Gold price: </span> {props.goldPrice} <span>Silver price: </span> {props.silverPrice}</marquee>
             </div>
             <div className='bottomNav'>
                 <div className='searchInputWeb'>

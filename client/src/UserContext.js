@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
         setCookie('user', userData, { path: '/' });
 
         // Fetch user details from the backend to get favourites
-        const response = await axios.get(`http://localhost:5000/user/${userData.email}`);
+        const response = await axios.get(`https://www.geethajewellers.in/api/user/${userData.email}`);
         setUser(response.data);
         setCookie('user', response.data, { path: '/' });
     };
@@ -33,7 +33,7 @@ export const UserProvider = ({ children }) => {
     const addToFavourites = async (productId) => {
         console.log(user)
         if (user) {
-            await axios.post('http://localhost:5000/add-favourite', { email: user.email, productId });
+            await axios.post('https://www.geethajewellers.in/api/add-favourite', { email: user.email, productId });
             const updatedUser = { ...user, favourites: [...user.favourites, productId] };
             setUser(updatedUser);
             setCookie('user', updatedUser, { path: '/' });
@@ -42,7 +42,7 @@ export const UserProvider = ({ children }) => {
 
     const removeFromFavourites = async (productId) => {
         if (user) {
-            await axios.post('http://localhost:5000/remove-favourite', { email: user.email, productId });
+            await axios.post('https://www.geethajewellers.in/api/remove-favourite', { email: user.email, productId });
             const updatedUser = { ...user, favourites: user.favourites.filter(id => id !== productId) };
             setUser(updatedUser);
             setCookie('user', updatedUser, { path: '/' });
