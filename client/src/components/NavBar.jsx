@@ -86,7 +86,9 @@ export default function NavBar (props) {
                     if (!acc[item.category]) {
                         acc[item.category] = [];
                     }
-                    acc[item.category].push(item.type);
+                    if(!acc[item.category].includes(item.type)){
+                        acc[item.category].push(item.type);
+                    }
                     return acc;
                 }, {});
                 switch(metal) {
@@ -236,6 +238,7 @@ export default function NavBar (props) {
 
                 <Link to='/'>
                     <img src={mainLogo} className='mainLogoWebsite' alt=""/>
+                    <img src="https://res.cloudinary.com/drcfl15mk/image/upload/v1724939724/newLogo3_pq04qm.png" className='mainLogoMobile' alt=""/>
                 </Link>
 
                 <div className='navIcons'>

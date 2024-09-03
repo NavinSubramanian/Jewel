@@ -21,8 +21,6 @@ import ChitFundForm from './components/Forms/ChitFundForm';
 
 import mainLogo from './assets/homeImages/mainLogo2.svg'
 
-import MoonLoader from 'react-spinners/MoonLoader';
-
 import ScrollToTop from './logic/ScrollToTop';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -49,15 +47,8 @@ function App () {
         {loading ? 
           <div className='loaderDiv'>
             <h1>GEETHA JEWELLERS</h1>
-            <MoonLoader
-              color={'#C18843'}
-              loading={loading}
-              size={90}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-            <img src={mainLogo}/>
-            <p>Since 1988</p>
+            <img src={mainLogo} className='blink'/>
+            <p>Since 1980</p>
           </div>
         :
           <>

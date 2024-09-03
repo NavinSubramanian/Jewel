@@ -111,26 +111,34 @@ const Chitfund = () => {
             <div className='chitTerms'>
                 <h1>விதிமுறைகள் மற்றும் நிபந்தனைகளின்</h1>
                 <ul>
-                    <li>Redemption of this saving scheme must be done after 30 days of payment of last instalment.</li>
-                    <li>Monthly instalment will be accepted at any VBJ showroom.</li>
-                    <li>Members are entitled to redeem their gold at any of the VBJ showrooms as gold (jewellery or coins), diamond or platinum jewellery.</li>
-                    <li>Monthly instalment should be paid regularly on or before 5 PM on the last day of every month.</li>
-                    <li>Prepayment of instalments and advancement of the maturity date are not permitted.</li>
-                    <li>Only one entry per month.</li>
-                    <li>Membership card must be produced at the time of payment to enable the entry of the payment in the card for offline customers.</li>
-                    <li>The chit amount can be paid by cash, at par cheques, demand drafts, online payments. Member’s name and membership number should be clearly written in all modes of payment.</li>
-                    <li>The date of receipt of payment will be the date on which the gold rate will be applied.</li>
-                    <li>Cheques/demand drafts should be drawn in favour of “Vummidi Bangaru Jewellers”.</li>
-                    <li>In case the cheque is dishonoured, the date of the realization will be considered for fixing the gold rate.</li>
-                    <li>Delay in payments will automatically extend the maturity date by the number of months delayed.</li>
-                    <li>Members are entitled to redeem the total weight of the gold credited to their account on maturity.</li>
-                    <li>The gold rate as announced by Madras Jewellers & Diamond Merchants Association for selling of 22 Kt (916) will be the rate applied for calculating redemption value, for gold jewellery, diamond jewellery and platinum jewellery.</li>
-                    <li>Members are entitled to apply the rate of gold prevailing on the date of their purchase/ redemption.</li>
-                    <li>Cash will not be refunded under any circumstance.</li>
-                    <li>The stone charges, making charges and GST/ Tax will be borne by members as applicable at the time of purchase / redemption.</li>
-                    <li>VBJ reserves the rights to alter, amend, modify, add or delete any of the terms and conditions from time to time.</li>
-                    <li>The conduct of the scheme is subject to the terms and policies laid down by the Central and/or State Government from time to time.</li>
-                    <li>All disputes are subject to the jurisdiction of the competent court in Chennai.</li>
+                    <li>Redemption of this saving scheme must be done after 30 days of payment of last installment.</li>
+
+	                <li>Members are entitled to redeem their gold at the GEETHA JEWELLERS SHOWROOM as gold (jewellery or coins), diamond or platinum jewellery.</li>
+
+	                <li>Prepayment of installments and advancement of the maturity date are not permitted.</li>
+
+	                <li>Only one entry per month.</li>
+
+	                <li>Membership card must be produced at the time of payment to enable the entry of the payment in the card for offline customers.</li>
+
+	                <li>The chit amount can be paid by cash, online payments. Member’s name and membership number should be clearly written in all modes of payment.</li>
+
+	                <li>Delay in payments will automatically extend the maturity date by the number of months delayed.</li>
+
+	                <li>Members are entitled to redeem the total weight of the gold credited to their account on maturity.</li>
+
+	                <li>Members are entitled to apply the rate of gold prevailing on the date of their purchase/ redemption.</li>
+
+	                <li>Cash will not be refunded under any circumstance.</li>
+
+	                <li>The stone charges, making charges and GST/ Tax will be borne by members as applicable at the time of purchase / redemption.</li>
+
+	                <li>GEETHA JEWELLERS reserves the rights to alter, amend, modify, add or delete any of the terms and conditions from time to time.</li>
+
+	                <li>The conduct of the scheme is subject to the terms and policies laid down by the Central and/or State Government from time to time.</li>
+
+	                <li>All disputes are subject to the jurisdiction of the competent court in Salem.</li>
+
                 </ul>
             </div>
 
@@ -139,4 +147,4 @@ const Chitfund = () => {
     )
 }
 
-export default Chitfund
+export default Chitfund;

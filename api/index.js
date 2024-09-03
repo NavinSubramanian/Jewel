@@ -35,13 +35,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-const pool2=mysql.createPool("mysql://root:afMCsepeggWTmNtgFdMoWqdccCNjPcxr@monorail.proxy.rlwy.net:36670/railway")
+const pool2=mysql.createPool("mysql://root:wlVxITDgomcRvagthfdVxCVAtpLubsNI@junction.proxy.rlwy.net:47426/railway")
 const pool = mysql2.createPool({
     connectionLimit: 10,
-    host: 'monorail.proxy.rlwy.net',
+    host: 'junction.proxy.rlwy.net',
     user: 'root',
-    password: 'afMCsepeggWTmNtgFdMoWqdccCNjPcxr',
-    port: 36670,
+    password: 'wlVxITDgomcRvagthfdVxCVAtpLubsNI',
+    port: 47426,
     database: 'railway'
 });
 

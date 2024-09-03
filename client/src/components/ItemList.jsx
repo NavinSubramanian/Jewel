@@ -8,7 +8,7 @@ return (
             <img src={item.imagelink1} />
             <img src={item.imagelink2} />
         </div>
-        <h3>{item.name}</h3>
+        <h3>{item.name.length > 20 ? `${item.name.substring(0, 18)}...` : item.name}</h3>
         <h5>{((rate*item.weight)+parseFloat(item.making_charges))}</h5>
     </Link>
   )

@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-import Background from './assets/homeImages/bg.png';
+import Background from './assets/homeImages/bg2.png';
 import StarGroup from './assets/homeImages/starGroup.png';
 import SilverPriceImage from './assets/homeImages/silverPrice.png';
 import GoldPriceImage from './assets/homeImages/goldPrice.png';
@@ -132,7 +132,8 @@ export default function HomePage() {
                     {/* <p>Welcome to Getha Jewelry</p> */}
                     <h1>Desire meets new style</h1>
                     <h4>Explore the unique world of our jewelry where, sophistication intertwines with perfection.</h4>
-                    <Link onClick={categScroll}><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                    <Link onClick={categScroll}><button style={{whiteSpace:'nowrap',wordBreak:'keep-all'}}>
+                    மேலும் பார்க்க <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                 </div>
                 <div className='rightLand'>
                     <img src={LandingPageImage} draggable='false' style={{ position: 'relative', left: '-50px' }} alt="Landing Page" />
@@ -191,19 +192,19 @@ export default function HomePage() {
                         <img src={ImageHome1} alt="Image Home 1" />
                         <h2>Look for your style</h2>
                         <p>Explore the unique world of our jewelry collection.</p>
-                        <Link onClick={shopScroll}><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                        <Link onClick={shopScroll}><button style={{whiteSpace:'nowrap',wordBreak:'keep-all'}}>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
                         <img src={ImageHome2} alt="Image Home 2" />
                         <h2>Custom jewellery piece</h2>
                         <p>Every jewelry should tell a unique. Customize it to make it special!</p>
-                        <Link to='/custom'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                        <Link to='/custom'><button style={{whiteSpace:'nowrap',wordBreak:'keep-all'}}>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                     <div>
                         <img src={ImageHome3} alt="Image Home 3" />
                         <h2>Invest on Schemes</h2>
                         <p>Got a piece of jewelry you'd love to have? Save now to buy later!</p>
-                        <Link to='/chitfund'><button>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                        <Link to='/chitfund'><button style={{whiteSpace:'nowrap',wordBreak:'keep-all'}}>மேலும் பாறஂக <FontAwesomeIcon icon={faArrowRight} /></button></Link>
                     </div>
                 </div>
 
@@ -325,14 +326,14 @@ export default function HomePage() {
             <section className='ceotalkSection'>
                 <h1>We aim to make you find your style </h1>
                 <div>
-                    <img src='https://media.istockphoto.com/id/1158583412/video/speaker-businessman-talking-at-webcam-making-conference-video-call.jpg?s=640x640&k=20&c=Yw2J5fFEW2wlbtUr7R_i_IQVANnas_wBtHyY-DFnnH0=' alt="CEO Talk" />
+                    <img src='https://res.cloudinary.com/drcfl15mk/image/upload/v1725189532/ceoImages_s07jm9.jpg' style={{width:'300px',height:'300px', borderRadius:'50%'}} alt="CEO Talk" />
                     <div>
                         <p>Watch our CEO share valuable insights, stories, and inspirations behind our exquisite jewelry collection. In this exclusive presentation, you'll delve into the heart of our brand, exploring the journey that has shaped us into the creators of some of the most stunning and unique jewelry pieces available today. Discover the passion and craftsmanship that drives us to create unique pieces for jewelry enthusiasts like you.</p>
                         <h3>
                             "Crafting dreams into timeless treasures."
                         </h3>
                         <div>
-                            <p>- Our CEO</p>
+                            <p>- Vivek Kanna S</p>
                             <Link to='/about'>
                                 <span>Know More</span>
                             </Link>

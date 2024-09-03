@@ -54,11 +54,11 @@ const About = () => {
                     <div>
                         <div>
                             <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
-                            <p>+91 73971 84803</p>
+                            <a href='tel:+917397184803' style={{color:'black'}}>+91 73971 84803</a>
                         </div>
                         <div>
                             <FontAwesomeIcon icon={faMailReply}></FontAwesomeIcon>
-                            <p>abc@gmail.com</p>
+                            <a href='mailto:Geethajewellery@gmail.com' style={{color:'black'}}>Geethajewellery@gmail.com</a>
                         </div>
                         <div>
                             <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
